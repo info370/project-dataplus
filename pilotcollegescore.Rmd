@@ -1,0 +1,23 @@
+---
+title: "Pilot College Scorecard"
+author: "Sopheak"
+date: "October 29, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# setting up libraries
+install.packages("httr")
+library("httr")
+
+
+key = '1GzxPNgnOKN6yoEalMpmnnkAVizG2YUttvSWVEsZ'
+query.params <- list(school.degrees_awarded.predominant="2,3", fields="id,school.name,2013.student.size",api_key=key)
+response <- GET("https://api.data.gov/ed/collegescorecard/v1/schools.json",query=query.params)
+
+body <- content(response,"parsed")
+print(body$results)
+```
+
