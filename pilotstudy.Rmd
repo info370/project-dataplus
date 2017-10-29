@@ -15,5 +15,4 @@ query.params <- list(query="restuarants", location="-33.8670522,151.1957362", ke
 
 response <- GET("https://maps.googleapis.com/maps/api/place/textsearch/json?query=", query = query.params)
 
-
 ```
