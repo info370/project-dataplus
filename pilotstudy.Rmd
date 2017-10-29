@@ -11,9 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 #install.packages("httr")  # once per machine
 library("httr")
 
-query.params <- list(location="-33.8670522,151.1957362", keyword="restuarants", key="AIzaSyA0OM7dRXjjaEaf__06DaRZbfkza9jW1vw")
+query.params <- list(query="restuarants", location="-33.8670522,151.1957362", key="AIzaSyA0OM7dRXjjaEaf__06DaRZbfkza9jW1vw")
 
-response <- GET("https://maps.googleapis.com/maps/api/place/textsearch/json?", query = query.params)
+response <- GET("https://maps.googleapis.com/maps/api/place/textsearch/json?query=", query = query.params)
 
 
 ```
