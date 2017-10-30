@@ -8,16 +8,29 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-# setting up libraries
+# setting up scraping libraries
 install.packages("httr")
 library("httr")
 
-
+# college-score api key
 key = '1GzxPNgnOKN6yoEalMpmnnkAVizG2YUttvSWVEsZ'
-query.params <- list(school.degrees_awarded.predominant="2,3", fields="id,school.name,2013.student.size",api_key=key)
+
+# test 1
+query.params <- list(school.degrees_awarded.highest
+="3", fields="id,school.name,2014.student.demographics.median_hh_income",api_key=key)
+response <- GET("https://api.data.gov/ed/collegescorecard/v1/schools.json",query=query.params)
+body <- content(response,"parsed")
+
+readable_data <- body$results
+print(readable_data)
+
+# test 2
+query.params <- list(school.degrees_awarded.predominant="4", fields="id,school.name,2013.student.size,2013.completion.title_iv.low_inc.still_enrolled_by.2yrs,2013.completion.title_iv.mid_inc.still_enrolled_by.2yrs,2013.completion.title_iv.high_inc.still_enrolled_by.2yrs,2013.completion.title_iv.low_inc.still_enrolled_by.4yrs,2013.completion.title_iv.mid_inc.still_enrolled_by.4yrs,2013.completion.title_iv.high_inc.still_enrolled_by.4yrs,2013.completion.title_iv.low_inc.still_enrolled_by.6yrs,2013.completion.title_iv.mid_inc.still_enrolled_by.6yrs,2013.completion.title_iv.high_inc.still_enrolled_by.6yrs,2013.completion.title_iv.low_inc.still_enrolled_by.8yrs,2013.completion.title_iv.mid_inc.still_enrolled_by.8yrs,2013.completion.title_iv.high_inc.still_enrolled_by.8yrs",api_key=key)
 response <- GET("https://api.data.gov/ed/collegescorecard/v1/schools.json",query=query.params)
 
 body <- content(response,"parsed")
-print(body$results)
+readable_data <- body$results
+print(readable_data)
+  
 ```
 
