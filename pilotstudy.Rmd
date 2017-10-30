@@ -6,11 +6,26 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+#knitr::opts_chunk$set(echo = TRUE)
 
 #install.packages("httr")  # once per machine
 library("httr")
 
-response <- GET()
+query.params <- list(query = "restaurant", location = "47.6610, -122.3134",
+ key="AIzaSyA0OM7dRXjjaEaf__06DaRZbfkza9jW1vw")
+response <- GET("https://maps.googleapis.com/maps/api/place/textsearch/json?query=", query = query.params)
+response
 
 ```
+
+```{r}
+# Flattern data in order to be read by R
+#install.packages("jsonlite")  # once per machine
+library("jsonlite")
+
+test <- fromJSON("https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant&location=47.6610%2C%20-122.3134&price_level=3&rating=4.3&key=AIzaSyA0OM7dRXjjaEaf__06DaRZbfkza9jW1vw")
+
+View(test[3])
+```
+
+
