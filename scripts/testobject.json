@@ -1,0 +1,1848 @@
+[
+  {
+    "formatted_address": "2108 NE 65th St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.67578,
+        "lng": -122.305026
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6771608302915,
+          "lng": -122.3035267197085
+        },
+        "southwest": {
+          "lat": 47.6744628697085,
+          "lng": -122.3062246802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "2c38797055d399f5b74b9084960b72125bb4bd4c",
+    "name": "Zeeks Pizza",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 5312,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111255049972930888716/photos\">Penelope Avila</a>"
+        ],
+        "photo_reference": "CmRaAAAAefIQ-7k479MABrDbEKLgfVU5BihM84e_UQXPF_yXaxtu53sVJFA4PJbZO_3nJQdIl3qNc9DFFBuSDmGttH1-VlEkJGqboSSQyYh25r8ehTiL7qKqBypLZkAtSg9vVjWwEhACFmuA81hkvjv2qKd17acrGhRPJztZCOG7irSDy6cXjj3nawVCNQ",
+        "width": 2988
+      }
+    ],
+    "place_id": "ChIJ129UjXkUkFQRiIGJ4aAOVkA",
+    "price_level": 2,
+    "rating": 3.8,
+    "reference": "CmRRAAAAEl-iTs2OzUb_3zXZvLVgnTe8IkR9huP8NicTtbC1Oi8q6kOaOXrkieV4H45My_VsWsyDz1Tv8RTiHp3iqa-PqabVMYCLbVj0ewsqHXXzih48I8nVlX91qLgiW2xrAV52EhAKnfsE9q-7wm0mWA-3TEZ3GhS5ZjU-KxTpok_fTxxvKM66UmncJg",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4515 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6617673,
+        "lng": -122.3134035
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66311478029149,
+          "lng": -122.3119196197085
+        },
+        "southwest": {
+          "lat": 47.66041681970849,
+          "lng": -122.3146175802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "72a86bf1705aba5ecfc7a857cfd884e014dbe58c",
+    "name": "U:Don Fresh Japanese Noodle Station",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 1462,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100492480004244504248/photos\">U:Don Fresh Japanese Noodle Station</a>"
+        ],
+        "photo_reference": "CmRaAAAACURJd2QGBzHFLPfGNWG5sGexZ2G0P4SYkYe1sUk6Vt2d6zYkhCkGmQjeNSuvp8aDw_rZfwl_tyOx3Ns7MnuNzqM9HoFV8taLTOabgmeUtmf8ulmhoJPWyLw4TpFl_mNIEhDMrQio-4tGqAk9dq2tWA6nGhSMCoqewmGIRhIDeUo-20Q9JqUizA",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJu8FM74oUkFQRTIfGPPZ2xqI",
+    "rating": 4.4,
+    "reference": "CmRSAAAAhIV2G6_hY8VAKh0QeJzio5o_Om0zbqlEIAmxz31ToTtKVAw0xbjDusKUsuBBZDF0meF5v_DHgNY8dxHOKd0NoK1q4u_kH6Z4guHQHZMeOvDatr75ExJ5lXkZDmH427-4EhCFW7_x1hfs8i72aPOpQ27lGhRf12Pd3wwLXCX8fcSPqO_2xcdvoQ",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4735 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.66413799999999,
+        "lng": -122.313254
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66548643029149,
+          "lng": -122.3118211697085
+        },
+        "southwest": {
+          "lat": 47.6627884697085,
+          "lng": -122.3145191302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "7e12fbd772eb85475cbecb664915c41dbfcc9e51",
+    "name": "Jewel of India",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/114796575718482173040/photos\">Lee Damon</a>"
+        ],
+        "photo_reference": "CmRaAAAAjZ6ksdUOJhF-wziPebmt0iTKfoxGNFhRbBnqh4kXXRwnws6zBnujNkv0AT4uIxDGy4DEZmQdHTkD_Did6MFwQ3t5R5qDRtrUVm7Dqafsokdc_geKdWNqhtFf4Bm6sSNQEhC3hYxE32xis9fS_palPYJzGhQ20SFR3cq2qkmwMwLc7X3JQYzf4A",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJtbv32WEUkFQRksQcdGWHlEs",
+    "price_level": 2,
+    "rating": 4.3,
+    "reference": "CmRRAAAAnHpd2sOD8XiTfn26fXMBRxq-rn2SfOsntXLQEGYA0duO0XxEcHE-Eyzmap3r0w3IdkOzuis5ChjpCSPZRtFh119Bvwf8GFXpJKzLOO8yZZjN9Mc4VX2VeeYEqUuS7nBFEhBQKUJQgJDT41RopXHrxR6yGhRhsCLTlcTZmywm12GfQ3pVY4DOgw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2695 NE University Village St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.66213820000001,
+        "lng": -122.2980422
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6634871802915,
+          "lng": -122.2966932197085
+        },
+        "southwest": {
+          "lat": 47.66078921970851,
+          "lng": -122.2993911802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "b434ce7757ce4254c66426526812ba03f4867fbe",
+    "name": "Piatti",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 1365,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116964334333891411595/photos\">Piatti</a>"
+        ],
+        "photo_reference": "CmRaAAAAKctX-lCn-lUblOoQ1PrVke8qW_iffr5aVVceIlDHRgTfE-ntKSoB52K1SWeJMTZpTdQd26zlZ7cdF7LDOBQIo70g-q8UNYuTxMG6GN0KpHpfjwcs-Jpdtm00xt0sea0hEhB9c_anEnxIP-PXqApcKEB9GhTwHgs_pZqBEDAkIECTGQ9Qu8Dv6w",
+        "width": 2048
+      }
+    ],
+    "place_id": "ChIJy7wT-IUUkFQR_p6A7eS0SZU",
+    "price_level": 2,
+    "rating": 4,
+    "reference": "CmRSAAAAnge7OvALFyQ0K8jTA8T7CCBzaqBFzXCCH9kW4jAQHPOgGAtDmqpq5hYJNBfF7MmCEA3_E-kxjbsNRLfC2vJBC_1Qi2NwGvVv8DmznHmH8FVod9n1n-omkjCumHCrNlUkEhDy5UHOF0b0-JSc3HXu97QxGhRrkUsLr7RcHJWVxBS7ZVDVmwzlIw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4743 Brooklyn Ave NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6643579,
+        "lng": -122.314354
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6657064302915,
+          "lng": -122.3129339697085
+        },
+        "southwest": {
+          "lat": 47.6630084697085,
+          "lng": -122.3156319302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "8697d7f03a18d90cc688843684dd874b040ccf98",
+    "name": "Itadakimasu",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106551298896042859648/photos\">Pieter De Temmerman</a>"
+        ],
+        "photo_reference": "CmRaAAAA9-eBtluIH9wHhOGrAl6ckos5rp-IGI6JeWwifJOnBZboJFOkBqdQHmrnx8unQQ91kHhq9bMxaFYrib3HxEcygeLPcix_rFd8QWivhXTie2yyXWhFPbLXW9aB2LZfYn3tEhBPLHum1iv3PpbGgrYHaw-xGhTj20m7vvxIX7GQ3iplu0qABJg7OA",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJx-1qzGEUkFQRuU3Plpz8j2w",
+    "rating": 4.3,
+    "reference": "CmRRAAAAkc5r82eeYfdnDv5Pa56JjAdC3KfpQ9fVE0E8rJ2mcJYmJG45l5W9InJIxTDQ5XkdNilo7V3lJo_v1b7nEcDHxHnS9bPf03O-jhNOTAw79pZ_UTW9qihRjra6jjzT3uEaEhC8v5l_xJkrbDnFJRXS3A7-GhRvPJ0X72NaIb2EHtMZQciHXx0auw",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4138 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.657989,
+        "lng": -122.3130778
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6593391302915,
+          "lng": -122.3118065697085
+        },
+        "southwest": {
+          "lat": 47.6566411697085,
+          "lng": -122.3145045302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "8608a6946adacb2057cf8dd1299200fdfacd0913",
+    "name": "Samurai Noodle",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100075812036441054285/photos\">Ren Nakano</a>"
+        ],
+        "photo_reference": "CmRaAAAA8XzyQNOV51bauqcNaj6y4y36QlqdJyxkYdQ59-Sk0pHu4mmVQUG2h392jNI758of_MTyuF2CM1uEAHZFYsr5mk1XYoz1YRz5WF3xnpx3rK6YCtMuICdXD4GWJt0fZQNLEhDFhYqtgewE-5cuBErFUemUGhQDxulegpe2Tj_dSXuuXegYl3yDFw",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJxfk6WvMUkFQRQDavEWstOH4",
+    "price_level": 2,
+    "rating": 3.8,
+    "reference": "CmRRAAAAmAWLc-oBCVbVSg0DlkARuKxQEqfdUaUi5ha3OCc8vb3C_KBA3cS1cNN8Ti38G-WsFCnJmL7qKUHoWn3Ckt1XDmVqkb0erk_wjopmCDljnOUcQ8tgy9e62VDEjBjkzd7_EhDmtAL7VO4FWPlrzAGZBFdnGhRO_4YDkPTsRQwfJpbYwyfGwZcxmw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4559 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6629768,
+        "lng": -122.3133684
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66432433029149,
+          "lng": -122.3118873697085
+        },
+        "southwest": {
+          "lat": 47.66162636970849,
+          "lng": -122.3145853302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "4285548d6c81c6491c6d34b0518d57888fdd5bbe",
+    "name": "Costas Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102822794068503797357/photos\">Dirk Groeneveld</a>"
+        ],
+        "photo_reference": "CmRaAAAA2C2HRYknQKRUowshLQozex8NpHWCSquZFb7mIJ_DehklxwHWWv4BWXlHJfLOOK5sOzvzXshNTkvwD95v3tyPezWRFfRG-XoN6CJ1frtZ2MdHLh4hSDMQ2irmNkmL6JJoEhDmS4Zh3xUzuvug9NosNuYUGhTagoqtHOLyLf5Ylgk4hFL7Ch8Hag",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJjXQyiIoUkFQRg3itsYwv95c",
+    "price_level": 2,
+    "rating": 3.8,
+    "reference": "CmRSAAAAV44gMuGi-WnfLEJ_kJr_kl4MgUnr7bN0tYIXG1itGV_ibHl5YtZ0owhGNACVuJWmxxlTZEAzhc8iU7bKbnfpmETpwhg4HLzgFFbeLqMzzlkluRFlOWQvJVZPiF7pLvAbEhD6jnhvKmfRKwH6wI5BA1LhGhRDx3uaSp45ASqPoRNUrUQ79Fr__Q",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1319 NE 43rd St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.66478379999999,
+        "lng": -122.3144267
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66613278029149,
+          "lng": -122.3130777197085
+        },
+        "southwest": {
+          "lat": 47.66343481970849,
+          "lng": -122.3157756802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "b555e44f904ae95fca2d4f134026b5fdcc48221a",
+    "name": "Cedars Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3264,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107651313346249553765/photos\">Huy Nguyen</a>"
+        ],
+        "photo_reference": "CmRZAAAAZRSrW9xTDGgAeKTyY8vxw42zccsm0OHcW_8LNMTfQp9wAOLHWIw1e1HLrWchsz8BFmCgKRjhTR3GkqRl85Vq557sLSRdknzYvCOsdQ-zCC1mTlcCQ7j7VlNbBUu1R7ZcEhDqKUQlTPcSwhzTW6w6e9HTGhReHRMBj3n8XYzNip8ke0TrVPkd1g",
+        "width": 2448
+      }
+    ],
+    "place_id": "ChIJ6z_NyvQUkFQR9cavMj8Mx5E",
+    "rating": 4.1,
+    "reference": "CmRSAAAAfRBjw8u_EI0gdSXRG_pLe7u9ehUYfDrjk-ViSsUMfCDB9J5OkGroGQ2rNkJOWMUnwAJSNs690zGCTKo-itjlebbdMRJ-CvXpGgBVrBnU0i0ZWokuB_OZmHtQkZmpmKbdEhCPSBRrWWlMSNERJWxk1_bNGhQaZRrv3mPuR2myaL5rqHKjDR6ylQ",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2630 NE University Village St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6634028,
+        "lng": -122.2991543
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6646960802915,
+          "lng": -122.2977736197085
+        },
+        "southwest": {
+          "lat": 47.6619981197085,
+          "lng": -122.3004715802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "2be56cc1bf00312d3e9b240729afd4b640eb474d",
+    "name": "Elemental PIzza",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 338,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107448200235264770794/photos\">Elemental PIzza</a>"
+        ],
+        "photo_reference": "CmRaAAAAC1ePkhQN8wTysB-c_A6sXfYxWjPsLuSpuQ3-os9dw32LkZdZ2VSWZs_7cgrCAIPwid09404Kr2zIwEpNei93cEasyzdrsXqCjSO97IjPcncNoJV_aLglFoVL2uNTb3OGEhDHvG60FVb8fUaZmSzvb-M5GhSY08fywz6rbrwi8yiX5EJIPnZvWA",
+        "width": 600
+      }
+    ],
+    "place_id": "ChIJcZRwqIgUkFQRbM6I6gKcY1Q",
+    "rating": 3.8,
+    "reference": "CmRRAAAA8NCHMIY-vMROlxGbEIqUiVzu3kkdBC0S7gbat9uQ8gN9Y0stqGXsKkfkWZmfs9zWCVXkj52-QCJrr_aBtgrgtUKZNOGtdKiQOswyhQiW4zzTa7ojde_f4xPjKwwn6QtqEhAEUPY6OD3iF8FV1aF2k4tCGhSpZ6NDNHzp0tNenjBF9gkFA5HOQg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "401 NE Northlake Way, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6535994,
+        "lng": -122.3240084
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6549483802915,
+          "lng": -122.3226594197085
+        },
+        "southwest": {
+          "lat": 47.6522504197085,
+          "lng": -122.3253573802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "75a75a5a89fa9ab70e52c4e384b162f6651ed923",
+    "name": "Ivar's Fish Bar",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108618177694476337420/photos\">Nicholas Richter</a>"
+        ],
+        "photo_reference": "CmRaAAAAP_Kco2_7T1t2KmNRwsrYQHFIa1Ji5X_SQBiqcncVAejcZ30a2onNMl3OHU8wOAckbWQ3NEdITUFB3LAtv-V2BX5K3C3wM6A6C9Z9vkJJiMNjU24Gs6oYh8ZnvLKvCdthEhCL3co08tsQsS8wOaKXyag6GhSq0s1YyWeDBeiwuJNOkoTNNSGZRQ",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJa0v1ovAUkFQRAihRnCfoxSk",
+    "price_level": 2,
+    "rating": 4.1,
+    "reference": "CmRRAAAAs6rEQcnjxjqwOXJcemcSNPZtJzhPLjfraz4UlQcWiUG4Rk5Ma8aImVybNPGXvlIOMH9Ep8XYDXxJh47Ifr9izQu76FrE_X3rHJ4YMxM9fDrKNYlRCiag3OArkVUaJFJwEhBc70K1g0_Hd4cc6FUWH2CqGhTe-JV_O3yoMeXn8mfr39eZJZgIHA",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3617 NE 45th St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.661008,
+        "lng": -122.2884551
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6624264302915,
+          "lng": -122.2871187697085
+        },
+        "southwest": {
+          "lat": 47.6597284697085,
+          "lng": -122.2898167302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "c140484e97fd23ec579a6e9f4170588311d0a3d2",
+    "name": "Varlamos Pizzeria",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 332,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/104698501074614182864/photos\">Varlamos Pizzeria</a>"
+        ],
+        "photo_reference": "CmRaAAAAzb4Oj2fFpwqRF40A4WigU2Rj0d8L3pojbXEOY1cYY_MJSLmsH2UWeo_Pmp7S80DDVja4kuK8NgPDdTf-pXNcGLKJA2fEVmRbm7y5sEO2ycu9XY4CETfyM5Z6eNWqGh4wEhD7Ivr8k17YFJfmQpCfIZtoGhS3AYk1yTWZORubSdwbGVJxc7Z8HA",
+        "width": 590
+      }
+    ],
+    "place_id": "ChIJETodsYQUkFQR4fHu7oHT4Lc",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRSAAAAR8ozR_hmtMkwWoUvt1g5cOnzHGWv41vU6MEtzOYnaeyMP7Evsr1JQ8Y9MtVcCJ4PuuL085-nd_uasGIV6wa2KPIpubRTqQ5mts7wYAR2He_M_fuhBunVozoHW0l-Gw7CEhCqwDEGyT0a_DXfEn4SsgHiGhQUYzb3UVsCThSY6A8ODShnjbmlww",
+    "types": [
+      "meal_delivery",
+      "restaurant",
+      "food",
+      "store",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "111 NE 45th St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6610617,
+        "lng": -122.3277773
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66255883029149,
+          "lng": -122.3264073197085
+        },
+        "southwest": {
+          "lat": 47.6598608697085,
+          "lng": -122.3291052802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "c91191fad2e5688e333e6787175d998db7bf54bf",
+    "name": "Dick's Drive-In",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 5312,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108225880723993582322/photos\">Payton Tabach</a>"
+        ],
+        "photo_reference": "CmRaAAAAFR-V2BCXe3Hmgs-z66u1c77VqeQE8OfD5t3mxpBI6Ex-qTQ9QL5_519e-zCF57Ji04G-gKB6_OHgVKmVbZrlc4mXGSivT6x9jqM0eXlnLyfdqrDYeVp_cCwZb_DjE-ZqEhAcEYI_4G2RvsT4v9DhMTS6GhRi3XlSzONyEqpEoVNNL5REE-TrFA",
+        "width": 2988
+      }
+    ],
+    "place_id": "ChIJd5TY51gUkFQRU_h3DzLnCi4",
+    "price_level": 1,
+    "rating": 4.5,
+    "reference": "CmRRAAAAu6ODI9H_OPnTTVS89lM8ZGXtOOmvV4vsTO-GJ9kjGFOuOrXzGDhzU5v73Le5G1vzVdBTkJMTKAuI4VbMrvQuDGCfaoX0tIoeTNhnQRgoFmZjx94unP8PP8QujVXCTMGkEhCFxWcZULxlYG7-JTxhH2tiGhRFpJ4T2Lg3jrqHMQ9Fpzvl7v_mfw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3719 NE 45th St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.66109729999999,
+        "lng": -122.2874023
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66251048029149,
+          "lng": -122.2860764697085
+        },
+        "southwest": {
+          "lat": 47.6598125197085,
+          "lng": -122.2887744302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "69145b242a8c2d800ad45f9cff98ec14799d24d0",
+    "name": "Marlai Thai Cuisine",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 1836,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100098669882494995013/photos\">Nat Burgess</a>"
+        ],
+        "photo_reference": "CmRaAAAAFgPOzy2D2uSfYG5cQctOC6FsZ44snrYv23VIBrOU5N0csjUr5S_WP3bgXXo1cL-IV1zY3gzi_xxK88DrCckWBxHNXmQctgn_O9F4bmlAB5OMuweO7xm_6PQPiKYHa0SsEhC2fICIrQ9wRFBRX99NWRyZGhSQ86gY3CMf4eQnDKzLL6pwDqUIPg",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJewperoQUkFQR1ypQL_Y5bqM",
+    "price_level": 2,
+    "rating": 4,
+    "reference": "CmRSAAAAY5vsfzD4pqFg34dFE7VUmSUWVskN3TsRqhOZYqsjqaWB2ya4C-prMdJQ3Um8BNMJUyINwp8eZdIpDM70vhEyw-idNM_HIQuko1FG3jPW8s_XfFnZEXyK0OuPjnL_jl3QEhDIhtj_j9u0m9rMyZbs8QD2GhTpS8HYPJjugu4hdOlbOTe3NeaVUw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "5501 30th Ave NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6686532,
+        "lng": -122.295277
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6700021302915,
+          "lng": -122.2938152697085
+        },
+        "southwest": {
+          "lat": 47.6673041697085,
+          "lng": -122.2965132302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "75841a541526fe2226bee0de1ac493cbf507e21c",
+    "name": "Pair",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 667,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102230910831503765540/photos\">Pair</a>"
+        ],
+        "photo_reference": "CmRaAAAAljeguCb0nRzeBMbAQHtaG3c2nZbstDzIUY-fSXe9LovP47MYUViDjaEP0gyXtOwJHZjXqNafccmQ8Z1CdcpZs9D2OoV0j07Ag7s2au42mzriaC1RblJyA2eZFGuoUyrcEhAZwvlKMkDsakpfO7DsV5eSGhQtaDyzZTQTQiQ1zbElfPSXOeoR1A",
+        "width": 1000
+      }
+    ],
+    "place_id": "ChIJrTiOuoAUkFQRisVjPkSzE4o",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRSAAAAeM-qsXre3OJElEdsJsh19-zioodm-E2U4kdKxSkkpe5JNv8FTWVpRXtlScnTDP27f_ylZgroDxWaZDuk28dbsA6LDxoAUlYeKzU2YveVApjgYihq7m9ojs6S1NpIxskWEhB_0DdrgOryg_KP-L71Ls7OGhSIfc9CbV7UqGJJ_5jn3sBuTt5NAg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2616 NE 55th St, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6687097,
+        "lng": -122.2988674
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6699642802915,
+          "lng": -122.2975190197085
+        },
+        "southwest": {
+          "lat": 47.6672663197085,
+          "lng": -122.3002169802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "9c934e6ec8c46c961e53762dd3e7ffb8ba336d58",
+    "name": "Frank's Oyster House",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3120,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111393759693279042582/photos\">Edward Aites</a>"
+        ],
+        "photo_reference": "CmRaAAAAhGwY9bJ6IsxBKMnSvferfRPw1RXg2XfSNZmBfkOw1MQGt9vPQGDh1J3620SzyNqSmgi_y_Ftc1Y40EdpSJNK600il7NSl4uup-GYPkIpXH6rZXcFJABKbQDwn9LEJpxKEhDnuxlvTjErZFvMzkQGXZt3GhTHNYNPbLrPaNj2I6clSD7Mc8Zbxw",
+        "width": 4160
+      }
+    ],
+    "place_id": "ChIJYcG29H0UkFQRY9TJ_q6BRBI",
+    "rating": 4.4,
+    "reference": "CmRRAAAAnF4OH3GGA06fY6HE5u-8LgAA_J7x04IPSrHqt1qrZNxpop6ljrpF24An1q0c3WDpMXa6wABAQTaPx1AlskU4QcTMFl_m4ohlMBzm2FHKDKJ4gbOnQ5U0uXQAWkq_JWH0EhC3-5Y3ISZqwxjOvWYstoDoGhQh70nyWNYaDN_tqPp56pHYkDpwkA",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "5101 25th Ave NE #11, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6675066,
+        "lng": -122.3008477
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66885613029149,
+          "lng": -122.2993723197085
+        },
+        "southwest": {
+          "lat": 47.6661581697085,
+          "lng": -122.3020702802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "aec572ec0749e13a674a17de7c674109bfe39843",
+    "name": "Pinkaew Thai Cuisine",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2988,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110444960429966677194/photos\">Pinkaew Thai Cuisine</a>"
+        ],
+        "photo_reference": "CmRaAAAAjX-yo5sSvjmypldZNzgYpkAvzzq7pCx1Rmf_XLk6m-czS520-oLgoGD1QFV7WTQ4yS6y9Gug_LjxkYkKevVaCwtMh0m_ptzq4851erPfmlIWDu_OV37WEHkgXqoYgagIEhBQyqR_fM7yECI7cmi0VWlMGhQ-iwAxOyHUc0bj_5ozVtsQ9Yr2XQ",
+        "width": 5312
+      }
+    ],
+    "place_id": "ChIJA2urlIcUkFQR3tydNQYkFvc",
+    "rating": 4.6,
+    "reference": "CmRSAAAAq1ypA564sQdVRuMLKBiG3YCXGtZ2l5xu4JH5tQ4EXLD9DkvO34tizm_XE-y9PJkRuV2wa0mAAUhOQc8Q6EExpaOLDNWzP7LHkyPcDcK8hkt3q5ddOItEVet6_8atvn_oEhBy0e2qAjwRi8OS3VjS2ZtuGhTq8tXUKck8SEbEpnmyPVUiQQnF_g",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "5412 Sand Point Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6680867,
+        "lng": -122.276751
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66955993029151,
+          "lng": -122.2753862697085
+        },
+        "southwest": {
+          "lat": 47.66686196970851,
+          "lng": -122.2780842302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "f03863ae6fae8700ddcb871efd45f50c3f5bbea3",
+    "name": "Sand Point Grill",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100813529563749121077/photos\">Rony Liderman</a>"
+        ],
+        "photo_reference": "CmRaAAAAh7yp0Y4mzqTluTw9jDVSD5gb93YAOnOYNQNP_kT7Kd3AN4BGgoOpfMfUSlCW0Xzsj6mmr5Bta_U2sv3Mbr6mu_W1fCre4HOaM_VKm9bQ0MPUKqZgq41IKdYVLrfaVE4NEhAUaM8gzeHN_aveq_jKGhqbGhQ94uMICc2WhmDg3tMjKb1AI5D3hw",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJRVDWinsTkFQRd-fvjLEzUm8",
+    "price_level": 2,
+    "rating": 4.2,
+    "reference": "CmRRAAAAL_ofFVOTyGR-BTH-KR-MPzvDb_6L9OXubN-7M8pdH_bNlHLWbbPzRX_YPgvUxqen_cz-6fKQSCoPlc8W4h24UxgZ-x5-gbxbr-dOmMGfRV_vX06alLLTaYA48PG-No4aEhDKr1-ceEf1AtkcU1Bl5XTeGhTdjEgotcMuxm3R0rcFYoUki1cTzw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "5101 25th Ave NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.6664181,
+        "lng": -122.3008103
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6677668802915,
+          "lng": -122.2993512197085
+        },
+        "southwest": {
+          "lat": 47.6650689197085,
+          "lng": -122.3020491802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "7b3dd9df70801dc24748a474b9734267edf25dcb",
+    "name": "Mamma Melina Ristorante & Pizzeria",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 438,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/102326351384521643505/photos\">Mamma Melina Ristorante &amp; Pizzeria</a>"
+        ],
+        "photo_reference": "CmRaAAAAgfEbfB67Wo-6lrGk-NzROqgS2vS7ln7qggwnGWHYz382iPbRGqi0APPN-aIcBokw510SoeE9YATLzRykA1__oZE9SAFtKAyxYSau3SQHG9WSW8-wSJFbXmYUQwwPt86sEhCMXTxANcUOQuFt3Dy9ad_7GhSRbbWyvL0Gp3XroItovRx7yXuCFA",
+        "width": 700
+      }
+    ],
+    "place_id": "ChIJ_VxjXmAUkFQRrWTepnXcx34",
+    "price_level": 2,
+    "rating": 4.2,
+    "reference": "CmRRAAAA1TRdGxJPF0l0IQLKE1N83mRFnG5eO8eQmKolGdXb3BCR5geunVwQBjk29x4WSw2CZ6bUYG_HtRvYZk2DpymVSLiIPa3v1qCfwaMHPp6L1okOL91NUbEbVBjusr1HVivdEhA0bv7WRlzqhpNnEOjfA0AXGhQXxOPJJCNtPeL54eyZdDsQFv2dbg",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "5210 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.66675540000001,
+        "lng": -122.3128341
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.66810523029149,
+          "lng": -122.3115986697085
+        },
+        "southwest": {
+          "lat": 47.6654072697085,
+          "lng": -122.3142966302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "cbf1aaf4e3bbd68a11c6f18da746659dbae554c0",
+    "name": "Ku Sushi and Izakaya",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2160,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/100967374052065158735/photos\">Ibrohiem Hananh</a>"
+        ],
+        "photo_reference": "CmRaAAAAAt1XOlCsmBWgoyBAeM8ewxmbe33u3QOg4HMEbuSnAT32LEgCQOE8nFz9UA_BgrFGfPH-z0bxbhrFdl5EP70D_TozXggQqQ7XUqFA9DWid9neB0LG0g-Eg8G27NjpsqIdEhCDENhJUo0Om-EHJFAuKx9DGhSr4CPqWeyHbfCIkukU8TBN-YkGog",
+        "width": 3840
+      }
+    ],
+    "place_id": "ChIJh3EmgGEUkFQRRlT-TDOYsTo",
+    "rating": 4.3,
+    "reference": "CmRRAAAAiIa9GQkFMqmh7fxyXdDSfXMF4-RoeeJtxF2po41CeT4O3246bKtFB_hZ950H-j1F6gB8YxGmVWPvwccvwlsuJN0d5pfow1O8-Itm3rHVcUAPToSkpP2RBD1AvDVPiKc_EhCJQKUrz7bKmX5h4gg0E8AtGhSSonT6-WPWZtxIt-sI1OX0rlMPng",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "4133 University Way NE, Seattle, WA 98105, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.657851,
+        "lng": -122.313492
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6591981302915,
+          "lng": -122.3120159697085
+        },
+        "southwest": {
+          "lat": 47.6565001697085,
+          "lng": -122.3147139302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "503995023bcf268e6e094cc4450fc6fdd3ba1803",
+    "name": "Big Time Brewery & Alehouse",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 1173,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106188553415577799882/photos\">Big Time Brewery &amp; Alehouse</a>"
+        ],
+        "photo_reference": "CmRaAAAAcjcWsUtpBtYIbJJsOfLSf0pOfKKmfWjCda-UZl9o4CiJcrUsD6ciCkVJcLKRANzbCFPKQsm_7jt9bZ-fDEe5u-NjiPl_YQi529Q_yuaotagc3RzXkzTUj4FG46Xbd2r4EhDHBZUpWxFWAecxmE19w7GBGhSLwaSFlGKVUMBM2MbOtiuioT6emA",
+        "width": 2681
+      }
+    ],
+    "place_id": "ChIJKaC2QvMUkFQRWVvn71SBmuY",
+    "price_level": 2,
+    "rating": 4,
+    "reference": "CmRSAAAAkfYBc_ijjmf6CQ_p9DC7Ap5N6L5C9KiBuAPtFE6KMPnlCQ4JhNysuishILLUhp_jMtuReHOaDsgMsv25P3s2azq9GE0cDQNBBAZm5RfDTU8y2PXZWGJhXCNJvP0XSpBBEhACC4OZvO_HNpIpt6itdceaGhQ9icxRcV0960t4cZM5_Lf7jB3sfg",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3601 S McClellan St, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5781945,
+        "lng": -122.2881865
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5796185302915,
+          "lng": -122.2868309697085
+        },
+        "southwest": {
+          "lat": 47.5769205697085,
+          "lng": -122.2895289302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "ebe67f3b05259a2be4e4f247d602846498833133",
+    "name": "Mioposto Pizzeria",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 640,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109514006687761733424/photos\">Mioposto Pizzeria</a>"
+        ],
+        "photo_reference": "CmRaAAAAoJ1QnbYgApJUnSocqdDFwObopv_Vv8_Q4AAaBf4vdHbIQEUaA45TpEFPE7pNexDnR7ZP-zEE2YR67vJAEiABGl9nx-_T1hRokq1Ivz8xTNAnWXZISh-mgmFaXLLOmHhjEhCZVD5fSdHbFeSXvVhJCrZmGhRnXBK99-DjHvGidHS5K6sIUT6F2w",
+        "width": 640
+      }
+    ],
+    "place_id": "ChIJxUQ-SmdqkFQRrgQIJYrKarw",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRSAAAA52wAncmL6vY-oBg-Ry5Vh-bugM5VfnTgh-u9NWdToK9jwoEPKwYtvf6z-7SRfisg-B9kkypPaEtjzHCfaFuWCOquXD1h9_LiPkIhkc3XnKVIZOzfvCYPVHpyzVIRVa9sEhCZF-FeKfsUEtMgw9GC0TfXGhTQElrj0ZtF1oQ7M8TffzWAg_8mIA",
+    "types": [
+      "bakery",
+      "cafe",
+      "meal_takeaway",
+      "bar",
+      "restaurant",
+      "food",
+      "store",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2609 S McClellan St, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5780446,
+        "lng": -122.2989857
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5795461802915,
+          "lng": -122.2976431197085
+        },
+        "southwest": {
+          "lat": 47.5768482197085,
+          "lng": -122.3003410802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "1f3940c7051fa7fdd9adf39e28d0fb99c45b89b9",
+    "name": "Thai Recipe Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112343515762446574772/photos\">Duwayne Lei</a>"
+        ],
+        "photo_reference": "CmRaAAAAiFF0wbWkYoHRjP21XO0qhz52y8zbfoOAc0hdpDBA4zldePbN51h3o2tp4Kn1LvpMDh2Hu2yFonnfVh0yGWCI3qt7YuorTLJsfc5h_pf6Q9c0MRw6YWnQo82T3PWdrHXtEhDyn8N3_N4iajGQki4inEmZGhQ_6EsOYK5WaeLgs8ERlA76P7f94w",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJJXhuTmJqkFQR4Pg3t7Z1Plg",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRRAAAAPu3VIGd0hUIj50vBOP9caVne5pcVxhAjxeMzxd_Oaw1gaet9gIgROHx3aUyFanGNbuX7sQAwLjgMhWh6fIqdEgi3ievLHEhhEdEUIo4lFMbPp3HuzvJP8szHmqyeIfxREhAPiX6G2qqmPUK76hIO5XbQGhSk0TbnzYHyFSyfznnF_iNNkZ2KCw",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1425 31st Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.58955290000001,
+        "lng": -122.2928309
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5908833802915,
+          "lng": -122.2912914697085
+        },
+        "southwest": {
+          "lat": 47.5881854197085,
+          "lng": -122.2939894302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "18bbae5da44c5f6234bcc2329abf99b577a1e785",
+    "name": "That's Amore Italian Cafe",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 426,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/110374684511015055480/photos\">Eliran T</a>"
+        ],
+        "photo_reference": "CmRaAAAASIueDYj8YxKXTQmlswECiame2fH_k9US_g_y_-jmG7mgGdgfmH4d5sqSFN_Wc0qXcvf0SrgTXQM1LnHQJxWcN-N6RfFqqZ4Pj-ycWTaClnUZPgP0LUW9JjMita-2Z1rEEhBo5kjCZQWIF5EOIgXHH7-JGhSGWQdUDPqp7guE78YiOIsNj8beug",
+        "width": 835
+      }
+    ],
+    "place_id": "ChIJhQ_fwvNqkFQR_RmnSgc2oxc",
+    "price_level": 2,
+    "rating": 4.5,
+    "reference": "CmRRAAAATNotkX8ep6CMYMxSib8Pa_HbXvyxTUjUSIxiRlFef_nsKDhgfu1GHHiamvkqKHPsBOS4zc0d7CkG709fvHm4UOMjiFrTFbM2LhgiQ7lhcVGnBHuHPfHBpUSHWk3Sq86bEhC0HHKJ8eFEwbEHhy0VY-CSGhQmjI_XYli4TFWBib0vo9VK2OjUmg",
+    "types": [
+      "cafe",
+      "restaurant",
+      "food",
+      "store",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1706 Rainier Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.58818830000001,
+        "lng": -122.3053925
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5894983802915,
+          "lng": -122.3041551197085
+        },
+        "southwest": {
+          "lat": 47.5868004197085,
+          "lng": -122.3068530802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "d501d1fd16a37737f202e134b4e6598b317edd5d",
+    "name": "Toshio's Teriyaki",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3492,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/103751719557310428334/photos\">Jose Eduardo Lopez</a>"
+        ],
+        "photo_reference": "CmRaAAAAiEmNuj1dqKv4VmmuORMqj_z7Nm5G1_hgu5or4SnQzXjnUNlsYGAXH5XT_clCcOTQC-nsIQsu9GW4L0he-oyqwndBbSdQzatYfSBt4f0n28DfZpYjaeQrxKIWPE9uLn8DEhA-CUvsSXa28v-uDWbFNrtxGhThKFMfeoXQRgycboZ83ArcXVH05w",
+        "width": 4656
+      }
+    ],
+    "place_id": "ChIJuU82lI1qkFQReJSjp3m5ccg",
+    "price_level": 2,
+    "rating": 4.2,
+    "reference": "CmRSAAAA7Z3HbCLRWUZbFg0FOeYWbi00t-XM-HSqAPq82gGs7N1-JYIa65CN-DtCg3ThZTK9BTxqN_0bPKCYi8XT_NRHqUmHVfadchRXWDUI2XwnzEyPgrUFnXU4snirrlw7_r9xEhCM7DJZgfremqB8-vvxzlZ2GhSKXaLeg7hejOs_1jGShFelOU1ewA",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1207 S Jackson St, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5989621,
+        "lng": -122.3167988
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6004307802915,
+          "lng": -122.3154513197085
+        },
+        "southwest": {
+          "lat": 47.5977328197085,
+          "lng": -122.3181492802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "22109b82a86e29fbe2f4b4bbeb59f67f1d56a83e",
+    "name": "Seven Stars Pepper Szechwan Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2448,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111075034549092283099/photos\">Ada Green</a>"
+        ],
+        "photo_reference": "CmRaAAAAsSrjmrd-9Kxpp_pKCO4EH4nPb1eGsRTBUaQKcBx8FeSjss0dkbCEDI3uXqBjLs_oRzbzR9DyUldzWGlv0xdT-kvegY_m4Yq6iE1BjZv_0xmqJFqGPz-CmCeH8P6hBDCmEhDVR80kI0QZuKOSWE7DLBeZGhSQbeR9wGXcpj0YLJSZPXtzGYeR3A",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJ01yWrr9qkFQRo_b-U5wuu2I",
+    "price_level": 2,
+    "rating": 4.2,
+    "reference": "CmRRAAAALFF2h-ZYalGq48-YI1nUZ2oRWtyyzVyNPif6sudUvnjd_jNoeJ2uXvCiqJqQE4nRUm64XERPyp8_lNYelYDep-c2GOUph0lp8Yw6RDMFCvEFfH8Ergys5acuKUXF3fGvEhBcMO7tl_IURA34wXtU6jAeGhS6AYz9LA6YjAd1XA3rLhyiegIH5Q",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3211 Beacon Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.57468319999999,
+        "lng": -122.3092788
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.57604333029149,
+          "lng": -122.3078487197085
+        },
+        "southwest": {
+          "lat": 47.57334536970849,
+          "lng": -122.3105466802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "1a00d212a2eb1966126f9f3ae599626a989a3994",
+    "name": "El Quetzal",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2988,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/111714643281971327306/photos\">kikito yang</a>"
+        ],
+        "photo_reference": "CmRaAAAAdUJoWuPZGkTAQ1jzdQyXLcZXXCLJ923b4Div9AX8tLXJVwKD6n8S31s5seZ6aKlL6xsNCit_OivXlu3S6iirsAlVCHMQzxOTPLspg7LkWImjhaFCzlQ183UnmkJf0mCXEhBgKInC1YVUFXqfcwePHG7_GhTA32I1VVBwgEpdkG1bz9MJ_8pKug",
+        "width": 3984
+      }
+    ],
+    "place_id": "ChIJ8320031qkFQR1PluhKYTAC4",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRRAAAAYm47kWa0EAe-R5bgzqk-3zNh-tFbKaz2VlJvYEk2vif_tdC-PSboVjco0YDs2xmacdCW8tGM7Hm9yY9p1N4R3rAng1wBMmnH5X8NBMuFPVoD_SBZnfbLw_wax-XysUSxEhAZcWqx6aSp2i9ceHlFIAHSGhQQy1O92H_pDcvv773B67BygwwtGA",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1314 S Jackson St, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5993792,
+        "lng": -122.3147061
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6006440802915,
+          "lng": -122.3133561697085
+        },
+        "southwest": {
+          "lat": 47.5979461197085,
+          "lng": -122.3160541302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "b4f84db8df6331e73597e71df921f7ae9a651e44",
+    "name": "Phở Bắc Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108305929132051150553/photos\">Sheye Blaze</a>"
+        ],
+        "photo_reference": "CmRaAAAAefNcm7H1x6kZ50lE9-hFhccGR-H2HM3VqLSdKSBs9nizDtJjOtKWdmD3RbcdY2xk6N9EZUMuwS_ILvsOSuGEdKUx4rlMl17PsC8NWmQoBTRZm2I_DTxtaYMEtNQetxqBEhBd9uwJAYJ7yGE8VPfc4zH9GhQPPauQ5IlGUgpEuOBX4mKmoVfzhQ",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJBSlumL9qkFQR1gL5BrsVzGU",
+    "price_level": 1,
+    "rating": 4.2,
+    "reference": "CmRRAAAADoiAPSNRsP3etfXU0baok8QIld-WclYiV3oyatKZ6sM4GxQrxezgYycrXUOGdYMk2Btb20hqq4SBi5MAMmfOvFNgjzbdUfErOowqh2ylXoihACe-QAuA6lfv1XNtETOYEhCWPM2liKnK8vxfFFX0-5tRGhRQ2MKyBmo-glWb-Df9RsZ5UZqxBg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3057 Beacon Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5754087,
+        "lng": -122.3096188
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5767770302915,
+          "lng": -122.3081317697085
+        },
+        "southwest": {
+          "lat": 47.5740790697085,
+          "lng": -122.3108297302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "bcb8b7d3377c2fdd594d8d66d4f5b5c0ca5fa17b",
+    "name": "Bar del Corso",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 540,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/116496332995505960239/photos\">Bar del Corso</a>"
+        ],
+        "photo_reference": "CmRaAAAAPo2pkrBHQKcgy8rmOhmBn-S8XhdWl3gjnqvnCnthJdTW5LTyYdAAaYPoUyMo6sWD5igo2q9I7mXOiH9Djpxb5Z2Ns3rNBI2HFc00Ol0x_8_xv8-A21WQiLjkJgP3SpKVEhDW6gYr756gCuY58QUb8Y9AGhRtYFxOl0IkPyP53ajPgbf9dsqJmg",
+        "width": 720
+      }
+    ],
+    "place_id": "ChIJY6QtxX1qkFQRvlFPJJT4OcQ",
+    "price_level": 2,
+    "rating": 4.4,
+    "reference": "CmRSAAAAojRI3MOhAZJl-Q1bJbpiw1twIsHMpD2rphKXU-xsdYFE2JaYpkTrs3M5_PBDgq5no2PxemrVQCZP8T-No3hQs3KRUW9afdQIJp733HOjjiqYK1cfVMVuezaOFbUYfwYyEhAvDAAayPHVwcYVlCCa6s6DGhQTTRbVK9Mu95PYsPUi9V7SJGKoIw",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2100 24th Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.58429599999999,
+        "lng": -122.301193
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5856485802915,
+          "lng": -122.3000652697085
+        },
+        "southwest": {
+          "lat": 47.5829506197085,
+          "lng": -122.3027632302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+    "id": "78bb9b94a6bd1d22229c940e5228f522df3f0caf",
+    "name": "FareStart @ 2100 Cafe",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3264,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113204737552079394631/photos\">Reggie Gillins</a>"
+        ],
+        "photo_reference": "CmRaAAAAf5DHBnkireMqTVbN5DIQEOnNqJaJvG_2OARUsTP_sUcax6Lp8WZrYS0jp3Oif9JL7AsoG6xHN3sJUHB1zylUHtgMu2yCQKBowUyriG-pS7w-m5sFxSTlP03AS7eFolC9EhCqJfzkDjA49cfDRxYSQKhJGhTCj-mQafqmwK_BmPAtuTXiG7UEIw",
+        "width": 2448
+      }
+    ],
+    "place_id": "ChIJb5IR6YtqkFQR1cHRpK7MVwA",
+    "price_level": 2,
+    "rating": 4.7,
+    "reference": "ClRQAAAAIALa4q-yiF4pdr-OsiE_7jHutjzntv88Hx-QuJFWPQSTsvLgEaE6-mTQUX2l7GH7GEvbXK_5Sp_SRi4cyfbhozqNwWq3TbzjFByOo1YIVEsSEKgwz83lqM8_crxSipknXOsaFBSbM-3RUBxnrUlK-ynVY9gEG5np",
+    "types": [
+      "cafe",
+      "restaurant",
+      "food",
+      "store",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2524 Beacon Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5803707,
+        "lng": -122.3127473
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5816454802915,
+          "lng": -122.3115634197085
+        },
+        "southwest": {
+          "lat": 47.5789475197085,
+          "lng": -122.3142613802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "f83809a9a23c11efa58b22f49c85414bbfdd5dfe",
+    "name": "Travelers Thali House",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 1836,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107766303068799540076/photos\">Ziddarth M</a>"
+        ],
+        "photo_reference": "CmRaAAAA0R7HXAktG0-9x8rLfWSdcFwafqUloJ3TVH7a3SbT4RdmvDb-1i7UXm1PM7ChTSGHgasa6K5rdMDSaxE8ubvezXHyjzICbjopkH8G6ZX5Gc67uXW5aDLvsMtl3ijOt22PEhBbiMJf_kv_sM0sxUq4YAvUGhSFAtD5O05NSoxXhktqdzYWb-JRjw",
+        "width": 3264
+      }
+    ],
+    "place_id": "ChIJJ7xKiYZqkFQR20wkqZq3Oec",
+    "rating": 4,
+    "reference": "CmRSAAAAlToJopHLZgqWtEdsk1C_QbtBbJLHO-qJvySABgFNpzaaK9XnfSibPMkEiBrBHx_Pu_sBLjNu9RSxcjSRPeavfP0AjlG1Yqoi694P343h6BUhM5PdaYg7Fjfs8WtRRtBsEhACHwLf8gCmZf6KTHF0S0VxGhQbwbexc3ce6uiNhJD_VlEvxnYRtg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2518 Beacon Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5805053,
+        "lng": -122.3131441
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.58182378029149,
+          "lng": -122.3118705697085
+        },
+        "southwest": {
+          "lat": 47.5791258197085,
+          "lng": -122.3145685302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "81a12e854e333f602ab03481cbc09f2eb0e4bc7b",
+    "name": "Golden Daisy Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 4032,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/106510320148737951645/photos\">Lois Chan</a>"
+        ],
+        "photo_reference": "CmRaAAAAca8gmokJ1uusjRnPFDqH_VlaQzAdC2hx5izeMqDKKrrkUpY34-hB1cSJQyEaqaYmgABZBYKZG4YMjx19xu2FhSvVecgC1Ml_kkR4PE-C66cSfScrIODxlqtVWpPbXZJeEhDv25tzvx8_KwXdiIHoeucsGhRl7GfOKxFsiH1bcT72Y7wmphIJtQ",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJt9TViIZqkFQRy7iwg4hoIBM",
+    "rating": 4,
+    "reference": "CmRRAAAAOIHgV9dj1Vz6kgQOpYL9NfhIgshx_dQA9RDddhXcIz2A4wz7J1iTZjWVu2as_3rUyQM0Ilb0iH_FKUlKhpqapzL5KmphQy2L4KvAJOBN0bgJb7KUhH_ltXhJX8kHd1r3EhDdcD858HpFnhYrkkqy-FkdGhSNU1GtHhmHJ7ZPN4XMG4b5wsbHWQ",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3019 Beacon Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.57639400000001,
+        "lng": -122.310015
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5777821302915,
+          "lng": -122.3084991197085
+        },
+        "southwest": {
+          "lat": 47.5750841697085,
+          "lng": -122.3111970802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "34a6757b9bc6cc154128d5ca5a57c9d295d47692",
+    "name": "Oak",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2268,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/112251328196885047056/photos\">Mark Talbott</a>"
+        ],
+        "photo_reference": "CmRaAAAATSN6iLX68CkNj6bWtYu3FQ3vwQ3nKaBLrFKZK9HuTMTZzLd21DI6tjyKMXe3PRN3ZXvJEltX60OrQxcgSNSMF3xa1wEWu6Msmnrb_1dMeM7BCN1uWNzeP_6kIi7_Pp3MEhB8KvI7V2IEyKkez0KyWwmfGhR7_3a72CBT12MNMbKzHChp-td1Aw",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJpSBh7X1qkFQR5Jzb3An5U-E",
+    "rating": 4.5,
+    "reference": "CmRSAAAAsVacHsLJVzhgBxpy-cms6zLJhWxdXje1gzYxQmoxQw-NEkJzY-0cPMiaF05BiT_Cw2fRVCuygnRHRCoqEuBVFz24595vLb9kpJ7AVOts3Li19TA_PCtXaa_V1Cz9RJJzEhCQ8n0__9FDCZKfL_7dk1uwGhT8qi5c-voF5u97TsHBWJqZCUpRsQ",
+    "types": [
+      "bar",
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1372 31st Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5904237,
+        "lng": -122.2923085
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.59177328029148,
+          "lng": -122.2910151697085
+        },
+        "southwest": {
+          "lat": 47.58907531970849,
+          "lng": -122.2937131302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "0864fe8a802ad7909a9c2d85b8bd0066422fb2b8",
+    "name": "Heyday",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 3024,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/105653390449625718809/photos\">Joshua Dirks</a>"
+        ],
+        "photo_reference": "CmRaAAAAwlY2g-1FaAauFrm4v9E2mcok_g4yr_bw85SBStefVqbNdAVyRneSEhahPYN30l2pyc8kWnRkYRYLOT2q9WQy1aPlftEMYATJXpLFjhY4M1DONgmvT7yMRCJFj3knyhQlEhBx-LE7g8ut1MVXApe1EFiLGhSBL4hzuNX902LodUh0OOSiCK1Yfw",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJhbzo1fNqkFQR24xinTDtGOw",
+    "price_level": 2,
+    "rating": 4.6,
+    "reference": "CmRSAAAAVe53edrtyz2iBNPOuC21GsDegR7pcQEGJBiOtrBy4cxBc9LjgKXhWOvuSb52RuIdtpgbuJQhJBnQdI8-gQWCh9xbr1pkFbJvQo-ShV7rKmu9RZaopHXwF4kyKR9XYPJdEhBSyjt6PclEkFdOx29ElTidGhRKnaCiCV0AID2OPltspokRoJMAIg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2820 Martin Luther King Jr Way S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5777528,
+        "lng": -122.2958016
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5790993302915,
+          "lng": -122.2946419197085
+        },
+        "southwest": {
+          "lat": 47.5764013697085,
+          "lng": -122.2973398802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "d7949e05f787de0fee9d8341537aee4cc212185b",
+    "name": "Viengthong Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2988,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/107347048043492440114/photos\">Gary Fish</a>"
+        ],
+        "photo_reference": "CmRZAAAAvyNS5u5oYEZ8Y8x-x5Dq0J-Jv1eHWPWpQZgmJVnVgb1qXNm_Ojxx_Q1Aw_IfCiFMh4D2mNWnofCOi66iVfnrIifHWU581N0h5ah2qm37HNS75RzpeFhfyy3GcIWQrSybEhBfWqUJangWSJ6U7OBnhrYkGhQ1ZY2oxwvTo9Z8oOxGsYNAWRTSzw",
+        "width": 5312
+      }
+    ],
+    "place_id": "ChIJh6Jrw2NqkFQRcYsiN9KVuHM",
+    "rating": 4.4,
+    "reference": "CmRRAAAAYPdlbII3RMmwapIYN-t8WLekefSIwIrLJ6owXbBIiVtn9sRfGGGdwq7TlO95zVeQpepywsWWrbRu62juID0bya9KqHt94MgLe1MA9lZD_OKX4wV7xfSDCEGyvPwhNiLGEhDCLcl4JgTtTb8hZoCIf6b1GhTl0QbIQX3-3EIYrsuXjPZNTikjog",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2338 Rainier Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.5818828,
+        "lng": -122.3005327
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5831917802915,
+          "lng": -122.2992973697085
+        },
+        "southwest": {
+          "lat": 47.5804938197085,
+          "lng": -122.3019953302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "f07ef92cde457b24f1f36825435a53701b800bc6",
+    "name": "SUBWAY®Restaurants",
+    "opening_hours": {
+      "open_now": true,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2268,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/117109416722777334961/photos\">Aspen Knight</a>"
+        ],
+        "photo_reference": "CmRaAAAAoSQpXoysn3FS25_e1sWPbcUNK7gu0uJdX7dhZTzcQGqW97ZRx42ZeAwGMwM9ZqskzeiFr-tR4n0_FSDHEval307QmoKIjfGhAZSGkAAqJxBRU1wuB0GLWsbCokzZz5PvEhCsRpxlfGwDgNkX8aHtKW2zGhQxIn4l1x570ZBVLTp_seDPQQUY0A",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJSSPuiIlqkFQRsg9Hq1AAw7A",
+    "price_level": 1,
+    "rating": 3.7,
+    "reference": "CmRSAAAA6NvGe66OdMpknk6eJAntM0hnNvDYYRfCsrh6j2OZQtyxPuuRv_bFxbKz8lCBHEbZuan0vDKhy21MqHU3dtAqxbAzsh2UDLiJreeX3Xa59g1OIgPFPNJJdA01ZXbFU5mnEhBLjMecnj-8nTpzS9pyHTZOGhTYyZ2B1CcqRCv82Epcw8DLzhRmPg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "2301 S Jackson St #204, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.59876,
+        "lng": -122.301806
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6003700302915,
+          "lng": -122.3004589697085
+        },
+        "southwest": {
+          "lat": 47.5976720697085,
+          "lng": -122.3031569302915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "f94a5dc7078d4a10d8d69721906961e09f057f1c",
+    "name": "East African Imports",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 5376,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108818590929341431849/photos\">FASIL TEKA</a>"
+        ],
+        "photo_reference": "CmRaAAAA-0_QdeWxN4ZHafJedCb5gamqY8SPT1JEymauV4YJmwpT2_SpAlpBjzIkfcaDYpHdDC15--KWBm_4b5J7Z4bhqmvrTuS9URbt2NqQhUw5t0OPmSTaIv5AjKK64veH6RokEhDF5vEpmmMCWI4fIKGOfT58GhT-TkQwkWKjr9-TZ9tZfb8rOATvsA",
+        "width": 3024
+      }
+    ],
+    "place_id": "ChIJn_vTfelqkFQRfsPOJiRMiEM",
+    "rating": 4.2,
+    "reference": "CmRRAAAAjKb-uEzxe5NLPC_DOd_BLnR1eXcnBZ7RhXFWrYcv6Ml-sQGXSiLVKS2EI3VWULwlckX1eS29JQSx_dj8MALkv42V0NeaNmjHvxbkNZAdVFwrBa6UhoCNSdQOtSQUu4HJEhAIuQM8G7FMmp22dFDL_TA2GhTH-nHdnGaHUBHEXbuv_ao5EjID1A",
+    "types": [
+      "restaurant",
+      "food",
+      "store",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3330 Rainier Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.57329,
+        "lng": -122.2937071
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5745588802915,
+          "lng": -122.2925920197085
+        },
+        "southwest": {
+          "lat": 47.5718609197085,
+          "lng": -122.2952899802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "8da4cf2ec92737ef7f935dbf3d856f954b6ea145",
+    "name": "Thien Phat Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2268,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/117109416722777334961/photos\">Aspen Knight</a>"
+        ],
+        "photo_reference": "CmRaAAAA440vo159TCDOA2Rp2vqLlVJmxScrMJ3nHrSaDB2yvfuuIABZLMpl4kl1OLfSjJjuo4uubp_GOcyPdZt_-qx-AjVCxLsnzJSuYZA7wQ8-25th05U9Yv5dMQoboSO_V4__EhAe7XCqt2eGofOJh4KD9qH_GhQ_OVg-43DftememoE8R79uY7pm-g",
+        "width": 4032
+      }
+    ],
+    "place_id": "ChIJS9fACWVqkFQR9HWKaTxVlEY",
+    "rating": 4.4,
+    "reference": "CmRRAAAAJTKKUBIbx3oD8L96-FoFsN7s_Qin8Q3uCdh7Mi0bfSriLnU4rg2C2U63CjogD8o8N4Rjt03guF_GBl4lbd8X36dqmk8Gz3rhJznJwjwV7H-oJRT2NuyK2yqhF91OA5WrEhBiFUciVLHvTbRIju8sCmyeGhTFGNudhKpnq05ZIh8gE7CVrBorRA",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "3300 Rainier Ave S, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.57381849999999,
+        "lng": -122.2944806
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.5751383802915,
+          "lng": -122.2932164197085
+        },
+        "southwest": {
+          "lat": 47.5724404197085,
+          "lng": -122.2959143802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "f3708a3e0f1c395939b49d574d3e678f7585a786",
+    "name": "Pho Bac Restaurant",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 4320,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/109691075615780936564/photos\">David Lobato</a>"
+        ],
+        "photo_reference": "CmRaAAAA10-XHLijWKWcDUkJzNq46W_p6dB7XWT_k8p5fZX10f0uvzGjuwJOoSDu9rCZiNFusL2xmzMwmoWuXXS5I59UQ3Yo0_m9P5AQZ2psTBcEXkp6CKBapuClB8n1HcWF_FHnEhBqmL5jCLQiQTjqaTiNSq6aGhQ2GibSajCmytGHvXlhhU5Bj61IUg",
+        "width": 2432
+      }
+    ],
+    "place_id": "ChIJozzVZmRqkFQRt7KVe8NkCpQ",
+    "price_level": 1,
+    "rating": 4.4,
+    "reference": "CmRSAAAAmhgjjcwAjyzHzMIfW4YK82eelMrN7I3TxUH_zQzTDk_5fuqd1bXWqO-g7PG0oTwFbujY0PydcVkmwyAGFgQuhv_L3BdpCSOXeIej0p8jJlWFKC02bpNIaztCJfgTyfhdEhDe-x2NSG3JqnXiRbnIGQqdGhSCb_8Xm2YkSifndy2x5eNyPjstbQ",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1207 S Jackson St #101, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.59903019999999,
+        "lng": -122.3161753
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.6004654802915,
+          "lng": -122.3148272197085
+        },
+        "southwest": {
+          "lat": 47.5977675197085,
+          "lng": -122.3175251802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "a2970d2342cebc937cdafed2d8126e8e0129e548",
+    "name": "Hue Ky Mi Gia",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2368,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/108393179304180985277/photos\">Wesley Wang</a>"
+        ],
+        "photo_reference": "CmRaAAAA_BvXWytp7W3SvEfocBhzqDaaJw6HOSQIQXqBC_mFvkUyptGpu734d9eirIzQvQJkFfFJS2P2DcfbsXt1IuHBF0gUywCQ2KXlAQ8dxnKD7oYHJTznPwh2mxwSh-IoJA15EhCNzt4oWGSTP7yAxDiX26QuGhSIBgqbV7wLeBLQs_gUOxYp__cBFw",
+        "width": 4208
+      }
+    ],
+    "place_id": "ChIJZWMbrL9qkFQR2rxVBpmguzw",
+    "price_level": 1,
+    "rating": 4.4,
+    "reference": "CmRRAAAAGxY2m47gSgfNnb0VB2tsD5MG4FZCWdTc8OKjKG-E5x2ssv1jJsTTxszaTa7RqjboEQPyVZZU06NwQOnYyF_ohjzxWuOGeSy-KxY2mT9T587ULXnH9cpLD57Q2oe-ygEZEhCOnduIxqgtFCu274Nj62rgGhQTPyzW8WZyhdyDyBHDCr1qqEKwwA",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  },
+  {
+    "formatted_address": "1226 S Jackson St, Seattle, WA 98144, United States",
+    "geometry": {
+      "location": {
+        "lat": 47.59945500000001,
+        "lng": -122.31593
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 47.60067848029151,
+          "lng": -122.3145797197085
+        },
+        "southwest": {
+          "lat": 47.59798051970851,
+          "lng": -122.3172776802915
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+    "id": "00df6ec108e034b76db2a7d9e334b122c7051d28",
+    "name": "Loving Hut",
+    "opening_hours": {
+      "open_now": false,
+      "weekday_text": []
+    },
+    "photos": [
+      {
+        "height": 2952,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/118275164792354128484/photos\">Becca Jones</a>"
+        ],
+        "photo_reference": "CmRaAAAAV3lF9IjE3RdUc7XDrzXIRl8l6LlA8rokbPxgGlThHV8rcu7wfzDDJRhWlX5AeV3RZuElDggisg4NZGzMfk4vxJ7GlykVYlADmaA834B2GlVWvbdguZ3-nZozji8q4jyhEhD9zAUJTEd5eUsiKyv2fX38GhSrqYfZgNM78xzyDG09HcKofGJZcw",
+        "width": 5248
+      }
+    ],
+    "place_id": "ChIJTQR9pL9qkFQR3PzFxkODwmk",
+    "price_level": 2,
+    "rating": 4.3,
+    "reference": "CmRRAAAA3Q2xNUFHATonhn4on2u4UsKH-fke0wpet03w24w4_j4UzYvOAgRhQuYYJFiNFXY9xSKKVsM4ckT-m48NwOqR4IbChnZzrvtTS0H0s-cEIUewcb8sKpfBvEsSOO-0Da7aEhBiSpYC7m6UsB7tQaFOsHrnGhQR2sfjn3J6Owjo7YUu60LmKgqudg",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ]
+  }
+]
