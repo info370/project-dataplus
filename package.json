@@ -1,0 +1,24 @@
+{
+  "name": "project-dataplus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/info370/project-dataplus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/info370/project-dataplus/issues"
+  },
+  "homepage": "https://github.com/info370/project-dataplus#readme",
+  "dependencies": {
+    "file-system": "^2.2.2",
+    "request": "^2.83.0"
+  }
+}
