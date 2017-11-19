@@ -1,0 +1,1844 @@
+[
+  {
+    "id": "memories-diner-ritzville",
+    "name": "Memories Diner",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/TFPRIisocbYf9j5MzJ2xfQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/memories-diner-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 38,
+    "categories": [
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      },
+      {
+        "alias": "salad",
+        "title": "Salad"
+      }
+    ],
+    "rating": 4.5,
+    "coordinates": {
+      "latitude": 47.1273723,
+      "longitude": -118.3799751
+    },
+    "transactions": [],
+    "price": "$$",
+    "location": {
+      "address1": "214 W Main St",
+      "address2": null,
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "214 W Main St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096594652",
+    "display_phone": "(509) 659-4652",
+    "distance": 2970.442201812
+  },
+  {
+    "id": "cow-creek-mercantile-ritzville",
+    "name": "Cow Creek Mercantile",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/GX1tP1d-j4IjiWEhH1W2BQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/cow-creek-mercantile-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 74,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      },
+      {
+        "alias": "chocolate",
+        "title": "Chocolatiers & Shops"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.1191456115326,
+      "longitude": -118.363966627189
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1611 S Smitty's Blvd",
+      "address2": null,
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1611 S Smitty's Blvd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590490",
+    "display_phone": "(509) 659-0490",
+    "distance": 4413.148885135999
+  },
+  {
+    "id": "jakes-cafe-ritzville",
+    "name": "Jake's Cafe",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/SPppKli_IvNaJqLP02WeMg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/jakes-cafe-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 36,
+    "categories": [
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.116089856861,
+      "longitude": -118.390570688265
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1604 W 1st Ave",
+      "address2": null,
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1604 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591961",
+    "display_phone": "(509) 659-1961",
+    "distance": 3910.917323316
+  },
+  {
+    "id": "taco-del-mar-ritzville-ritzville",
+    "name": "Taco Del Mar - Ritzville",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/fRuzbh6VUuOfvnYA_qyUaQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/taco-del-mar-ritzville-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 8,
+    "categories": [
+      {
+        "alias": "mexican",
+        "title": "Mexican"
+      },
+      {
+        "alias": "hotdogs",
+        "title": "Fast Food"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.11739,
+      "longitude": -118.36762
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "103 Galbreath Way",
+      "address2": "Ste B",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "103 Galbreath Way",
+        "Ste B",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591001",
+    "display_phone": "(509) 659-1001",
+    "distance": 4447.988843059999
+  },
+  {
+    "id": "top-hat-motel-ritzville",
+    "name": "Top Hat Motel",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/K0Z4k81Cuz2JFHuZhiCqcg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/top-hat-motel-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 10,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      }
+    ],
+    "rating": 4.5,
+    "coordinates": {
+      "latitude": 47.12713,
+      "longitude": -118.37639
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "210 E 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "210 E 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591100",
+    "display_phone": "(509) 659-1100",
+    "distance": 3121.3667507479995
+  },
+  {
+    "id": "carls-jr-ritzville",
+    "name": "Carl's Jr",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/carls-jr-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 12,
+    "categories": [
+      {
+        "alias": "hotdogs",
+        "title": "Fast Food"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.1140836171615,
+      "longitude": -118.366323003183
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1370 N Hwy 261",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1370 N Hwy 261",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591015",
+    "display_phone": "(509) 659-1015",
+    "distance": 4766.608551204
+  },
+  {
+    "id": "brew-happy-espresso-drive-thru-ritzville",
+    "name": "Brew Happy Espresso Drive-Thru",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/8234DpmLGIng0Kmz1W7JSg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/brew-happy-espresso-drive-thru-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "coffee",
+        "title": "Coffee & Tea"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1392139047384,
+      "longitude": -118.365653827786
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1507 N Baumann Rd",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1507 N Baumann Rd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096594227",
+    "display_phone": "(509) 659-4227",
+    "distance": 2718.980251868
+  },
+  {
+    "id": "mcdonalds-ritzville",
+    "name": "McDonald's",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/hjUUhhAgY0UfR_mGeTAYcA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/mcdonalds-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 11,
+    "categories": [
+      {
+        "alias": "burgers",
+        "title": "Burgers"
+      },
+      {
+        "alias": "hotdogs",
+        "title": "Fast Food"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.1177940368652,
+      "longitude": -118.367607116699
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "101 W Galbreath Way",
+      "address2": "Ste A",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "101 W Galbreath Way",
+        "Ste A",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096594770",
+    "display_phone": "(509) 659-4770",
+    "distance": 4368.114402048
+  },
+  {
+    "id": "best-western-bronco-inn-ritzville",
+    "name": "Best Western Bronco Inn",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/qgwnS02E7daorSqlCQHCyQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/best-western-bronco-inn-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 25,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.1166607802933,
+      "longitude": -118.367748404489
+    },
+    "transactions": [],
+    "price": "$$",
+    "location": {
+      "address1": "105 Galbreath Way",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "105 Galbreath Way",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096595000",
+    "display_phone": "(509) 659-5000",
+    "distance": 4465.592125848
+  },
+  {
+    "id": "starbucks-ritzville",
+    "name": "Starbucks",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/PApjs2PZn5a5rBIpUncF1g/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/starbucks-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 30,
+    "categories": [
+      {
+        "alias": "coffee",
+        "title": "Coffee & Tea"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.117477,
+      "longitude": -118.367459
+    },
+    "transactions": [],
+    "price": "$$",
+    "location": {
+      "address1": "103 W Galbreath Way",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "103 W Galbreath Way",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590622",
+    "display_phone": "(509) 659-0622",
+    "distance": 4400.43767408
+  },
+  {
+    "id": "whiskey-gap-distillery-ritzville",
+    "name": "Whiskey Gap Distillery",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/08jQLMOfEHRQLEkjORyveg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/whiskey-gap-distillery-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 7,
+    "categories": [
+      {
+        "alias": "breweries",
+        "title": "Breweries"
+      }
+    ],
+    "rating": 4.5,
+    "coordinates": {
+      "latitude": 47.1263198852539,
+      "longitude": -118.381042480469
+    },
+    "transactions": [],
+    "location": {
+      "address1": "213 W Main Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "213 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15095282297",
+    "display_phone": "(509) 528-2297",
+    "distance": 2993.61782435
+  },
+  {
+    "id": "zips-drive-in-ritzville",
+    "name": "Zip's Drive In",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/qMw86NGWLsu9z1tFEn6uMw/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/zips-drive-in-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 85,
+    "categories": [
+      {
+        "alias": "burgers",
+        "title": "Burgers"
+      },
+      {
+        "alias": "sandwiches",
+        "title": "Sandwiches"
+      }
+    ],
+    "rating": 2,
+    "coordinates": {
+      "latitude": 47.11941,
+      "longitude": -118.36506
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1503 S Smittys Blvd",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1503 S Smittys Blvd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591710",
+    "display_phone": "(509) 659-1710",
+    "distance": 4310.942115746
+  },
+  {
+    "id": "eagles-lodge-no-2739-ritzville",
+    "name": "Eagles Lodge No 2739",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/Wr3_PCWDxyPGdpRO56hr_g/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/eagles-lodge-no-2739-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "bars",
+        "title": "Bars"
+      },
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      },
+      {
+        "alias": "social_clubs",
+        "title": "Social Clubs"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.1255845708682,
+      "longitude": -118.378360653447
+    },
+    "transactions": [],
+    "location": {
+      "address1": "105 S Washington St",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "105 S Washington St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591151",
+    "display_phone": "(509) 659-1151",
+    "distance": 3194.073674202
+  },
+  {
+    "id": "jakes-car-and-truck-stop-ritzville",
+    "name": "Jake's Car & Truck Stop",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Htoj98fQmkICghBl40hgpQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/jakes-car-and-truck-stop-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 10,
+    "categories": [
+      {
+        "alias": "servicestations",
+        "title": "Gas Stations"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.11669,
+      "longitude": -118.39027
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1508 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1508 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590815",
+    "display_phone": "(509) 659-0815",
+    "distance": 3538.947994172
+  },
+  {
+    "id": "b-and-b-towing-ritzville",
+    "name": "B & B Towing",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/b-and-b-towing-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "towing",
+        "title": "Towing"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.12566,
+      "longitude": -118.37815
+    },
+    "transactions": [],
+    "location": {
+      "address1": "107 W 1st Ave",
+      "address2": null,
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "107 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591111",
+    "display_phone": "(509) 659-1111",
+    "distance": 2970.442201812
+  },
+  {
+    "id": "les-schwab-tire-center-ritzville",
+    "name": "Les Schwab Tire Center",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/NjScRilw3h_e0DtvfO-JFQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/les-schwab-tire-center-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 3,
+    "categories": [
+      {
+        "alias": "tires",
+        "title": "Tires"
+      },
+      {
+        "alias": "autorepair",
+        "title": "Auto Repair"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1203002929688,
+      "longitude": -118.385467529297
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1004 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1004 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590760",
+    "display_phone": "(509) 659-0760",
+    "distance": 3448.3753045759995
+  },
+  {
+    "id": "subway-ritzville",
+    "name": "Subway",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/lfkzFUIinxTrRuC4Jes1Pw/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/subway-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 3,
+    "categories": [
+      {
+        "alias": "sandwiches",
+        "title": "Sandwiches"
+      },
+      {
+        "alias": "hotdogs",
+        "title": "Fast Food"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.1177932068897,
+      "longitude": -118.368966243097
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1355 Weber Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1355 Weber Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "",
+    "display_phone": "",
+    "distance": 4310.180897926
+  },
+  {
+    "id": "pastime-bar-and-grill-ritzville",
+    "name": "Pastime Bar & Grill",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/pastime-bar-and-grill-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "sportsbars",
+        "title": "Sports Bars"
+      },
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.12685,
+      "longitude": -118.38042
+    },
+    "transactions": [],
+    "location": {
+      "address1": "119 W Main Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "119 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590222",
+    "display_phone": "(509) 659-0222",
+    "distance": 2960.1725204699997
+  },
+  {
+    "id": "empire-motel-ritzville",
+    "name": "Empire Motel",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/ukiEmEIFzC8jFH9-Rf3qJg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/empire-motel-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 6,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.12592,
+      "longitude": -118.37783
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "101 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "101 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591030",
+    "display_phone": "(509) 659-1030",
+    "distance": 3156.4584094479997
+  },
+  {
+    "id": "loves-travel-stop-ritzville-3",
+    "name": "Love's Travel Stop",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/6_sk1TNogUB1RZhKoFn0DA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/loves-travel-stop-ritzville-3?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 5,
+    "categories": [
+      {
+        "alias": "servicestations",
+        "title": "Gas Stations"
+      },
+      {
+        "alias": "convenience",
+        "title": "Convenience Stores"
+      },
+      {
+        "alias": "parking",
+        "title": "Parking"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.113259,
+      "longitude": -118.366763
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1370 N Hwy 261",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1370 N Hwy 261",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591005",
+    "display_phone": "(509) 659-1005",
+    "distance": 4828.742915528
+  },
+  {
+    "id": "pretty-good-grocery-ritzville",
+    "name": "Pretty Good Grocery",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/amce2e6NUklD6K6B289T7Q/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/pretty-good-grocery-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "grocery",
+        "title": "Grocery"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.12695,
+      "longitude": -118.38029
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "115 W Main Ave",
+      "address2": null,
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "115 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591040",
+    "display_phone": "(509) 659-1040",
+    "distance": 2972.2335581659995
+  },
+  {
+    "id": "ritzville-drug-ritzville",
+    "name": "Ritzville Drug",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/AbA9B_XVVLhPnu0soiErjA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/ritzville-drug-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "drugstores",
+        "title": "Drugstores"
+      },
+      {
+        "alias": "stationery",
+        "title": "Cards & Stationery"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1263999,
+      "longitude": -118.38096
+    },
+    "transactions": [],
+    "location": {
+      "address1": "209 W Main Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "209 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590250",
+    "display_phone": "(509) 659-0250",
+    "distance": 2991.9299485579995
+  },
+  {
+    "id": "uniquely-washington-ritzville",
+    "name": "Uniquely Washington",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/bmNnDgqvo2N2yqmwappxyQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/uniquely-washington-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "artsandcrafts",
+        "title": "Arts & Crafts"
+      },
+      {
+        "alias": "gourmet",
+        "title": "Specialty Food"
+      },
+      {
+        "alias": "beer_and_wine",
+        "title": "Beer, Wine & Spirits"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1263198852539,
+      "longitude": -118.381042480469
+    },
+    "transactions": [],
+    "location": {
+      "address1": "213 W Main Ave",
+      "address2": null,
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "213 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590346",
+    "display_phone": "(509) 659-0346",
+    "distance": 2993.61782435
+  },
+  {
+    "id": "remember-when-ritzville",
+    "name": "Remember When",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/EStpnAceVxf4bYi0LONApg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/remember-when-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 3,
+    "categories": [
+      {
+        "alias": "antiques",
+        "title": "Antiques"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.126132892567,
+      "longitude": -118.381636105478
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "311 W Main Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "311 W Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096304369",
+    "display_phone": "(509) 630-4369",
+    "distance": 3036.1689348839996
+  },
+  {
+    "id": "us-post-office-ritzville-2",
+    "name": "US Post Office",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/Eueo-RZ40uJ-3Ua4cJet2A/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/us-post-office-ritzville-2?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 5,
+    "categories": [
+      {
+        "alias": "postoffices",
+        "title": "Post Offices"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.12738,
+      "longitude": -118.38121
+    },
+    "transactions": [],
+    "location": {
+      "address1": "210 N Washington St",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "210 N Washington St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590550",
+    "display_phone": "(509) 659-0550",
+    "distance": 2931.102368314
+  },
+  {
+    "id": "adams-automotive-ritzville",
+    "name": "Adam's Automotive",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/mJC5J1rEz0ISLJjEZnPaHA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/adams-automotive-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 3,
+    "categories": [
+      {
+        "alias": "autorepair",
+        "title": "Auto Repair"
+      },
+      {
+        "alias": "oilchange",
+        "title": "Oil Change Stations"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.1169415287006,
+      "longitude": -118.388811704268
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1504 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1504 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590545",
+    "display_phone": "(509) 659-0545",
+    "distance": 3540.104465896
+  },
+  {
+    "id": "city-of-ritzville-ritzville",
+    "name": "City of Ritzville",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/KE7YHIw3MB51mqIZHPTwzg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/city-of-ritzville-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "publicservicesgovt",
+        "title": "Public Services & Government"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.1283549815416,
+      "longitude": -118.378905281425
+    },
+    "transactions": [],
+    "location": {
+      "address1": "216 E Main Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "216 E Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "",
+    "display_phone": "",
+    "distance": 2916.270851808
+  },
+  {
+    "id": "days-inn-ritzville-ritzville",
+    "name": "Days Inn Ritzville",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/sIRP0E7xnOL4khtv54L2cA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/days-inn-ritzville-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.1199378967285,
+      "longitude": -118.364501953125
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1513 S Smittys Blvd",
+      "address2": null,
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1513 S Smittys Blvd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+18003291073",
+    "display_phone": "(800) 329-1073",
+    "distance": 4336.846535188
+  },
+  {
+    "id": "i-90-green-house-ritzville",
+    "name": "I-90 Green House",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/dIBkQKLnv9NhhXpB1ihheA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/i-90-green-house-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "health",
+        "title": "Health & Medical"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.119145616889,
+      "longitude": -118.363966718316
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1611 B Smittys Blvd",
+      "address2": null,
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1611 B Smittys Blvd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15097704727",
+    "display_phone": "(509) 770-4727",
+    "distance": 4413.148885135999
+  },
+  {
+    "id": "cedars-inn-and-suites-ritzville",
+    "name": "Cedars Inn & Suites",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/N8RTtb2yQPgNj3wcg-7f4w/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/cedars-inn-and-suites-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 15,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      },
+      {
+        "alias": "rvparks",
+        "title": "RV Parks"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.119633,
+      "longitude": -118.3643559
+    },
+    "transactions": [],
+    "price": "$$",
+    "location": {
+      "address1": "1513 S Smitty's Blvd",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1513 S Smitty's Blvd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+18776591007",
+    "display_phone": "(877) 659-1007",
+    "distance": 4337.500410029999
+  },
+  {
+    "id": "colwell-motor-inn-ritzville",
+    "name": "Colwell Motor Inn",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/afo-Fp9zHlflJLmJ-r_iyw/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/colwell-motor-inn-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "hotels",
+        "title": "Hotels"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.12308,
+      "longitude": -118.38079
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "501 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "501 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591620",
+    "display_phone": "(509) 659-1620",
+    "distance": 3371.417309512
+  },
+  {
+    "id": "tesla-ritzville-supercharger-ritzville",
+    "name": "Tesla Ritzville Supercharger",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/xMY7qrOAmqsC5tZybvkq6A/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/tesla-ritzville-supercharger-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "evchargingstations",
+        "title": "EV Charging Stations"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.116246735412,
+      "longitude": -118.36831844825
+    },
+    "transactions": [],
+    "location": {
+      "address1": "105 W Galbreath Way",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "105 W Galbreath Way",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+18777983752",
+    "display_phone": "(877) 798-3752",
+    "distance": 4482.847147459999
+  },
+  {
+    "id": "bobs-big-bend-bowl-ritzville",
+    "name": "Bob's Big Bend Bowl",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/HEILXnUmY2-yQxCG7RpIKA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/bobs-big-bend-bowl-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "bowling",
+        "title": "Bowling"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.1282,
+      "longitude": -118.37986
+    },
+    "transactions": [],
+    "location": {
+      "address1": "119 East Main Ave",
+      "address2": "",
+      "address3": null,
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "119 East Main Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590540",
+    "display_phone": "(509) 659-0540",
+    "distance": 2938.10444572
+  },
+  {
+    "id": "shell-gas-station-ritzville",
+    "name": "Shell Gas Station",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/shell-gas-station-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "servicestations",
+        "title": "Gas Stations"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.116828918457,
+      "longitude": -118.368240356445
+    },
+    "transactions": [],
+    "location": {
+      "address1": "100-198 W Galbreath Way",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "100-198 W Galbreath Way",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590815",
+    "display_phone": "(509) 659-0815",
+    "distance": 4445.207420738
+  },
+  {
+    "id": "texaco-ritzville",
+    "name": "Texaco",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/texaco-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "servicestations",
+        "title": "Gas Stations"
+      }
+    ],
+    "rating": 2,
+    "coordinates": {
+      "latitude": 47.1164162566078,
+      "longitude": -118.390238285065
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1508 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1508 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "",
+    "display_phone": "",
+    "distance": 3879.0791063599995
+  },
+  {
+    "id": "spikes-texaco-food-mart-ritzville",
+    "name": "Spike's Texaco Food Mart",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/spikes-texaco-food-mart-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "convenience",
+        "title": "Convenience Stores"
+      }
+    ],
+    "rating": 1,
+    "coordinates": {
+      "latitude": 47.1186815947294,
+      "longitude": -118.365653827786
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1507 S Baumann Rd",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1507 S Baumann Rd",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590443",
+    "display_phone": "(509) 659-0443",
+    "distance": 2718.980251868
+  },
+  {
+    "id": "keeley-cottage-ritzville",
+    "name": "Keeley Cottage",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/keeley-cottage-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "bedbreakfast",
+        "title": "Bed & Breakfast"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1282134950161,
+      "longitude": -118.380822390318
+    },
+    "transactions": [],
+    "location": {
+      "address1": "105 E Broadway Ave",
+      "address2": null,
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "105 E Broadway Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15095399167",
+    "display_phone": "(509) 539-9167",
+    "distance": 2860.13433673
+  },
+  {
+    "id": "ritz-food-mart-ritzville",
+    "name": "Ritz Food Mart",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/E7AVi2Wh--KaoF4Mf5Qn-w/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/ritz-food-mart-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "convenience",
+        "title": "Convenience Stores"
+      },
+      {
+        "alias": "servicestations",
+        "title": "Gas Stations"
+      }
+    ],
+    "rating": 2.5,
+    "coordinates": {
+      "latitude": 47.1187452534966,
+      "longitude": -118.365175724029
+    },
+    "transactions": [],
+    "price": "$",
+    "location": {
+      "address1": "1507 S Bauman St",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1507 S Bauman St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590443",
+    "display_phone": "(509) 659-0443",
+    "distance": 4380.744502367999
+  },
+  {
+    "id": "petes-garage-and-towing-ritzville",
+    "name": "Pete's Garage & Towing",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/mzcp8Sszj2BDPAwEVngNVw/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/petes-garage-and-towing-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 5,
+    "categories": [
+      {
+        "alias": "car_dealers",
+        "title": "Car Dealers"
+      },
+      {
+        "alias": "towing",
+        "title": "Towing"
+      }
+    ],
+    "rating": 2,
+    "coordinates": {
+      "latitude": 47.1248588562012,
+      "longitude": -118.380493164062
+    },
+    "transactions": [],
+    "location": {
+      "address1": "6 S Jefferson St",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "6 S Jefferson St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590640",
+    "display_phone": "(509) 659-0640",
+    "distance": 3265.72664089
+  },
+  {
+    "id": "ritzville-ace-hardware-ritzville",
+    "name": "Ritzville Ace Hardware",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/ritzville-ace-hardware-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "hardware",
+        "title": "Hardware Stores"
+      }
+    ],
+    "rating": 1,
+    "coordinates": {
+      "latitude": 47.12596,
+      "longitude": -118.37862
+    },
+    "transactions": [],
+    "location": {
+      "address1": "108 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "108 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096590381",
+    "display_phone": "(509) 659-0381",
+    "distance": 3152.547552314
+  },
+  {
+    "id": "red-line-crown-ritzville",
+    "name": "Red-Line Crown",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/red-line-crown-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "menscloth",
+        "title": "Men's Clothing"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.12616,
+      "longitude": -118.37709
+    },
+    "transactions": [],
+    "location": {
+      "address1": "105 S Division St",
+      "address2": null,
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "105 S Division St",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+13604921276",
+    "display_phone": "(360) 492-1276",
+    "distance": 3158.496477624
+  },
+  {
+    "id": "harvest-foods-ritzville",
+    "name": "Harvest Foods",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/harvest-foods-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "grocery",
+        "title": "Grocery"
+      }
+    ],
+    "rating": 1,
+    "coordinates": {
+      "latitude": 47.1228561401367,
+      "longitude": -118.382400512695
+    },
+    "transactions": [],
+    "location": {
+      "address1": "610 W 1st Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "610 W 1st Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096591398",
+    "display_phone": "(509) 659-1398",
+    "distance": 3353.710546162
+  },
+  {
+    "id": "ritzville-golf-course-ritzville",
+    "name": "Ritzville Golf Course",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/ritzville-golf-course-ritzville?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 1,
+    "categories": [
+      {
+        "alias": "golf",
+        "title": "Golf"
+      }
+    ],
+    "rating": 2,
+    "coordinates": {
+      "latitude": 47.122,
+      "longitude": -118.36954
+    },
+    "transactions": [],
+    "location": {
+      "address1": "104 E 10th Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Ritzville",
+      "zip_code": "99169",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "104 E 10th Ave",
+        "Ritzville, WA 99169"
+      ]
+    },
+    "phone": "+15096599868",
+    "display_phone": "(509) 659-9868",
+    "distance": 3866.961419896
+  },
+  {
+    "id": "mr-chimney-spokane-2",
+    "name": "Mr Chimney",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/H0lbs06Ccr0HsLvL0km0TA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/mr-chimney-spokane-2?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 10,
+    "categories": [
+      {
+        "alias": "chimneysweeps",
+        "title": "Chimney Sweeps"
+      }
+    ],
+    "rating": 4.5,
+    "coordinates": {
+      "latitude": 47.6801,
+      "longitude": -117.4389
+    },
+    "transactions": [],
+    "location": {
+      "address1": "1807 W Jackson Ave",
+      "address2": "",
+      "address3": "",
+      "city": "Spokane",
+      "zip_code": "99205",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1807 W Jackson Ave",
+        "Spokane, WA 99205"
+      ]
+    },
+    "phone": "+15092949128",
+    "display_phone": "(509) 294-9128",
+    "distance": 93170.83062276
+  },
+  {
+    "id": "s-and-k-service-moses-lake",
+    "name": "S & K Service",
+    "image_url": "",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/s-and-k-service-moses-lake?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 4,
+    "categories": [
+      {
+        "alias": "roofing",
+        "title": "Roofing"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.1301417,
+      "longitude": -119.2780771
+    },
+    "transactions": [],
+    "location": {
+      "address1": "514 Young Rd NE",
+      "address2": "",
+      "address3": "",
+      "city": "Moses Lake",
+      "zip_code": "98837",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "514 Young Rd NE",
+        "Moses Lake, WA 98837"
+      ]
+    },
+    "phone": "+15093619178",
+    "display_phone": "(509) 361-9178",
+    "distance": 66542.01988798
+  },
+  {
+    "id": "laduke-photography-spokane",
+    "name": "LaDuke Photography",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/_9GPn61m6rM9jgNci5l3Lg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/laduke-photography-spokane?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "photographers",
+        "title": "Photographers"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.71878,
+      "longitude": -117.07604
+    },
+    "transactions": [],
+    "location": {
+      "address1": "24518 E Roxanne",
+      "address2": null,
+      "address3": "",
+      "city": "Spokane",
+      "zip_code": "99025",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "24518 E Roxanne",
+        "Spokane, WA 99025"
+      ]
+    },
+    "phone": "+15099543885",
+    "display_phone": "(509) 954-3885",
+    "distance": 117827.26483100001
+  },
+  {
+    "id": "allied-fire-and-security-spokane",
+    "name": "Allied Fire and Security Spokane",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/BkHofineqVh4pa5xo-TH3Q/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/allied-fire-and-security-spokane?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "locksmiths",
+        "title": "Keys & Locksmiths"
+      },
+      {
+        "alias": "securitysystems",
+        "title": "Security Systems"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.6542167663574,
+      "longitude": -117.419151306152
+    },
+    "transactions": [],
+    "location": {
+      "address1": "425 W Second Ave",
+      "address2": "Ste B",
+      "address3": "",
+      "city": "Spokane",
+      "zip_code": "99201",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "425 W Second Ave",
+        "Ste B",
+        "Spokane, WA 99201"
+      ]
+    },
+    "phone": "+18884738110",
+    "display_phone": "(888) 473-8110",
+    "distance": 92571.31284859999
+  },
+  {
+    "id": "tramco-kitchen-and-bath-davenport",
+    "name": "Tramco Kitchen and Bath",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/nl-KiXilMV_04G2qA_5Z3A/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/tramco-kitchen-and-bath-davenport?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "review_count": 2,
+    "categories": [
+      {
+        "alias": "kitchenandbath",
+        "title": "Kitchen & Bath"
+      },
+      {
+        "alias": "cabinetry",
+        "title": "Cabinetry"
+      },
+      {
+        "alias": "refinishing",
+        "title": "Refinishing Services"
+      }
+    ],
+    "rating": 5,
+    "coordinates": {
+      "latitude": 47.650981958541,
+      "longitude": -118.143038607935
+    },
+    "transactions": [],
+    "location": {
+      "address1": "162 Maxwell St",
+      "address2": null,
+      "address3": "",
+      "city": "Davenport",
+      "zip_code": "99122",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "162 Maxwell St",
+        "Davenport, WA 99122"
+      ]
+    },
+    "phone": "+15097250045",
+    "display_phone": "(509) 725-0045",
+    "distance": 58853.987056419995
+  }
+]
