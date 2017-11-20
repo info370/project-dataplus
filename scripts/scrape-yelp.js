@@ -2,7 +2,6 @@
 
 const fs = require('file-system');
 const yelp = require('yelp-fusion');
-//const converter = require('./location-converter');
 const clientId = '7NxVBjQ49tgV_HKdQbuPNw';
 const clientSecret = 'bIrmTdzhVMFgS2PrLBtFMptgMyhHGiRslX6j3a5wOCV9RTynvJMrmfKuKiHtBMrC';
 var yelpObject = [];
@@ -25,6 +24,7 @@ const searchRequest = {
   radius: 4000,
   limit: 50
 };
+var totalRestaurant = 0;
 
 function performYelpRequest() {
   yelp.accessToken(clientId, clientSecret).then(response => {
@@ -40,6 +40,8 @@ function performYelpRequest() {
 
 function loopBusinessObjects(resultObject) {
   var index = 0;
+  totalRestaurant+=resultObject.length;
+  debugger;
   for (index; index < resultObject.length; index++) {
     var currentBusiness = resultObject[index];
     var census = new Promise(function (resolve, reject) {
@@ -47,7 +49,6 @@ function loopBusinessObjects(resultObject) {
       axios.get(apiUrl)
         .then(function (response) {
           var code = response.data.Block.FIPS;
-          debugger;
           resolve(code);
         })
         .catch(function (error) {
@@ -55,52 +56,37 @@ function loopBusinessObjects(resultObject) {
         });
     })
     census.then(function (fullfilled) {
-      debugger;
       createBusinessObject(currentBusiness,fullfilled);
     }).catch(function (error) {
       console.log(error.message);
     });
-
   }
-
-  // if (index === result.length) {
-  //   fs.writeFile('scripts/testyelp.json', JSON.stringify(yelpObject, null, 2));
-  // }
-  debugger;
 }
 
-
-function createBusinessObject(eachRestaurant, census) {
+function createBusinessObject(eachRestaurant,fips) {
+  var fipsSubstr = fips.toString().substring(5,10);
+  var census = parseInt(fipsSubstr);
   debugger;
   var businessObject = {
-    id: currentBusiness.id,
-    url: currentBusiness.url,
-    review_count: currentBusiness.review_count,
-    rating: currentBusiness.rating,
-    latitude: currentBusiness.coordinates.latitude,
-    longitude: currentBusiness.coordinates.longitude,
-    price: currentBusiness.price,
-    street: currentBusiness.location.address1,
-    city: currentBusiness.location.city,
-    zip_code: currentBusiness.location.zip_code,
-    fips_code: census,
-    state: currentBusiness.location.state,
-    phone: currentBusiness.phone
+    id: eachRestaurant.id,
+    url: eachRestaurant.url,
+    reviewCount: eachRestaurant.review_count,
+    rating: eachRestaurant.rating,
+    latitude: eachRestaurant.coordinates.latitude,
+    longitude: eachRestaurant.coordinates.longitude,
+    price: eachRestaurant.price,
+    street: eachRestaurant.location.address1,
+    city: eachRestaurant.location.city,
+    zipCode: eachRestaurant.location.zip_code,
+    censusTract: census,
+    state: eachRestaurant.location.state,
+    phone: eachRestaurant.phone
   }
-  debugger;
   yelpObject.push(businessObject);
+  if (totalRestaurant === yelpObject.length) {
+    debugger;
+    fs.writeFile('scripts/testyelp.json', JSON.stringify(yelpObject, null, 2));
+  }
 }
-
-// function getTract (lat, long) {
-//   var apiUrl = headUrl + "x=" + lat + "&y=" + long + tailUrl;
-//   axios.get(apiUrl)
-//       .then(function (response) {
-//           debugger;
-//           return response.data.result.geographies['Census Blocks'][0]['TRACT'];
-//       })
-//       .catch(function (error) {
-//           return error;
-//       });
-// }
 
 performYelpRequest();
