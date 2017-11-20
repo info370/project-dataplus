@@ -19,6 +19,7 @@
   "homepage": "https://github.com/info370/project-dataplus#readme",
   "dependencies": {
     "axios": "^0.17.1",
+    "csv": "^2.0.0",
     "file-system": "^2.2.2",
     "yelp-fusion": "^1.0.4"
   }
