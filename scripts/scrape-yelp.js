@@ -2,6 +2,7 @@
 
 const fs = require('file-system');
 const yelp = require('yelp-fusion');
+const _ = require('lodash');
 var parse = require('csv-parse');
 
 const clientId = '7NxVBjQ49tgV_HKdQbuPNw';
@@ -12,14 +13,6 @@ var yelpObject = [];
 const axios = require('axios');
 const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
 
-
-// const searchRequest = {
-//   latitude: 47.1508088,
-//   longitude: -118.3988154,
-//   categories: 'Restaurants',
-//   radius: 4000,
-//   limit: 50
-// };
 var totalRestaurant = 0;
 
 performCall();
@@ -35,26 +28,23 @@ function performCall() {
 function performYelpRequest(seattleCensus) {
   yelp.accessToken(clientId, clientSecret).then(response => {
     var client = yelp.client(response.jsonBody.access_token);
-    for (var i = 0; i < seattleCensus.length; i++) {
+    // change back to: i < seattleCensus.length
+    for (var i = 0; i < 2; i++) {
       var searchFields = {
-      latitude: seattleCensus[i].Latitude,
-      longitude: seattleCensus[i].Longitude,
-      categories: 'Restaurants',
-      radius: 4000,
-      limit: 50
+        latitude: seattleCensus[i].Latitude,
+        longitude: seattleCensus[i].Longitude,
+        categories: 'Restaurants',
+        radius: 4000,
+        limit: 50
+      }
+      runRequest(searchFields, client);
     }
-    runRequest(searchFields,client);
-  }
-    // client.search(searchRequest).then(response => {
-    //   var result = response.jsonBody.businesses;
-    //   loopBusinessObjects(result);
-    // });
   }).catch(e => {
     console.log(e);
   });
 }
 
-function runRequest(searchRequest,client) {
+function runRequest(searchRequest, client) {
   //debugger;
   client.search(searchRequest).then(response => {
     var result = response.jsonBody.businesses;
@@ -65,31 +55,32 @@ function runRequest(searchRequest,client) {
 function loopBusinessObjects(resultObject) {
   var index = 0;
   totalRestaurant += resultObject.length;
+  var promiseArray = [];
   //debugger;
   for (index; index < resultObject.length; index++) {
-    var currentBusiness = resultObject[index];
-    var census = new Promise(function (resolve, reject) {
-      var apiUrl = headUrl + '&latitude=' + currentBusiness.coordinates.latitude + '&longitude=' + currentBusiness.coordinates.longitude;
-      axios.get(apiUrl)
-        .then(function (response) {
-          var code = response.data.Block.FIPS;
-          resolve(code);
-        })
-        .catch(function (error) {
-          reject(error);
-        });
+    promiseArray.push(createPromise(resultObject[index].coordinates.latitude, resultObject[index].coordinates.longitude));
+  }
+  if (promiseArray.length === resultObject.length) {
+    axios.all(promiseArray).then(response => {
+      for (let i = 0; i < resultObject.length; i++) {
+        createBusinessObject(resultObject[i], response[i].data.Block.FIPS);
+      }
     })
-    census.then(function (fullfilled) {
-      createBusinessObject(currentBusiness, fullfilled);
-    }).catch(function (error) {
-      console.log(error.message);
-    });
   }
 }
 
+function createPromise(lat, long) {
+  var apiUrl = headUrl + '&latitude=' + lat + '&longitude=' + long;
+  return axios({
+    method: 'get',
+    url: apiUrl,
+    responseType: 'json'
+  })
+}
+
 function createBusinessObject(eachRestaurant, fips) {
-  var fipsSubstr = fips.toString().substring(5, 10);
-  var census = parseInt(fipsSubstr);
+  var fipsSubstr = fips.toString().substring(5, 11);
+  var census = parseFloat(fipsSubstr);
   //debugger;
   var businessObject = {
     id: eachRestaurant.id,
@@ -102,13 +93,14 @@ function createBusinessObject(eachRestaurant, fips) {
     street: eachRestaurant.location.address1,
     city: eachRestaurant.location.city,
     zipCode: eachRestaurant.location.zip_code,
-    censusTract: census,
+    censusTract: census / 10.0,
     state: eachRestaurant.location.state,
     phone: eachRestaurant.phone
   }
   yelpObject.push(businessObject);
   if (totalRestaurant === yelpObject.length) {
+    let uniqueYelpArray = _.uniqBy(yelpObject, 'id');
     debugger;
-    fs.writeFile('scripts/SeattleRestaurantsByCensusTracts.json', JSON.stringify(yelpObject, null, 2));
+    fs.writeFile('scripts/SeattleRestaurantsByCensusTracts.json', JSON.stringify(uniqueYelpArray, null, 2));
   }
 }
