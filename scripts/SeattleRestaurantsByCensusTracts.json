@@ -9,7 +9,7 @@
     "street": "950 NW Carkeek Park Rd",
     "city": "Seattle",
     "zipCode": "98177",
-    "censusTract": 50,
+    "blockFIPS": "530330005001013",
     "state": "WA",
     "phone": "+12066840877"
   },
@@ -24,7 +24,7 @@
     "street": "606 N 105th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 140,
+    "blockFIPS": "530330014002018",
     "state": "WA",
     "phone": "+12064207693"
   },
@@ -39,7 +39,7 @@
     "street": "1100 N 115th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006003016",
     "state": "WA",
     "phone": "+12064201158"
   },
@@ -54,7 +54,7 @@
     "street": "13242 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006001016",
     "state": "WA",
     "phone": "+12066952858"
   },
@@ -69,7 +69,7 @@
     "street": "10414 Holman Rd N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 170.2,
+    "blockFIPS": "530330017021001",
     "state": "WA",
     "phone": "+12062574254"
   },
@@ -84,7 +84,7 @@
     "street": "10410 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 170.1,
+    "blockFIPS": "530330017013002",
     "state": "WA",
     "phone": "+12067840203"
   },
@@ -99,7 +99,7 @@
     "street": "2100 N Northgate Way",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 120,
+    "blockFIPS": "530330012005004",
     "state": "WA",
     "phone": "+12063689107"
   },
@@ -114,7 +114,7 @@
     "street": "15221 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001017",
     "state": "WA",
     "phone": "+12064173346"
   },
@@ -129,7 +129,7 @@
     "street": "11728 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006003007",
     "state": "WA",
     "phone": "+12063672777"
   },
@@ -144,7 +144,7 @@
     "street": "14051 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004012004",
     "state": "WA",
     "phone": "+12063656025"
   },
@@ -159,7 +159,7 @@
     "street": "14705 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001026",
     "state": "WA",
     "phone": "+12065293221"
   },
@@ -174,7 +174,7 @@
     "street": "13510 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006001004",
     "state": "WA",
     "phone": "+12064076269"
   },
@@ -189,7 +189,7 @@
     "street": "8202 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 280,
+    "blockFIPS": "530330028004011",
     "state": "WA",
     "phone": "+12062570658"
   },
@@ -204,7 +204,7 @@
     "street": "14313 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011000",
     "state": "WA",
     "phone": ""
   },
@@ -219,7 +219,7 @@
     "street": "13754 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 30,
+    "blockFIPS": "530330003002017",
     "state": "WA",
     "phone": "+12063610699"
   },
@@ -234,7 +234,7 @@
     "street": "656 NW 85th St",
     "city": "Seattle",
     "zipCode": "98117",
-    "censusTract": 170.2,
+    "blockFIPS": "530330017022016",
     "state": "WA",
     "phone": "+12062976212"
   },
@@ -249,7 +249,7 @@
     "street": "2150 N 122nd St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006003001",
     "state": "WA",
     "phone": "+12064578690"
   },
@@ -264,7 +264,7 @@
     "street": "308 N 125th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.2,
+    "blockFIPS": "530330004021014",
     "state": "WA",
     "phone": "+12063682550"
   },
@@ -279,7 +279,7 @@
     "street": "9710 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 130,
+    "blockFIPS": "530330013003010",
     "state": "WA",
     "phone": "+12065243046"
   },
@@ -294,7 +294,7 @@
     "street": "10406 Holman Rd N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 170.2,
+    "blockFIPS": "530330017021000",
     "state": "WA",
     "phone": "+12067834880"
   },
@@ -309,7 +309,7 @@
     "street": "14419 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004012000",
     "state": "WA",
     "phone": "+12063067227"
   },
@@ -324,7 +324,7 @@
     "street": "323 N 145th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011004",
     "state": "WA",
     "phone": "+12063632288"
   },
@@ -339,14 +339,14 @@
     "street": "12020 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006003007",
     "state": "WA",
     "phone": "+12062571560"
   },
   {
     "id": "forno-pizza-seattle",
     "url": "https://www.yelp.com/biz/forno-pizza-seattle?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
-    "reviewCount": 137,
+    "reviewCount": 138,
     "rating": 4,
     "latitude": 47.723703,
     "longitude": -122.34779,
@@ -354,7 +354,7 @@
     "street": "13000 Linden Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011009",
     "state": "WA",
     "phone": "+12064025474"
   },
@@ -369,7 +369,7 @@
     "street": "13231 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011009",
     "state": "WA",
     "phone": "+12064566868"
   },
@@ -384,7 +384,7 @@
     "street": "8421 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 290,
+    "blockFIPS": "530330029001000",
     "state": "WA",
     "phone": "+12064575656"
   },
@@ -399,7 +399,7 @@
     "street": "12752 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006003006",
     "state": "WA",
     "phone": "+12063635840"
   },
@@ -414,7 +414,7 @@
     "street": "2143 N Northgate Way",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 120,
+    "blockFIPS": "530330012005008",
     "state": "WA",
     "phone": "+12534864371"
   },
@@ -429,7 +429,7 @@
     "street": "602 N 105th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 140,
+    "blockFIPS": "530330014002018",
     "state": "WA",
     "phone": "+12067899005"
   },
@@ -444,9 +444,24 @@
     "street": "15210 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 2100,
+    "blockFIPS": "530330210003005",
     "state": "WA",
     "phone": "+12063645444"
+  },
+  {
+    "id": "saffron-grill-seattle",
+    "url": "https://www.yelp.com/biz/saffron-grill-seattle?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
+    "reviewCount": 874,
+    "rating": 4,
+    "latitude": 47.7089,
+    "longitude": -122.33262,
+    "price": "$$",
+    "street": "2132 N Northgate Way",
+    "city": "Seattle",
+    "zipCode": "98133",
+    "blockFIPS": "530330012005004",
+    "state": "WA",
+    "phone": "+12064170707"
   },
   {
     "id": "little-tings-dumplings-seattle",
@@ -459,24 +474,9 @@
     "street": "14411 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004012000",
     "state": "WA",
     "phone": "+12063633866"
-  },
-  {
-    "id": "saffron-grill-seattle",
-    "url": "https://www.yelp.com/biz/saffron-grill-seattle?adjust_creative=7NxVBjQ49tgV_HKdQbuPNw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=7NxVBjQ49tgV_HKdQbuPNw",
-    "reviewCount": 873,
-    "rating": 4,
-    "latitude": 47.7089,
-    "longitude": -122.33262,
-    "price": "$$",
-    "street": "2132 N Northgate Way",
-    "city": "Seattle",
-    "zipCode": "98133",
-    "censusTract": 120,
-    "state": "WA",
-    "phone": "+12064170707"
   },
   {
     "id": "thai-greenwood-seattle",
@@ -489,7 +489,7 @@
     "street": "14419 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004012000",
     "state": "WA",
     "phone": "+12063619999"
   },
@@ -504,7 +504,7 @@
     "street": "930 N 130th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011009",
     "state": "WA",
     "phone": "+12062573888"
   },
@@ -519,7 +519,7 @@
     "street": "10555 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 140,
+    "blockFIPS": "530330014002014",
     "state": "WA",
     "phone": "+12063678481"
   },
@@ -534,7 +534,7 @@
     "street": "7302 15th Ave NW",
     "city": "Seattle",
     "zipCode": "98117",
-    "censusTract": 300,
+    "blockFIPS": "530330030003015",
     "state": "WA",
     "phone": "+12065882040"
   },
@@ -549,7 +549,7 @@
     "street": "358 NW 85th St",
     "city": "Seattle",
     "zipCode": "98117",
-    "censusTract": 170.1,
+    "blockFIPS": "530330017011017",
     "state": "WA",
     "phone": "+12064031149"
   },
@@ -564,7 +564,7 @@
     "street": "15009 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001017",
     "state": "WA",
     "phone": "+12063675009"
   },
@@ -579,7 +579,7 @@
     "street": "10000 Holman Rd NW",
     "city": "Seattle",
     "zipCode": "98177",
-    "censusTract": 170.2,
+    "blockFIPS": "530330017024000",
     "state": "WA",
     "phone": "+12067890558"
   },
@@ -594,7 +594,7 @@
     "street": "306 N 125th St",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.2,
+    "blockFIPS": "530330004021014",
     "state": "WA",
     "phone": "+12063635100"
   },
@@ -609,7 +609,7 @@
     "street": "8202 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 280,
+    "blockFIPS": "530330028004011",
     "state": "WA",
     "phone": "+12062570658"
   },
@@ -624,7 +624,7 @@
     "street": "8552 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 170.1,
+    "blockFIPS": "530330017011003",
     "state": "WA",
     "phone": "+12067065392"
   },
@@ -639,7 +639,7 @@
     "street": "123 N 85th St",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 170.1,
+    "blockFIPS": "530330017011015",
     "state": "WA",
     "phone": "+12067842240"
   },
@@ -654,7 +654,7 @@
     "street": "13200 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006001016",
     "state": "WA",
     "phone": "+12065564677"
   },
@@ -669,7 +669,7 @@
     "street": "9743 Holman Road North West",
     "city": "Seattle",
     "zipCode": "98117",
-    "censusTract": 140,
+    "blockFIPS": "530330014003010",
     "state": "WA",
     "phone": "+12067837272"
   },
@@ -684,7 +684,7 @@
     "street": "13448 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 60,
+    "blockFIPS": "530330006001016",
     "state": "WA",
     "phone": "+12063652131"
   },
@@ -699,7 +699,7 @@
     "street": "",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011005",
     "state": "WA",
     "phone": "+13156641357"
   },
@@ -714,7 +714,7 @@
     "street": "15001 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001017",
     "state": "WA",
     "phone": "+12063677843"
   },
@@ -729,7 +729,7 @@
     "street": "1408 NW 85th St",
     "city": "Seattle",
     "zipCode": "98117",
-    "censusTract": 160,
+    "blockFIPS": "530330016003006",
     "state": "WA",
     "phone": "+12062979453"
   },
@@ -744,7 +744,7 @@
     "street": "9820 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98103",
-    "censusTract": 130,
+    "blockFIPS": "530330013003011",
     "state": "WA",
     "phone": "+12065222044"
   },
@@ -759,7 +759,7 @@
     "street": "520 NE 165th St",
     "city": "Shoreline",
     "zipCode": "98155",
-    "censusTract": 2050,
+    "blockFIPS": "530330205003008",
     "state": "WA",
     "phone": "+12068237792"
   },
@@ -774,7 +774,7 @@
     "street": "16743 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2070,
+    "blockFIPS": "530330207003013",
     "state": "WA",
     "phone": "+12063168366"
   },
@@ -789,7 +789,7 @@
     "street": "900 N 160th St",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001006",
     "state": "WA",
     "phone": "+12063621933"
   },
@@ -804,7 +804,7 @@
     "street": "14725 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001026",
     "state": "WA",
     "phone": "+12063621206"
   },
@@ -819,7 +819,7 @@
     "street": "15215 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001017",
     "state": "WA",
     "phone": "+12063683887"
   },
@@ -834,7 +834,7 @@
     "street": "14515 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001026",
     "state": "WA",
     "phone": "+12063655066"
   },
@@ -848,7 +848,7 @@
     "street": "",
     "city": "Mountlake Terrace",
     "zipCode": "98043",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004011005",
     "state": "WA",
     "phone": "+14254178564"
   },
@@ -863,7 +863,7 @@
     "street": "17505 Aurora Ave N",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2070,
+    "blockFIPS": "530330207002014",
     "state": "WA",
     "phone": "+12066294770"
   },
@@ -878,7 +878,7 @@
     "street": "15819 Westminster Way",
     "city": "Shoreline",
     "zipCode": "98133",
-    "censusTract": 2090,
+    "blockFIPS": "530330209001009",
     "state": "WA",
     "phone": "+12063632266"
   },
@@ -893,7 +893,7 @@
     "street": "14018 Aurora Ave N",
     "city": "Seattle",
     "zipCode": "98133",
-    "censusTract": 30,
+    "blockFIPS": "530330003002016",
     "state": "WA",
     "phone": "+12065014441"
   },
@@ -908,7 +908,7 @@
     "street": "14419 Greenwood Ave N",
     "city": "Seattle",
     "zipCode": "98127",
-    "censusTract": 40.1,
+    "blockFIPS": "530330004012000",
     "state": "WA",
     "phone": "+12064171639"
   }

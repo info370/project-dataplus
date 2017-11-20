@@ -53,12 +53,11 @@ function runRequest(searchRequest, client) {
 }
 
 function loopBusinessObjects(resultObject) {
-  var index = 0;
   totalRestaurant += resultObject.length;
   var promiseArray = [];
   //debugger;
-  for (index; index < resultObject.length; index++) {
-    promiseArray.push(createPromise(resultObject[index].coordinates.latitude, resultObject[index].coordinates.longitude));
+  for (let i = 0; i < resultObject.length; i++) {
+    promiseArray.push(createPromise(resultObject[i].coordinates.latitude, resultObject[i].coordinates.longitude));
   }
   if (promiseArray.length === resultObject.length) {
     axios.all(promiseArray).then(response => {
@@ -79,8 +78,8 @@ function createPromise(lat, long) {
 }
 
 function createBusinessObject(eachRestaurant, fips) {
-  var fipsSubstr = fips.toString().substring(5, 11);
-  var census = parseFloat(fipsSubstr);
+  // var fipsSubstr = fips.toString().substring(5, 11);
+  // var census = parseFloat(fipsSubstr);
   //debugger;
   var businessObject = {
     id: eachRestaurant.id,
@@ -93,7 +92,7 @@ function createBusinessObject(eachRestaurant, fips) {
     street: eachRestaurant.location.address1,
     city: eachRestaurant.location.city,
     zipCode: eachRestaurant.location.zip_code,
-    censusTract: census / 10.0,
+    blockFIPS: fips,
     state: eachRestaurant.location.state,
     phone: eachRestaurant.phone
   }
