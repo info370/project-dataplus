@@ -16,7 +16,7 @@ var yelpObject = [];
 performCall();
 
 function performCall() {
-  fs.readFile('./Seattle Census Tract Lat Long - Sheet1.csv', function (err, data) {
+  fs.readFile('./Seattle_Census_Tract_Data.csv', function (err, data) {
     parse(data, { columns: true }, function (err, dataValue) {
       performYelpRequest(dataValue);
     })
@@ -31,7 +31,7 @@ function performYelpRequest(seattleCensus) {
       var searchFields = {
         latitude: seattleCensus[i].Latitude,
         longitude: seattleCensus[i].Longitude,
-        categories: 'Restaurants',
+        categories: 'restaurants',
         radius: 4000,
         limit: 50
       }
