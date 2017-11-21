@@ -1,14 +1,15 @@
+'use strict';
+
 const axios = require('axios');
 const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
 const fs = require('file-system');
-const delay = require('delay');
 var yelpObject = [];
 
 // run first segment and save RestaurantsWithFips-1.json; run one at a time
-runApi(0,323);
+//runApi(0,323);
 
 // run second segment and save to RestaurantsWithFips-2.json
-//runApi(323,646);
+runApi(323,646);
 
 function runApi(start,end) {
     var file = fs.readFileSync('./scripts/SeattleRestaurantsDirectory.json');
@@ -44,9 +45,9 @@ function recreateObject(fips,restaurantObject,size) {
     yelpObject.push(restaurantObject);
     if (yelpObject.length === size) {
         // for segment 1; run one at a time
-        fs.writeFile('scripts/RestaurantsWithFips-1.json', JSON.stringify(yelpObject, null, 2));
+        //fs.writeFile('scripts/RestaurantsWithFips-1.json', JSON.stringify(yelpObject, null, 2));
 
         // for segment 2
-        //fs.writeFile('scripts/RestaurantsWithFips-2.json', JSON.stringify(yelpObject, null, 2));
+        fs.writeFile('scripts/RestaurantsWithFips-2.json', JSON.stringify(yelpObject, null, 2));
     }
 }
