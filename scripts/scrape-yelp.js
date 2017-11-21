@@ -9,21 +9,22 @@ const clientId = '7NxVBjQ49tgV_HKdQbuPNw';
 const clientSecret = 'bIrmTdzhVMFgS2PrLBtFMptgMyhHGiRslX6j3a5wOCV9RTynvJMrmfKuKiHtBMrC';
 var yelpObject = [];
 
-// api info to get census tract
-// const axios = require('axios');
-// const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
 
-performCall();
+// @param: categories type
+// run one at a time
 
-function performCall() {
+performCall('food');
+//performCall('restaurants');
+
+function performCall(categoryType) {
   fs.readFile('./Seattle_Census_Tract_Data.csv', function (err, data) {
     parse(data, { columns: true }, function (err, dataValue) {
-      performYelpRequest(dataValue);
+      performYelpRequest(dataValue,categoryType);
     })
   })
 }
 
-function performYelpRequest(seattleCensus) {
+function performYelpRequest(seattleCensus,categoryType) {
   var yelpPromises = [];
   yelp.accessToken(clientId, clientSecret).then(response => {
     var client = yelp.client(response.jsonBody.access_token);
@@ -31,18 +32,17 @@ function performYelpRequest(seattleCensus) {
       var searchFields = {
         latitude: seattleCensus[i].Latitude,
         longitude: seattleCensus[i].Longitude,
-        categories: 'restaurants',
-        radius: 4000,
+        categories: categoryType,
+        radius: 1000,
         limit: 50
       }
-
       yelpPromises.push(runRequest(searchFields, client));
     }
     if (yelpPromises.length === seattleCensus.length) {
       Promise.all(yelpPromises).then(response => {
         var totalNumber = countAllRestaurants(response);
         for (let i = 0; i < response.length; i++) {
-          loopBusinessObjects(response[i].jsonBody.businesses, totalNumber);
+          loopBusinessObjects(response[i].jsonBody.businesses, totalNumber,categoryType);
         }
       })
     }
@@ -63,10 +63,11 @@ function runRequest(searchRequest, client) {
   return client.search(searchRequest)
 }
 
-function loopBusinessObjects(resultObject, totalRestaurant) {
+function loopBusinessObjects(resultObject, totalRestaurant,categoryType) {
   for (let i = 0; i < resultObject.length; i++) {
     var businessObject = {
       id: resultObject[i].id,
+      name: resultObject[i].name,
       url: resultObject[i].url,
       reviewCount: resultObject[i].review_count,
       rating: resultObject[i].rating,
@@ -82,16 +83,8 @@ function loopBusinessObjects(resultObject, totalRestaurant) {
     yelpObject.push(businessObject);
     if (totalRestaurant === yelpObject.length) {
       let uniqueYelpArray = _.uniqBy(yelpObject, 'id');
-      fs.writeFile('scripts/SeattleRestaurantsDirectory.json', JSON.stringify(uniqueYelpArray, null, 2));
+      debugger;
+      fs.writeFile('scripts/Seattle' + categoryType + 'Directory.json', JSON.stringify(uniqueYelpArray, null, 2));
     }
   }
 }
-
-// function createPromise(lat, long) {
-//   var apiUrl = headUrl + '&latitude=' + lat + '&longitude=' + long;
-//   return axios({
-//     method: 'get',
-//     url: apiUrl,
-//     responseType: 'json'
-//   })
-// }
