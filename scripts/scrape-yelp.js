@@ -82,7 +82,6 @@ function loopBusinessObjects(resultObject, totalRestaurant) {
     yelpObject.push(businessObject);
     if (totalRestaurant === yelpObject.length) {
       let uniqueYelpArray = _.uniqBy(yelpObject, 'id');
-      debugger;
       fs.writeFile('scripts/SeattleRestaurantsDirectory.json', JSON.stringify(uniqueYelpArray, null, 2));
     }
   }
