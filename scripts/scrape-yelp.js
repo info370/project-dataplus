@@ -10,10 +10,8 @@ const clientSecret = 'bIrmTdzhVMFgS2PrLBtFMptgMyhHGiRslX6j3a5wOCV9RTynvJMrmfKuKi
 var yelpObject = [];
 
 // api info to get census tract
-const axios = require('axios');
-const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
-
-var totalRestaurant = 0;
+// const axios = require('axios');
+// const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
 
 performCall();
 
@@ -26,10 +24,10 @@ function performCall() {
 }
 
 function performYelpRequest(seattleCensus) {
+  var yelpPromises = [];
   yelp.accessToken(clientId, clientSecret).then(response => {
     var client = yelp.client(response.jsonBody.access_token);
-    // change back to: i < seattleCensus.length
-    for (var i = 0; i < 2; i++) {
+    for (let i = 0; i < seattleCensus.length; i++) {
       var searchFields = {
         latitude: seattleCensus[i].Latitude,
         longitude: seattleCensus[i].Longitude,
@@ -37,69 +35,64 @@ function performYelpRequest(seattleCensus) {
         radius: 4000,
         limit: 50
       }
-      runRequest(searchFields, client);
+
+      yelpPromises.push(runRequest(searchFields, client));
+    }
+    if (yelpPromises.length === seattleCensus.length) {
+      Promise.all(yelpPromises).then(response => {
+        var totalNumber = countAllRestaurants(response);
+        for (let i = 0; i < response.length; i++) {
+          loopBusinessObjects(response[i].jsonBody.businesses, totalNumber);
+        }
+      })
     }
   }).catch(e => {
     console.log(e);
   });
 }
 
+function countAllRestaurants(responseObject) {
+  var totalRestaurant = 0;
+  for (let i = 0; i < responseObject.length; i++) {
+    totalRestaurant += responseObject[i].jsonBody.businesses.length;
+  }
+  return totalRestaurant;
+}
+
 function runRequest(searchRequest, client) {
-  //debugger;
-  client.search(searchRequest).then(response => {
-    var result = response.jsonBody.businesses;
-    loopBusinessObjects(result);
-  });
+  return client.search(searchRequest)
 }
 
-function loopBusinessObjects(resultObject) {
-  totalRestaurant += resultObject.length;
-  var promiseArray = [];
-  //debugger;
+function loopBusinessObjects(resultObject, totalRestaurant) {
   for (let i = 0; i < resultObject.length; i++) {
-    promiseArray.push(createPromise(resultObject[i].coordinates.latitude, resultObject[i].coordinates.longitude));
-  }
-  if (promiseArray.length === resultObject.length) {
-    axios.all(promiseArray).then(response => {
-      for (let i = 0; i < resultObject.length; i++) {
-        createBusinessObject(resultObject[i], response[i].data.Block.FIPS);
-      }
-    })
+    var businessObject = {
+      id: resultObject[i].id,
+      url: resultObject[i].url,
+      reviewCount: resultObject[i].review_count,
+      rating: resultObject[i].rating,
+      latitude: resultObject[i].coordinates.latitude,
+      longitude: resultObject[i].coordinates.longitude,
+      price: resultObject[i].price,
+      street: resultObject[i].location.address1,
+      city: resultObject[i].location.city,
+      zipCode: resultObject[i].location.zip_code,
+      state: resultObject[i].location.state,
+      phone: resultObject[i].phone
+    }
+    yelpObject.push(businessObject);
+    if (totalRestaurant === yelpObject.length) {
+      let uniqueYelpArray = _.uniqBy(yelpObject, 'id');
+      debugger;
+      fs.writeFile('scripts/SeattleRestaurantsDirectory.json', JSON.stringify(uniqueYelpArray, null, 2));
+    }
   }
 }
 
-function createPromise(lat, long) {
-  var apiUrl = headUrl + '&latitude=' + lat + '&longitude=' + long;
-  return axios({
-    method: 'get',
-    url: apiUrl,
-    responseType: 'json'
-  })
-}
-
-function createBusinessObject(eachRestaurant, fips) {
-  // var fipsSubstr = fips.toString().substring(5, 11);
-  // var census = parseFloat(fipsSubstr);
-  //debugger;
-  var businessObject = {
-    id: eachRestaurant.id,
-    url: eachRestaurant.url,
-    reviewCount: eachRestaurant.review_count,
-    rating: eachRestaurant.rating,
-    latitude: eachRestaurant.coordinates.latitude,
-    longitude: eachRestaurant.coordinates.longitude,
-    price: eachRestaurant.price,
-    street: eachRestaurant.location.address1,
-    city: eachRestaurant.location.city,
-    zipCode: eachRestaurant.location.zip_code,
-    blockFIPS: fips,
-    state: eachRestaurant.location.state,
-    phone: eachRestaurant.phone
-  }
-  yelpObject.push(businessObject);
-  if (totalRestaurant === yelpObject.length) {
-    let uniqueYelpArray = _.uniqBy(yelpObject, 'id');
-    debugger;
-    fs.writeFile('scripts/SeattleRestaurantsByCensusTracts.json', JSON.stringify(uniqueYelpArray, null, 2));
-  }
-}
+// function createPromise(lat, long) {
+//   var apiUrl = headUrl + '&latitude=' + lat + '&longitude=' + long;
+//   return axios({
+//     method: 'get',
+//     url: apiUrl,
+//     responseType: 'json'
+//   })
+// }
