@@ -27,7 +27,7 @@ function compareCensusTract(censusJson, yelpObject) {
             yelpObject[i].censusMedianHHIncome = parseInt(censusJson[matchedIndex].Median_Household_Income);
             yelpObject[i].censusMedianHHError = parseInt(censusJson[matchedIndex].MHI_Error);
             yelpObject[i].censusIncomePerCapita = parseInt(censusJson[matchedIndex].Per_Capita_Income);
-            yelpObject[i].censusIndexOfInequality = parseFloat(censusJson[matchedIndex].Gini_Index_Of_Inequality);
+            yelpObject[i].censusGiniIndexOfInequality = parseFloat(censusJson[matchedIndex].Gini_Index_Of_Inequality);
             yelpObject[i].censusTotalPopulation = parseInt(censusJson[matchedIndex].Total_Population);
         }
         if (matchedIndex === -1) {
