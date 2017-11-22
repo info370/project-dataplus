@@ -6,7 +6,6 @@ var parse = require('csv-parse');
 
 crossRef();
 
-
 function crossRef() {
     let yelpFile = fs.readFileSync('./scripts/RestaurantsWithFips.json');
     let yelpObject = JSON.parse(yelpFile);
@@ -23,7 +22,6 @@ function compareCensusTract(censusJson, yelpObject) {
         let matchedIndex = _.findIndex(censusJson, e => {
             return e.GEOID === yelpObject[i].GeoId;
         })
-        //debugger;
         if (matchedIndex !== -1) {
             yelpObject[i].censusTract = censusJson[matchedIndex].Census_Tract;
             yelpObject[i].censusMedianHHIncome = censusJson[matchedIndex].Median_Household_Income;
@@ -36,5 +34,5 @@ function compareCensusTract(censusJson, yelpObject) {
             yelpObject[i].censusTract = null;
         }
     }
-    fs.writeFile('SeattleYelpRestaurantsWithCensusInfo.json', JSON.stringify(yelpObject, null, 2));
+    fs.writeFile('SeattleYelpRestaurants.json', JSON.stringify(yelpObject, null, 2));
 }

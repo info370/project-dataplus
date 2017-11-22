@@ -13,8 +13,8 @@ var yelpObject = [];
 // @param: categories type
 // run one at a time
 
-performCall('food');
-//performCall('restaurants');
+//performCall('food');
+performCall('restaurants');
 
 function performCall(categoryType) {
   fs.readFile('./Seattle_Census_Tract_Data.csv', function (err, data) {

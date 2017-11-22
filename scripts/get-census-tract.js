@@ -13,6 +13,7 @@ function runApi() {
     var foodFile = fs.readFileSync('./scripts/SeattlefoodDirectory.json');
     var yelpJson = _.uniqBy(_.concat(JSON.parse(restaurantFile),JSON.parse(foodFile)),'id');
     var promiseArray = [];
+    debugger;
     for (let i = 0; i < yelpJson.length; i++) {
         promiseArray.push(createPromise(yelpJson[i].latitude, yelpJson[i].longitude));
     }
