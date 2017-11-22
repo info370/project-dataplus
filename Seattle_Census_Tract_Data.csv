@@ -1,4 +1,4 @@
-GEOID,Census_Name,Census_Tract,Latitude,Longitute,Median_Household_Income,MHI_Error,Per_Capita_Income,Gini_Index_Of_Inequality,Total_Population
+GEOID,Census_Name,Census_Tract,Latitude,Longitude,Median_Household_Income,MHI_Error,Per_Capita_Income,Gini_Index_Of_Inequality,Total_Population
 53033000100,"Census Tract 1, King, WA",1,47.72644,-122.28555,44951,7895,35081,0.5406,6918
 53033000200,"Census Tract 2, King, WA",2,47.72708,-122.30881,56208,9564,31989,0.4115,7974
 53033000300,"Census Tract 3, King, WA",3,47.73176,-122.33396,64297,17385,37813,0.4806,2637
