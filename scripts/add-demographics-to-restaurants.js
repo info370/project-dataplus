@@ -24,11 +24,11 @@ function compareCensusTract(censusJson, yelpObject) {
         })
         if (matchedIndex !== -1) {
             yelpObject[i].censusTract = censusJson[matchedIndex].Census_Tract;
-            yelpObject[i].censusMedianHHIncome = censusJson[matchedIndex].Median_Household_Income;
-            yelpObject[i].censusMedianHHError = censusJson[matchedIndex].MHI_Error;
-            yelpObject[i].censusIncomePerCapita = censusJson[matchedIndex].Per_Capita_Income;
-            yelpObject[i].censusIndexOfInequality = censusJson[matchedIndex].Gini_Index_Of_Inequality;
-            yelpObject[i].censusTotalPopulation = censusJson[matchedIndex].Total_Population;
+            yelpObject[i].censusMedianHHIncome = parseInt(censusJson[matchedIndex].Median_Household_Income);
+            yelpObject[i].censusMedianHHError = parseInt(censusJson[matchedIndex].MHI_Error);
+            yelpObject[i].censusIncomePerCapita = parseInt(censusJson[matchedIndex].Per_Capita_Income);
+            yelpObject[i].censusIndexOfInequality = parseFloat(censusJson[matchedIndex].Gini_Index_Of_Inequality);
+            yelpObject[i].censusTotalPopulation = parseInt(censusJson[matchedIndex].Total_Population);
         }
         if (matchedIndex === -1) {
             yelpObject[i].censusTract = null;
