@@ -17,16 +17,22 @@ function performYelpCall(businessObject) {
     var yelpPromises = [];
     yelp.accessToken(clientId, clientSecret).then(response => {
         var client = yelp.client(response.jsonBody.access_token);
-        for (let i = 0; i < 2; i++) {
+        // full length: businessObject.length
+        for (let i = 0; i < 10; i++) {
             yelpPromises.push(runRequest(businessObject[i].id, client));
         }
-        if (yelpPromises.length === 2) {
+        if (yelpPromises.length === 10) {
+            //debugger;
             Promise.all(yelpPromises).then(response => {
                 // to get review details: response[0].jsonBody.reviews
+                debugger;
                 for (let i = 0; i < response.length; i++) {
                     tallyReviews(response[i].jsonBody.reviews, businessObject[i]);
                 }
-            })
+            }).catch(reason => {
+                console.log(reason);
+                //debugger;
+            });
         }
     })
 }
