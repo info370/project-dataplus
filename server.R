@@ -2,10 +2,12 @@ library(dplyr)
 library(rsconnect)
 library(shiny)
 library(ggplot2)
-
+library(jsonlite)
+library(plyr)
 
 seattle.census <- read.csv('./Seattle_Census_Tract_Data.csv', stringsAsFactors = FALSE)
-# source("./scripts/DiagnosisWillingness.R")
+json_file <- "SeattleYelpRestaurants.json"
+yelp.data <- fromJSON(json_file)
 
 shinyServer(function(input, output) { 
   # http://rstudio.github.io/shiny/tutorial/#hello-shiny
