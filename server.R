@@ -1,9 +1,9 @@
-library(dplyr)
-library(rsconnect)
-library(shiny)
-library(ggplot2)
-library(jsonlite)
-library(plyr)
+if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+if(!require(rsconnect)){install.packages("rsconnect"); require(rsconnect)}
+if(!require(shiny)){install.packages("shiny"); require(shiny)}
+if(!require(ggplot2)){install.packages("ggplot2"); require(ggplot2)}
+if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
+if(!require(plyr)){install.packages("plyr"); require(plyr)}
 
 seattle.census <- read.csv('./Seattle_Census_Tract_Data.csv', stringsAsFactors = FALSE)
 json_file <- "SeattleYelpRestaurants.json"

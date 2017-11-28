@@ -1,5 +1,5 @@
-library(shiny)
-library(shinythemes)
+if(!require(shiny)){install.packages("shiny"); require(shiny)}
+if(!require(shinythemes)){install.packages("shinythemes"); require(shinythemes)}
 
 shinyUI(navbarPage('Final Project 370',
                    theme = shinytheme("superhero"),
