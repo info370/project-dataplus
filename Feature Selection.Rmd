@@ -1,0 +1,58 @@
+---
+title: "Feature Selection"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
+if(!require(caret)){install.packages("caret", dependencies = c("Depends", "Suggests")); require(caret)} # ML package and its dependencies. This will take awhile!
+set.seed(370)
+
+json_file <- "SeattleYelpRestaurants.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) 
+
+filtered.yelp <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality"))
+
+price.num <- c(nchar(yelp.data[,"price"]))
+filtered.yelp$price = price.num
+
+
+corr_matrix <- cor(filtered.yelp)# correlations between all predictor vars
+
+cutoff <- 0.2 # should be higher in practice
+
+highly_corr <- findCorrelation(corr_matrix, cutoff=cutoff)
+print(colnames(filtered.yelp)[highly_corr]) # age is highly correalted with pregnant
+
+```
+
+```{r}
+
+filtered.yelp.w.ratings <- filtered.yelp
+no.na.rating <- yelp.data[,"rating"]
+no.na.rating[!is.na(no.na.rating)]
+filtered.yelp.w.ratings$rating <- no.na.rating
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+model <- train(rating ~., data=filtered.yelp.w.ratings, method = "knn", preProcess = "scale", trControl = control)
+
+importance <- varImp(model)
+
+ggplot(importance)
+```
+
+
+
+```{r echo = FALSE}
+control <- rfeControl(functions = rfFuncs, method="cv", number=10)
+results <- rfe(filtered.yelp.w.ratings[,1:5], filtered.yelp.w.ratings[,6], sizes = c(1:5), rfeControl = control)
+
+results
+ggplot(results)
+```
