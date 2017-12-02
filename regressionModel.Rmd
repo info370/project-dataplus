@@ -92,7 +92,8 @@ ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncome
   geom_line(data = grid, aes(y = pred))
 ```
 
-#SVM 
+## SVM
+ 
 ```{r}
 model_svm <- train(rating ~ .,
                   data = filtered_yelp_train,
@@ -120,7 +121,7 @@ ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating)) +
   geom_line(data = grid, aes(y = pred))
 ```
 
-# SPLINE
+## SPLINE
 ```{r}
 if(!require(gam)){install.packages("gam"); require(gam)} # only need this is dependencies of caret were not installed
 
