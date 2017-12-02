@@ -1,0 +1,155 @@
+---
+title: "Regression_models"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup}
+if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
+if(!require(tidyverse)){install.packages("tidyverse"); library(tidyverse)} 
+if(!require(modelr)){install.packages("modelr"); library(modelr)} 
+
+# some dependencies for caret that aren't automatically installed
+if(!require(ModelMetrics)){install.packages("ModelMetrics"); require(ModelMetrics)}
+if(!require(recipes)){install.packages("recipes"); require(recipes)}
+if(!require(DEoptimR)){install.packages("DEoptimR"); require(DEoptimR)}
+
+if(!require(caret)){install.packages("caret"); require(caret)} # ML package WITHOUT its dependencies. Should not take as long
+if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+set.seed(370)
+
+# if(!require(caret)){install.packages("caret", dependencies = c("Depends", "Suggests")); require(caret)} # ML package and its dependencies. Do NOT need to run for class. Would be good to install for use of caret in general. This will take awhile!
+```
+
+```{r}
+# Getting data
+json_file <- "SeattleYelpRestaurants.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) 
+
+filtered.yelp <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality"))
+
+price.num <- c(nchar(yelp.data[,"price"]))
+filtered.yelp$price = price.num
+
+filtered.yelp$rating = yelp.data[,"rating"]
+
+```
+
+
+```{r}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8 # specify proportion of data used for training
+
+# select outcome variable
+outcome <- filtered.yelp %>% dplyr::select(rating)
+
+# randomly select indices for train/validate set
+train_ind <- createDataPartition(outcome$rating, p = split_proportion, list = FALSE)
+filtered_yelp_train <- filtered.yelp[train_ind,] # get training data
+filtered_yelp_test <- filtered.yelp[-train_ind,] # get test data
+
+yelp_test_x <- filtered.yelp %>% dplyr::select(-rating) # select predictor data for test set
+yelp_test_y <- filtered.yelp %>% dplyr::select(rating) # select outcome data for test set
+```
+
+Defining how we're evaluating models (10 fold cross-validation, repeated 2 times)
+```{r}
+ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+```
+
+# Regression Models
+
+For regression, the output is continuous or ordered
+
+## Linear Regression
+```{r}
+model_lm <- train(rating ~ ., # outcome is "medv", all other columns are predictors
+                  data = filtered_yelp_train, # training data
+                  method = "lm", # model type (linear model)
+                  trControl=ctrl) # evaluation method
+model_lm                  
+
+# coefficients
+model_lm$finalModel
+
+# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+predict_yelp_lm <- predict(model_lm, yelp_test_x)
+postResample(predict_yelp_lm, yelp_test_y$rating)
+
+# creating grid of data to plot results for test set
+grid <- filtered_yelp_test %>%
+  gather_predictions(model_lm)
+
+# getting important variales
+varImp(model_lm)
+
+ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncomePerCapita)) +
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+```
+
+#SVM 
+```{r}
+model_svm <- train(rating ~ .,
+                  data = filtered_yelp_train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+model_svm
+# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+predict_yelp_svm <- predict(model_svm, yelp_test_x)
+postResample(predict_yelp_svm, yelp_test_y$rating)
+
+# creating grid of data to plot results
+grid <- filtered_yelp_test %>%
+  gather_predictions(model_svm)
+
+varImp(model_svm) # getting most important variables
+
+# only plotting prediction along most important variables
+ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+
+ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+```
+
+# SPLINE
+```{r}
+if(!require(gam)){install.packages("gam"); require(gam)} # only need this is dependencies of caret were not installed
+
+
+# takes awhile to run...
+model_spline <- train(rating ~ ., # outcome is "medv", predictors=all other columns
+                  data = filtered_yelp_train,  # training data
+                  trControl=ctrl, # evaluation method
+                  method = "gamSpline", # model: generalized addive model using splines
+                  tuneLength = 30) # number of parameters to try
+
+model_spline
+
+# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+predict_yelp_spline <- predict(model_spline, yelp_test_x)
+postResample(predict_yelp_spline, yelp_test_y$rating)
+
+# creating grid of data to plot results
+grid <- filtered_yelp_test %>%
+  gather_predictions(model_spline)
+
+varImp(model_spline) # getting most important variables
+
+# only plotting prediction along most important variables
+ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncomePerCapita)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+
+ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating, color=censusMedianHHIncome)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+```
