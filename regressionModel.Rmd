@@ -38,6 +38,38 @@ filtered.yelp$price = price.num
 filtered.yelp$rating = yelp.data[,"rating"]
 ```
 
+## Correlation
+```{r, echo=FALSE}
+corr_matrix <- cor(filtered.yelp)# correlations between all predictor vars
+
+cutoff <- 0.2 # should be higher in practice
+
+highly_corr <- findCorrelation(corr_matrix, cutoff=cutoff)
+print(colnames(filtered.yelp)[highly_corr]) # age is highly correalted with pregnant
+```
+
+## Ranked by Importance
+```{r, echo=FALSE}
+filtered.yelp.w.ratings <- filtered.yelp
+no.na.rating <- yelp.data[,"rating"]
+filtered.yelp.w.ratings$rating <- no.na.rating[!is.na(no.na.rating)]
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+model <- train(rating ~., data=filtered.yelp.w.ratings, method = "knn", preProcess = "scale", trControl = control)
+
+importance <- varImp(model)
+
+ggplot(importance)
+```
+
+## RFE
+```{r, echo=FALSE}
+control <- rfeControl(functions = rfFuncs, method="cv", number=10)
+results <- rfe(filtered.yelp.w.ratings[,1:5], filtered.yelp.w.ratings[,6], sizes = c(1:5), rfeControl = control)
+
+results
+ggplot(results)
+```
 
 ```{r, echo=FALSE, include=FALSE}
 # splitting boston data into train+validate and test sets
@@ -56,14 +88,9 @@ yelp_test_x <- filtered.yelp %>% dplyr::select(-rating) # select predictor data 
 yelp_test_y <- filtered.yelp %>% dplyr::select(rating) # select outcome data for test set
 ```
 
-Defining how we're evaluating models (10 fold cross-validation, repeated 2 times)
 ```{r, echo=FALSE, include=FALSE}
 ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
 ```
-
-# Regression Models
-
-For regression, the output is continuous or ordered
 
 ## Linear Regression
 ```{r, echo=FALSE}
@@ -71,10 +98,6 @@ model_lm <- train(rating ~ ., # outcome is "medv", all other columns are predict
                   data = filtered_yelp_train, # training data
                   method = "lm", # model type (linear model)
                   trControl=ctrl) # evaluation method
-model_lm                  
-
-# coefficients
-model_lm$finalModel
 
 # getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
 predict_yelp_lm <- predict(model_lm, yelp_test_x)
@@ -91,45 +114,46 @@ varImp(model_lm)
 #censusIncomePerCapita
 p1 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p1
 
 #censusGiniIndexOfInequality
 p2 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p2
 
 #reviewCount
 p3 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p3
 
 #censusMedianHHIncome
 p4 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red") +
+  scale_y_continuous(name="censusMedianHHIncome", labels = scales::comma)
 
 p4
 
 #price 
 p5 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p5
 
@@ -143,8 +167,7 @@ model_svm <- train(rating ~ .,
                   method = "svmRadial",
                   trControl=ctrl,   # Radial kernel
                   tuneLength = 10)
-model_svm
-# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+
 predict_yelp_svm <- predict(model_svm, yelp_test_x)
 postResample(predict_yelp_svm, yelp_test_y$rating)
 
@@ -159,45 +182,46 @@ varImp(model_svm) # getting most important variables
 #censusIncomePerCapita
 p6 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p6
 
 #censusGiniIndexOfInequality
 p7 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p7
 
 #reviewCount
 p8 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p8
 
 #censusMedianHHIncome
 p9 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
   stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  scale_y_continuous(name="censusMedianHHIncome", labels = scales::comma)
 
 p9
 
 #price 
 p10 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p10
 
@@ -205,8 +229,6 @@ p10
 
 ## SPLINE
 ```{r, echo=FALSE}
-if(!require(gam)){install.packages("gam"); require(gam)} # only need this is dependencies of caret were not installed
-
 
 # takes awhile to run...
 model_spline <- train(rating ~ ., # outcome is "medv", predictors=all other columns
@@ -214,8 +236,6 @@ model_spline <- train(rating ~ ., # outcome is "medv", predictors=all other colu
                   trControl=ctrl, # evaluation method
                   method = "gamSpline", # model: generalized addive model using splines
                   tuneLength = 30) # number of parameters to try
-
-model_spline
 
 # getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
 predict_yelp_spline <- predict(model_spline, yelp_test_x)
@@ -234,45 +254,100 @@ varImp(model_svm) # getting most important variables
 #censusIncomePerCapita
 p11 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p11
 
 #censusGiniIndexOfInequality
 p12 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p12
 
 #reviewCount
 p13 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p13
 
 #censusMedianHHIncome
 p14 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
   stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  scale_y_continuous(name="censusMedianHHIncome", labels = scales::comma)
 
 p14
 
 #price 
 p15 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
   geom_violin() +
+  geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
-  geom_boxplot(width=0.1)
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
 
 p15
+```
+
+## Limitations (Our first attempt)
+```{r, echo=FALSE}
+model_spline <- train(rating ~ ., # outcome is "medv", predictors=all other columns
+                  data = filtered_yelp_train,  # training data
+                  trControl=ctrl, # evaluation method
+                  method = "gamSpline", # model: generalized addive model using splines
+                  tuneLength = 30) # number of parameters to try
+
+# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+predict_yelp_spline <- predict(model_spline, yelp_test_x)
+postResample(predict_yelp_spline, yelp_test_y$rating)
+
+# creating grid of data to plot results
+grid <- filtered_yelp_test %>%
+  gather_predictions(model_spline)
+
+varImp(model_spline) # getting most important variables
+
+# only plotting prediction along most important variables
+ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncomePerCapita)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+
+ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating, color=censusMedianHHIncome)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
+```
+
+
+## Limitation part 2
+```{r, echo=FALSE}
+model_svm <- train(rating ~ .,
+                  data = filtered_yelp_train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+model_svm
+# getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+predict_yelp_svm <- predict(model_svm, yelp_test_x)
+postResample(predict_yelp_svm, yelp_test_y$rating)
+
+# creating grid of data to plot results
+grid <- filtered_yelp_test %>%
+  gather_predictions(model_svm)
+
+varImp(model_svm) # getting most important variables
+
+filtered_yelp_test2 <- filtered_yelp_test %>% filter(rating == 3.5)
+
+ggplot(filtered_yelp_test2, aes(censusIncomePerCapita, censusMedianHHIncome, color=as.factor(rating))) +
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred))
 ```
