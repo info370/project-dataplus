@@ -133,6 +133,30 @@ shinyServer(function(input, output) {
       geom_boxplot(width=0.1))
   })
   
+  output$svm2 <- renderPlot({
+    model_svm <- train(rating ~ .,
+                       data = na.omit(filtered_yelp_train),
+                       method = "svmRadial",
+                       trControl=ctrl,   # Radial kernel
+                       tuneLength = 10)
+    
+    # getting performance on test set (as root mean squared error (L2 norm), R^2, mean absolute error (L1 norm))
+    predict_yelp_svm <- predict(model_svm, yelp_test_x)
+    postResample(predict_yelp_svm, yelp_test_y$rating)
+    
+    # creating grid of data to plot results
+    grid <- filtered_yelp_test %>%
+      gather_predictions(model_svm)
+    
+    varImp(model_svm) # getting most important variables
+    
+    return(ggplot(filtered_yelp_test, aes(as.factor(rating), input$predVariableSVM2)) +
+             geom_violin() + 
+             stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") + 
+             stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+             geom_boxplot(width=0.1))
+  })
+  
   output$spline <- renderPlot({
     model_spline <- train(rating ~ ., # outcome is "medv", predictors=all other columns
                           data = na.omit(filtered_yelp_train),  # training data

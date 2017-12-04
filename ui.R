@@ -19,57 +19,19 @@ shinyUI(navbarPage('Final Project 370',
                             plotOutput("examplePlot"),
                             p("Write analysis here on data")
                    ),
-                   tabPanel('Results',
-                            h3('Results', align = "center"),
-                            p("To first get the results, we ran a feature selection in order to determine
-                              the best preditive values. From the data we were able to gather, there were
-                              only a few selected values that were measureable and not descriptive. We ran
-                              a correlation matrix and saw that the following have high correlation to our
-                              outcome value, Yelp's ratings."),
-                            p("We also used a training model to rank the importance of the features
-                              we selected"),
-                            plotOutput('importance'),
-                            p("Contining on, we wanted to see if there was a different running another
-                              feature selection model to ensure the best use of the preditive values
-                              we had chosen"),
-                            plotOutput("rfeControl"),
-                            hr(),
-                            p("Using the same pred variables, we continue by training the data into a regression
-                              model and getting the following results"),
-                            plotOutput('Regression'),
-                            selectInput('predVariableReg', 
+                   tabPanel('Presentation Data',
+                            h3('Our findings', align = "center"),
+                            plotOutput('svm2'),
+                            selectInput('predVariableSVM2', 
                                         label="Preditive Variable", 
                                         choices =  c("Census IncomePerCapita" = "censusIncomePerCapita",
                                                      "Census Gini Index of Inequality" = "censusGiniIndexOfInequality", 
-                                                     "Review Count" = "reviewCount", 
-                                                     "Census Median Household Income" = "censusMedianHHIncome", 
-                                                     "Price" = "price")),
-                            
-                            p("Using the same pred variables, we continue by training the data into a SVM
-                              model and getting the following results"),
-                            plotOutput('svm'),
-                            selectInput('predVariableSVM', 
-                                        label="Preditive Variable", 
-                                        choices =  c("Census IncomePerCapita" = "censusIncomePerCapita",
-                                                     "Census Gini Index of Inequality" = "censusGiniIndexOfInequality", 
-                                                     "Review Count" = "reviewCount", 
-                                                     "Census Median Household Income" = "censusMedianHHIncome", 
-                                                     "Price" = "price")),
-                            
-                            p("Using the same pred variables, we continue by training the data into a spline
-                              model and getting the following results"),
-                            plotOutput("spline"),
-                            selectInput('predVariableSpline', 
-                                        label="Preditive Variable", 
-                                        choices =  c("Census IncomePerCapita" = "censusIncomePerCapita",
-                                                     "Census Gini Index of Inequality" = "censusGiniIndexOfInequality", 
-                                                     "Review Count" = "reviewCount", 
-                                                     "Census Median Household Income" = "censusMedianHHIncome", 
-                                                     "Price" = "price")),
+                                                     "Review Count" = "reviewCount")),
                             h3('Connecting Analysis', align = "center"),
                             p("Connecting analysis decision"),
                             hr(),
                             h3('Limitations', align = "center"),
-                            p("Limitations, future work")
+                            p("Limitations, future work"),
+                            p("Write analysis here on data")
                    )
 ))

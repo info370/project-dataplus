@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup}
+```{r, echo=FALSE, include=FALSE}
 if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
 if(!require(tidyverse)){install.packages("tidyverse"); library(tidyverse)} 
 if(!require(modelr)){install.packages("modelr"); library(modelr)} 
@@ -19,12 +19,13 @@ if(!require(DEoptimR)){install.packages("DEoptimR"); require(DEoptimR)}
 
 if(!require(caret)){install.packages("caret"); require(caret)} # ML package WITHOUT its dependencies. Should not take as long
 if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
 set.seed(370)
 
 # if(!require(caret)){install.packages("caret", dependencies = c("Depends", "Suggests")); require(caret)} # ML package and its dependencies. Do NOT need to run for class. Would be good to install for use of caret in general. This will take awhile!
 ```
 
-```{r}
+```{r, echo=FALSE, include=FALSE}
 # Getting data
 json_file <- "SeattleYelpRestaurants.json"
 yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) 
@@ -38,7 +39,7 @@ filtered.yelp$rating = yelp.data[,"rating"]
 ```
 
 
-```{r}
+```{r, echo=FALSE, include=FALSE}
 # splitting boston data into train+validate and test sets
 
 split_proportion = 0.8
@@ -56,7 +57,7 @@ yelp_test_y <- filtered.yelp %>% dplyr::select(rating) # select outcome data for
 ```
 
 Defining how we're evaluating models (10 fold cross-validation, repeated 2 times)
-```{r}
+```{r, echo=FALSE, include=FALSE}
 ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
 ```
 
@@ -65,7 +66,7 @@ ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cros
 For regression, the output is continuous or ordered
 
 ## Linear Regression
-```{r}
+```{r, echo=FALSE}
 model_lm <- train(rating ~ ., # outcome is "medv", all other columns are predictors
                   data = filtered_yelp_train, # training data
                   method = "lm", # model type (linear model)
@@ -89,59 +90,54 @@ varImp(model_lm)
 # 5 features 
 #censusIncomePerCapita
 p1 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
-  geom_violin() 
-# violin plot with mean points
-p1 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p1 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p1 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p1
 
 #censusGiniIndexOfInequality
 p2 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
-  geom_violin() 
-# violin plot with mean points
-p2 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p2 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p2 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p2
 
 #reviewCount
 p3 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
-  geom_violin() 
-# violin plot with mean points
-p3 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p3 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p3 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p3
 
 #censusMedianHHIncome
 p4 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
-  geom_violin() 
-# violin plot with mean points
-p4 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p4 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p4 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p4
 
 #price 
 p5 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
-  geom_violin() 
-# violin plot with mean points
-p5 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p5 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p5 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p5
 
 ```
 
 ## SVM
  
-```{r}
+```{r, echo=FALSE}
 model_svm <- train(rating ~ .,
                   data = filtered_yelp_train,
                   method = "svmRadial",
@@ -162,58 +158,53 @@ varImp(model_svm) # getting most important variables
 # 5 features 
 #censusIncomePerCapita
 p6 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
-  geom_violin() 
-# violin plot with mean points
-p6 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p6 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p6 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p6
 
 #censusGiniIndexOfInequality
 p7 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
-  geom_violin() 
-# violin plot with mean points
-p7 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p7 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p7 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p7
 
 #reviewCount
 p8 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
-  geom_violin() 
-# violin plot with mean points
-p8 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p8 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p8 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p8
 
 #censusMedianHHIncome
 p9 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
-  geom_violin() 
-# violin plot with mean points
-p9 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p9 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p9 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p9
 
 #price 
 p10 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
-  geom_violin() 
-# violin plot with mean points
-p10 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p10 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p10 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p10
 
 ```
 
 ## SPLINE
-```{r}
+```{r, echo=FALSE}
 if(!require(gam)){install.packages("gam"); require(gam)} # only need this is dependencies of caret were not installed
 
 
@@ -242,51 +233,46 @@ varImp(model_svm) # getting most important variables
 # 5 features 
 #censusIncomePerCapita
 p11 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
-  geom_violin() 
-# violin plot with mean points
-p11 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p11 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p11 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p11
 
 #censusGiniIndexOfInequality
 p12 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
-  geom_violin() 
-# violin plot with mean points
-p12 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p12 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p12 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p12
 
 #reviewCount
 p13 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
-  geom_violin() 
-# violin plot with mean points
-p13 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p13 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p13 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p13
 
 #censusMedianHHIncome
 p14 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
-  geom_violin() 
-# violin plot with mean points
-p14 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p14 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p14 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p14
 
 #price 
 p15 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
-  geom_violin() 
-# violin plot with mean points
-p15 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
-# violin plot with median points
-p15 + stat_summary(fun.y=median, geom="point", size=2, color="red")
-# violin plot with interquartile range 
-p15 + geom_boxplot(width=0.1)
+  geom_violin() +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") + 
+  geom_boxplot(width=0.1)
+
+p15
 ```
