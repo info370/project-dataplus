@@ -35,7 +35,6 @@ price.num <- c(nchar(yelp.data[,"price"]))
 filtered.yelp$price = price.num
 
 filtered.yelp$rating = yelp.data[,"rating"]
-
 ```
 
 
@@ -87,9 +86,57 @@ grid <- filtered_yelp_test %>%
 # getting important variales
 varImp(model_lm)
 
-ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncomePerCapita)) +
-  geom_point() + 
-  geom_line(data = grid, aes(y = pred))
+# 5 features 
+#censusIncomePerCapita
+p1 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
+  geom_violin() 
+# violin plot with mean points
+p1 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p1 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p1 + geom_boxplot(width=0.1)
+
+#censusGiniIndexOfInequality
+p2 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
+  geom_violin() 
+# violin plot with mean points
+p2 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p2 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p2 + geom_boxplot(width=0.1)
+
+#reviewCount
+p3 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
+  geom_violin() 
+# violin plot with mean points
+p3 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p3 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p3 + geom_boxplot(width=0.1)
+
+#censusMedianHHIncome
+p4 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
+  geom_violin() 
+# violin plot with mean points
+p4 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p4 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p4 + geom_boxplot(width=0.1)
+
+#price 
+p5 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
+  geom_violin() 
+# violin plot with mean points
+p5 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p5 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p5 + geom_boxplot(width=0.1)
+
 ```
 
 ## SVM
@@ -111,14 +158,58 @@ grid <- filtered_yelp_test %>%
 
 varImp(model_svm) # getting most important variables
 
-# only plotting prediction along most important variables
-ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating)) + 
-  geom_point() + 
-  geom_line(data = grid, aes(y = pred))
 
-ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating)) + 
-  geom_point() + 
-  geom_line(data = grid, aes(y = pred))
+# 5 features 
+#censusIncomePerCapita
+p6 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
+  geom_violin() 
+# violin plot with mean points
+p6 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p6 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p6 + geom_boxplot(width=0.1)
+
+#censusGiniIndexOfInequality
+p7 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
+  geom_violin() 
+# violin plot with mean points
+p7 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p7 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p7 + geom_boxplot(width=0.1)
+
+#reviewCount
+p8 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
+  geom_violin() 
+# violin plot with mean points
+p8 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p8 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p8 + geom_boxplot(width=0.1)
+
+#censusMedianHHIncome
+p9 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
+  geom_violin() 
+# violin plot with mean points
+p9 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p9 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p9 + geom_boxplot(width=0.1)
+
+#price 
+p10 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
+  geom_violin() 
+# violin plot with mean points
+p10 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p10 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p10 + geom_boxplot(width=0.1)
+
 ```
 
 ## SPLINE
@@ -145,12 +236,57 @@ grid <- filtered_yelp_test %>%
 
 varImp(model_spline) # getting most important variables
 
-# only plotting prediction along most important variables
-ggplot(filtered_yelp_test, aes(censusIncomePerCapita, rating, color=censusIncomePerCapita)) + 
-  geom_point() + 
-  geom_line(data = grid, aes(y = pred))
+varImp(model_svm) # getting most important variables
 
-ggplot(filtered_yelp_test, aes(censusMedianHHIncome, rating, color=censusMedianHHIncome)) + 
-  geom_point() + 
-  geom_line(data = grid, aes(y = pred))
+
+# 5 features 
+#censusIncomePerCapita
+p11 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusIncomePerCapita)) +
+  geom_violin() 
+# violin plot with mean points
+p11 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p11 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p11 + geom_boxplot(width=0.1)
+
+#censusGiniIndexOfInequality
+p12 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusGiniIndexOfInequality)) +
+  geom_violin() 
+# violin plot with mean points
+p12 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p12 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p12 + geom_boxplot(width=0.1)
+
+#reviewCount
+p13 <- ggplot(filtered_yelp_test, aes(as.factor(rating), reviewCount)) +
+  geom_violin() 
+# violin plot with mean points
+p13 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p13 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p13 + geom_boxplot(width=0.1)
+
+#censusMedianHHIncome
+p14 <- ggplot(filtered_yelp_test, aes(as.factor(rating), censusMedianHHIncome)) +
+  geom_violin() 
+# violin plot with mean points
+p14 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p14 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p14 + geom_boxplot(width=0.1)
+
+#price 
+p15 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
+  geom_violin() 
+# violin plot with mean points
+p15 + stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue")
+# violin plot with median points
+p15 + stat_summary(fun.y=median, geom="point", size=2, color="red")
+# violin plot with interquartile range 
+p15 + geom_boxplot(width=0.1)
 ```
