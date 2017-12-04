@@ -41,7 +41,7 @@ filtered.yelp$rating = yelp.data[,"rating"]
 ```{r}
 # splitting boston data into train+validate and test sets
 
-split_proportion = 0.8 # specify proportion of data used for training
+split_proportion = 0.8
 
 # select outcome variable
 outcome <- filtered.yelp %>% dplyr::select(rating)
