@@ -1,7 +1,7 @@
 'use strict';
 
 const axios = require('axios');
-const headUrl = 'http://data.fcc.gov/api/block/find?format=json&';
+const headUrl = 'http://data.fcc.gov/api/block/find?format=json';
 const fs = require('file-system');
 const _ = require('lodash');
 var yelpObject = [];
@@ -32,6 +32,8 @@ function createPromise(lat, long) {
         method: 'get',
         url: apiUrl,
         responseType: 'json'
+    }).then((error) => {
+        console.log("broken link: "+ apiUrl);
     });
 }
 

@@ -13,19 +13,20 @@ var yelpObject = [];
 // @param: categories type
 // run one at a time
 
-//performCall('food');
-performCall('restaurants');
+performCall('food');
+//performCall('restaurants');
 
 function performCall(categoryType) {
-  fs.readFile('./Seattle_Census_Tract_Data.csv', function (err, data) {
+  fs.readFile('./Long_and_lat/LongLatOfSeattle.csv', function (err, data) {
     parse(data, { columns: true }, function (err, dataValue) {
-      performYelpRequest(dataValue,categoryType);
+      performYelpRequest(dataValue, categoryType);
     })
   })
 }
 
-function performYelpRequest(seattleCensus,categoryType) {
+function performYelpRequest(seattleCensus, categoryType) {
   var yelpPromises = [];
+  debugger;
   yelp.accessToken(clientId, clientSecret).then(response => {
     var client = yelp.client(response.jsonBody.access_token);
     for (let i = 0; i < seattleCensus.length; i++) {
@@ -42,7 +43,7 @@ function performYelpRequest(seattleCensus,categoryType) {
       Promise.all(yelpPromises).then(response => {
         var totalNumber = countAllRestaurants(response);
         for (let i = 0; i < response.length; i++) {
-          loopBusinessObjects(response[i].jsonBody.businesses, totalNumber,categoryType);
+          loopBusinessObjects(response[i].jsonBody.businesses, totalNumber, categoryType);
         }
       })
     }
@@ -63,8 +64,9 @@ function runRequest(searchRequest, client) {
   return client.search(searchRequest)
 }
 
-function loopBusinessObjects(resultObject, totalRestaurant,categoryType) {
+function loopBusinessObjects(resultObject, totalRestaurant, categoryType) {
   for (let i = 0; i < resultObject.length; i++) {
+    let type = resultObject[i].categories.length === 0 ? null : resultObject[i].categories[0].title;
     var businessObject = {
       id: resultObject[i].id,
       name: resultObject[i].name,
@@ -78,7 +80,8 @@ function loopBusinessObjects(resultObject, totalRestaurant,categoryType) {
       city: resultObject[i].location.city,
       zipCode: resultObject[i].location.zip_code,
       state: resultObject[i].location.state,
-      phone: resultObject[i].phone
+      phone: resultObject[i].phone,
+      category: type
     }
     yelpObject.push(businessObject);
     if (totalRestaurant === yelpObject.length) {
