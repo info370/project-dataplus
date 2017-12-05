@@ -13,8 +13,8 @@ var yelpObject = [];
 // @param: categories type
 // run one at a time
 
-//performCall('food');
-performCall('restaurants');
+performCall('food');
+//performCall('restaurants');
 
 function performCall(categoryType) {
   fs.readFile('./Seattle_Census_Tract_Data.csv', function (err, data) {
@@ -65,6 +65,7 @@ function runRequest(searchRequest, client) {
 
 function loopBusinessObjects(resultObject, totalRestaurant,categoryType) {
   for (let i = 0; i < resultObject.length; i++) {
+    let type = resultObject[i].categories.length === 0 ? null : resultObject[i].categories[0].title;
     var businessObject = {
       id: resultObject[i].id,
       name: resultObject[i].name,
@@ -78,7 +79,8 @@ function loopBusinessObjects(resultObject, totalRestaurant,categoryType) {
       city: resultObject[i].location.city,
       zipCode: resultObject[i].location.zip_code,
       state: resultObject[i].location.state,
-      phone: resultObject[i].phone
+      phone: resultObject[i].phone,
+      category: type  
     }
     yelpObject.push(businessObject);
     if (totalRestaurant === yelpObject.length) {
