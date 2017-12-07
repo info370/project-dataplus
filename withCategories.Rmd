@@ -30,27 +30,128 @@ yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(rev
 low <- quantile(yelp.data$censusMedianHHIncome, 0.33) # cutoff number
 high <- quantile(yelp.data$censusMedianHHIncome, 0.66) # cutoff number
 
-filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category"))
+below.avg <- yelp.data %>% filter(censusMedianHHIncome < low)
+above.avg <- yelp.data %>% filter(censusMedianHHIncome > high)
 
-filtered.yelp.wo.census <- subset(yelp.data, select=c("reviewCount", "category"))
+below.avg.wo.census <- subset(below.avg, select=c("reviewCount", "price", "rating"))
+above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "price", "rating"))
+#above.avg.wo.census$category <- as.factor(above.avg.wo.census$category)
+
+
+filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
+
 
 price.num <- c(nchar(yelp.data[,"price"]))
+# price and rating for data w census
 filtered.yelp.w.census$price = price.num
-filtered.yelp.wo.census$price = price.num
-
 filtered.yelp.w.census$rating = yelp.data[,"rating"]
-filtered.yelp.wo.census$rating = yelp.data[,"rating"]
 
-below.avg <- filtered.yelp %>% filter(censusMedianHHIncome < low)
-above.avg <- filtered.yelp %>% filter(censusMedianHHIncome > high)
+#price and rating for below averge filtered data
+price.num.below <- c(nchar(below.avg.wo.census[,"price"]))
+below.avg.wo.census$price = price.num.below
+
+#price and rating for above average filtered data
+price.num.above <- c(nchar(above.avg.wo.census[,"price"]))
+above.avg.wo.census$price = price.num.above
+
 ```
-
-## Correlation
+## Correlation (need to confirm whether category should be a numeric value or factor)
 ```{r, echo=FALSE}
-corr_matrix <- cor(filtered.yelp)# correlations between all predictor vars
+#filtered.yelp.w.census$category <- as.factor(filtered.yelp.w.census$category)
+corr_matrix <- cor(filtered.yelp.w.census)# correlations between all predictor vars
 
 cutoff <- 0.2 # should be higher in practice
 
 highly_corr <- findCorrelation(corr_matrix, cutoff=cutoff)
 print(colnames(filtered.yelp)[highly_corr]) # age is highly correalted with pregnant
+```
+
+## Ranked by Importance (need to confirm whether category should be a numeric value or factor)
+```{r, echo=FALSE}
+filtered.yelp.w.ratings <- filtered.yelp
+no.na.rating <- yelp.data[,"rating"]
+filtered.yelp.w.ratings$rating <- no.na.rating[!is.na(no.na.rating)]
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+model <- train(rating ~., data=filtered.yelp.w.ratings, method = "knn", preProcess = "scale", trControl = control)
+
+importance <- varImp(model)
+
+ggplot(importance)
+```
+
+## RFE (need to confirm whether category should be a numeric value or factor)
+```{r, echo=FALSE}
+control <- rfeControl(functions = rfFuncs, method="cv", number=10)
+results <- rfe(filtered.yelp.w.ratings[,1:5], filtered.yelp.w.ratings[,6], sizes = c(1:5), rfeControl = control)
+
+results
+ggplot(results)
+```
+
+## Create proportion
+```{r, echo=FALSE, include=FALSE}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8
+
+# select outcome variable for below avg HH income
+below.avg.outcome <- below.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+below.avg.train_ind <- createDataPartition(below.avg.outcome$rating, p = split_proportion, list = FALSE)
+below.avg.train <- below.avg.wo.census[below.avg.train_ind,] # get training below avg data
+below.avg.test <- below.avg.wo.census[-below.avg.train_ind,] # get test below avg data
+
+# select outcome variable for above avg HH income
+above.avg.outcome <- above.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+above.avg.train_ind <- createDataPartition(above.avg.outcome$rating, p = split_proportion, list = FALSE)
+above.avg.train <- above.avg.wo.census[above.avg.train_ind,] # get training above avg data
+above.avg.test <- above.avg.wo.census[-above.avg.train_ind,] # get test above avg data
+
+#yelp_test_x <- filtered.yelp %>% dplyr::select(-rating) # select predictor data for test set
+#yelp_test_y <- filtered.yelp %>% dplyr::select(rating) # select outcome data for test set
+```
+## Creating training control
+```{r, echo=FALSE, include=FALSE}
+ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+```
+
+## SVM Regression Model for High SES Restaurants
+```{r}
+# high SES SVM modeling
+model_svm_high <- train(rating ~ .,
+                  data = above.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_high <- predict(model_svm_high, below.avg.test)
+#postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta.high.SES <- below.avg.test$rating - predict_yelp_svm_high
+count.high.SES.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
+count.high.SES.line
+```
+
+
+## SVM Regression Model for low SES Restaurants
+```{r}
+# low SES SVM modeling
+model_svm_low <- train(rating ~ .,
+                  data = below.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
+#postResample(predict_yelp_svm_low, below.avg$rating)
+
+#actual minus predicted
+delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
+count.low.SES.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
+count.low.SES.line
 ```
