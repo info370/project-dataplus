@@ -30,12 +30,18 @@ set.seed(370)
 json_file <- "SeattleYelpRestaurants.json"
 yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) 
 
+low <- quantile(yelp.data$censusMedianHHIncome, 0.33)
+high <- quantile(yelp.data$censusMedianHHIncome, 0.66)
+
 filtered.yelp <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality"))
 
 price.num <- c(nchar(yelp.data[,"price"]))
 filtered.yelp$price = price.num
 
 filtered.yelp$rating = yelp.data[,"rating"]
+
+below.avg <- filtered.yelp %>% filter(censusMedianHHIncome < low)
+above.avg <- filtered.yelp %>% filter(censusMedianHHIncome > high)
 ```
 
 ## Correlation
@@ -77,7 +83,7 @@ ggplot(results)
 split_proportion = 0.8
 
 # select outcome variable
-outcome <- filtered.yelp %>% dplyr::select(rating)
+outcome <- filtered.yelp %>% dplyr::select(rating) # rating column only
 
 # randomly select indices for train/validate set
 train_ind <- createDataPartition(outcome$rating, p = split_proportion, list = FALSE)
@@ -158,6 +164,41 @@ p5 <- ggplot(filtered_yelp_test, aes(as.factor(rating), price)) +
 p5
 
 ```
+
+```{r}
+# high SES SVM modeling
+model_svm_high <- train(rating ~ .,
+                  data = above.avg,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_high <- predict(model_svm_high, below.avg)
+postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta <- below.avg$rating - predict_yelp_svm_high
+count.line <- length(which(delta < 0)) / length(delta)
+```
+
+
+```{r}
+# low svm ses
+model_svm_low <- train(rating ~ .,
+                  data = below.avg,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_low <- predict(model_svm_low, above.avg)
+postResample(predict_yelp_svm_low, above.avg$rating)
+
+#actual minus predicted
+delta_low <- above.avg$rating - predict_yelp_svm_low
+count.line.low <- length(which(delta_low < 0)) / length(delta_low)
+```
+
+
 
 ## SVM
  
@@ -350,4 +391,57 @@ filtered_yelp_test2 <- filtered_yelp_test %>% filter(rating == 3.5)
 ggplot(filtered_yelp_test2, aes(censusIncomePerCapita, censusMedianHHIncome, color=as.factor(rating))) +
   geom_point() + 
   geom_line(data = grid, aes(y = pred))
+```
+
+
+```{r}
+# finding number of ratings in each socioecnomic status
+low.cutoff <- 62133
+mid.cutoff <- 85696
+
+num.ratings.low <- yelp.data %>% filter(censusMedianHHIncome < low.cutoff) %>% summarise(length(censusMedianHHIncome))
+num.ratings.mid <- yelp.data %>% filter(censusMedianHHIncome > low.cutoff & censusMedianHHIncome < mid.cutoff) %>% summarise(length(censusMedianHHIncome))
+num.ratings.high <- yelp.data %>% filter(censusMedianHHIncome > mid.cutoff) %>% summarise(length(censusMedianHHIncome))
+```
+
+```{r}
+# finding number of ratings in each socioecnomic status
+low.cutoff <- 39503
+mid.cutoff <- 50908
+
+num.income.low <- yelp.data %>% filter(censusIncomePerCapita < low.cutoff) %>% summarise(length(censusIncomePerCapita))
+num.income.mid <- yelp.data %>% filter(censusIncomePerCapita > low.cutoff & censusIncomePerCapita < mid.cutoff) %>% summarise(length(censusIncomePerCapita))
+num.income.high <- yelp.data %>% filter(censusIncomePerCapita > mid.cutoff) %>% summarise(length(censusIncomePerCapita))
+```
+
+```{r}
+# finding number of ratings in each socioecnomic status
+low.cutoff <- 0.41
+mid.cutoff <- 0.50
+
+num.gini.low <- yelp.data %>% filter(censusGiniIndexOfInequality < low.cutoff) %>% summarise(length(censusGiniIndexOfInequality))
+num.gini.mid <- yelp.data %>% filter(censusGiniIndexOfInequality > low.cutoff & censusGiniIndexOfInequality < mid.cutoff) %>% summarise(length(censusGiniIndexOfInequality))
+num.gini.high <- yelp.data %>% filter(censusGiniIndexOfInequality > mid.cutoff) %>% summarise(length(censusGiniIndexOfInequality))
+```
+
+```{r}
+# counting the number of diff price within SES
+num.price.low <- yelp.data %>% filter(censusMedianHHIncome < low.cutoff) %>% group_by(price) %>%
+  summarise(total.count=n(), count=sum(is.na(price)))
+
+num.price.mid <- yelp.data %>% filter(censusMedianHHIncome > low.cutoff & censusMedianHHIncome < mid.cutoff) %>% group_by(price) %>%
+  summarise(total.count=n(), count=sum(is.na(price)))
+
+num.price.high <- yelp.data %>% filter(censusMedianHHIncome > mid.cutoff) %>% group_by(price) %>%
+  summarise(total.count=n(), count=sum(is.na(price)))
+
+
+test.yelp.data <- yelp.data %>% mutate(SESMedianHH = ifelse(censusMedianHHIncome < 62133, 0, 
+                                                    ifelse(censusMedianHHIncome > 85696, 2, 1)))
+
+# ratingFreq <- table(test.yelp.data$rating, test.yelp.data$SESMedianHH)
+
+ggplot(test.yelp.data, mapping = aes(x=rating, fill=as.factor(SESMedianHH))) + 
+  geom_histogram(aes(y=..count../sum(..count..)))
+
 ```

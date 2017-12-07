@@ -1,0 +1,56 @@
+---
+title: "withCategories"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, include=FALSE}
+if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
+if(!require(tidyverse)){install.packages("tidyverse"); library(tidyverse)} 
+if(!require(modelr)){install.packages("modelr"); library(modelr)} 
+
+# some dependencies for caret that aren't automatically installed
+if(!require(ModelMetrics)){install.packages("ModelMetrics"); require(ModelMetrics)}
+if(!require(recipes)){install.packages("recipes"); require(recipes)}
+if(!require(DEoptimR)){install.packages("DEoptimR"); require(DEoptimR)}
+
+if(!require(caret)){install.packages("caret"); require(caret)} # ML package WITHOUT its dependencies. Should not take as long
+if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
+set.seed(370)
+```
+
+```{r, echo=FALSE, include=FALSE}
+# Getting data
+json_file <- "SeattleYelpRestaurantsWithCategory.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) 
+low <- quantile(yelp.data$censusMedianHHIncome, 0.33) # cutoff number
+high <- quantile(yelp.data$censusMedianHHIncome, 0.66) # cutoff number
+
+filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category"))
+
+filtered.yelp.wo.census <- subset(yelp.data, select=c("reviewCount", "category"))
+
+price.num <- c(nchar(yelp.data[,"price"]))
+filtered.yelp.w.census$price = price.num
+filtered.yelp.wo.census$price = price.num
+
+filtered.yelp.w.census$rating = yelp.data[,"rating"]
+filtered.yelp.wo.census$rating = yelp.data[,"rating"]
+
+below.avg <- filtered.yelp %>% filter(censusMedianHHIncome < low)
+above.avg <- filtered.yelp %>% filter(censusMedianHHIncome > high)
+```
+
+## Correlation
+```{r, echo=FALSE}
+corr_matrix <- cor(filtered.yelp)# correlations between all predictor vars
+
+cutoff <- 0.2 # should be higher in practice
+
+highly_corr <- findCorrelation(corr_matrix, cutoff=cutoff)
+print(colnames(filtered.yelp)[highly_corr]) # age is highly correalted with pregnant
+```
