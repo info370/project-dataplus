@@ -11,7 +11,6 @@ knitr::opts_chunk$set(echo = TRUE)
 if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
 if(!require(tidyverse)){install.packages("tidyverse"); library(tidyverse)} 
 if(!require(modelr)){install.packages("modelr"); library(modelr)} 
-
 # some dependencies for caret that aren't automatically installed
 if(!require(ModelMetrics)){install.packages("ModelMetrics"); require(ModelMetrics)}
 if(!require(recipes)){install.packages("recipes"); require(recipes)}
@@ -23,6 +22,7 @@ if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
 set.seed(370)
 ```
 
+## Reading and Organization Yelp Restaurants Dataset
 ```{r, echo=FALSE, include=FALSE}
 # Getting data
 json_file <- "SeattleYelpRestaurantsWithCategory.json"
@@ -89,7 +89,7 @@ results
 ggplot(results)
 ```
 
-## Create proportion
+## Create proportion for high and low SES resturants
 ```{r, echo=FALSE, include=FALSE}
 # splitting boston data into train+validate and test sets
 
@@ -154,4 +154,89 @@ predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
 delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
 count.low.SES.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
 count.low.SES.line
+```
+
+## Organize Data for Subway
+
+``` {r}
+# filter only Subways for high and low SES
+above.avg.subway <- filter(above.avg, name %in% "Subway")
+below.avg.subway <- filter(below.avg, name %in% "Subway")
+
+# filter out to only predictor variables
+above.avg.subway.wo.census <- subset(above.avg.subway, select=c("reviewCount", "price", "rating"))
+below.avg.subway.wo.census <- subset(below.avg.subway, select=c("reviewCount", "price", "rating"))
+
+#turn price into numeric for above average subway filtered data
+subway.price.num.above <- c(nchar(above.avg.subway.wo.census[,"price"]))
+above.avg.subway.wo.census$price = subway.price.num.above
+
+#turn price into numeric value for below averge subway filtered data
+subway.price.num.below <- c(nchar(below.avg.subway.wo.census[,"price"]))
+below.avg.subway.wo.census$price = subway.price.num.below
+
+above.avg.subway.wo.census
+below.avg.subway.wo.census
+```
+
+## Create proportion for high and low SES Subway
+```{r, echo=FALSE, include=FALSE}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8
+
+# select outcome variable for below avg HH income
+below.avg.subway.outcome <- below.avg.subway.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+below.avg.subway.train_ind <- createDataPartition(below.avg.subway.outcome$rating, p = split_proportion, list = FALSE)
+below.avg.subway.train <- below.avg.subway.wo.census[below.avg.subway.train_ind,] # get training below avg data
+below.avg.subway.test <- below.avg.subway.wo.census[-below.avg.subway.train_ind,] # get test below avg data
+
+# select outcome variable for above avg HH income
+above.avg.subway.outcome <- above.avg.subway.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+above.avg.subway.train_ind <- createDataPartition(above.avg.subway.outcome$rating, p = split_proportion, list = FALSE)
+above.avg.subway.train <- above.avg.subway.wo.census[above.avg.subway.train_ind,] # get training above avg data
+above.avg.subway.test <- above.avg.subway.wo.census[-above.avg.subway.train_ind,] # get test above avg data
+```
+
+## Creating training control for subway
+```{r, echo=FALSE, include=FALSE}
+ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+```
+
+
+## SVM Regression Model for High SES Subway
+```{r}
+# high SES SVM modeling
+subway_lm_high <- train(rating ~ reviewCount,
+                  data = above.avg.subway.train,
+                  method = "lm")
+
+subway_lm_high_2 <- lm(formula = rating ~ reviewCount * price, data = above.avg.subway.train)
+summary(subway_lm_high_2)
+
+predict_subway_svm_high <- predict(subway.model_svm_high, below.avg.subway.test)
+#postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta.subway.high.SES <- below.avg.subway.test$rating - predict_subway_svm_high
+count.subway.high.SES.line <- length(which(delta.subway.high.SES < 0)) / length(delta.subway.high.SES)
+count.high.SES.line
+```
+## Plotting all Yelp Restaurants in Maps
+
+``` {r}
+install.packages("ggmap")
+library(ggmap)
+
+mapgilbert <- get_map(location = c(lon = mean(yelp.data$longitude), lat = mean(yelp.data$latitude)), zoom = 11, maptype = "roadmap", scale = "auto")
+
+# plotting the map with some points on it
+ggmap(mapgilbert) +
+  geom_point(data = yelp.data, aes(x = yelp.data$longitude, y = yelp.data$latitude, fill = "red", alpha = 0.8), size = 2, shape = 21) +
+  guides(fill=FALSE, alpha=FALSE, size=FALSE)
+
 ```
