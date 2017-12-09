@@ -69,17 +69,61 @@ ggmap(mapgilbert) +
   guides(fill=FALSE, alpha=FALSE, size=FALSE)
 
 ```
+The map above is just plotting all the restaurants. In the future we may give different color for each rating. You guys can just talk about the general information about the data set. Some info listed below
+
+```{r}
+# total number of restaurants we're observing; we filter out restaurants that don't have PriceLevel, Category, and Rating
+restaurantCount <- nrow(yelp.data)
+restaurantCount
+
+# all category types
+allCategory <- as.data.frame(table(yelp.data$category))
+allCategory
+
+#total category
+categoryCount <- nrow(allCategory)
+categoryCount
+```
+
+
 
 ## Distribution of Yelp-associated Restaurants in Seattle
 ```{r, echo=FALSE}
 highSES <- ggplot(data= arrange(above.avg,censusMedianHHIncome), aes(above.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 midSES <- ggplot(data= arrange(mid.avg,censusMedianHHIncome), aes(mid.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
 lowSES <- ggplot(data= arrange(below.avg,censusMedianHHIncome), aes(below.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
+We broke down data to high, mid, and low SES based on median household income, but not Seattle household income. we split dataset in 3. lower third consider low SES, mid third consider mid SES.
+
+High SES : anything more than 74,559
+Low SES: anything less than 59,275
+Mid SES: anything in between
+
+```{r}
 highSES
+```
+
+This graph is plotting all the restaurants that are consider high SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
+```{r}
 midSES
+```
+
+This graph is plotting all the restaurants that are consider mid SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
+```{r}
 lowSES
 ```
+
+This graph is plotting all the restaurants that are consider low SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
 
 ## Distribution of Yelp-associated Restaurants By Price level in Seattle
 ```{r, echo=FALSE}
@@ -95,6 +139,11 @@ restaurantsByPrice <- ggplot(priceFreq, aes(fill=Var2, y=Freq, x=Var1)) +
 restaurantsByPrice
 ```
 
+This graph is plotting the distribution of restaurants grouped by High/low/mid SES. 
+X axis: Price level or $ sign (low= 1 sign to high= 4 signs)
+Y axis: the sum of restaurants in the price level
+
+
 ## Distribution of Yelp-associated Restaurants by Rating Seattle
 ```{r, echo=FALSE}
 ratingFreq <- as.data.frame(table(yelp.data$rating))
@@ -106,6 +155,11 @@ restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) +
 restaurantsByRating
 ```
 
+This graph is plotting the distribution of restaurants grouped by rating. 
+X axis: rating (low to high)
+Y axis: percentage (frquency / sum of all restaurants) in number of restaurants for each rating
+
+
 ## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
 ```{r, echo=FALSE}
 ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncome)) +
@@ -116,3 +170,5 @@ ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncom
 
 ratingViolinPlot
 ```
+
+Eugenia might have a better idea for this graph.
