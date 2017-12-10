@@ -204,7 +204,7 @@ above.avg.subway.test <- above.avg.subway.wo.census[-above.avg.subway.train_ind,
 
 ## Creating training control for subway
 ```{r, echo=FALSE, include=FALSE}
-ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+ctrl <- trainControl(method = "repeatedcv", number=5, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
 ```
 
 
@@ -213,10 +213,11 @@ ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cros
 # high SES SVM modeling
 subway_lm_high <- train(rating ~ reviewCount,
                   data = above.avg.subway.train,
-                  method = "lm")
+                  method = "lm",
+                  trControl=ctrl)
 
 subway_lm_high_2 <- lm(formula = rating ~ reviewCount * price, data = above.avg.subway.train)
-summary(subway_lm_high_2)
+summary(subway_lm_high)
 
 predict_subway_svm_high <- predict(subway.model_svm_high, below.avg.subway.test)
 #postResample(predict_yelp_svm_high, below.avg$rating)
