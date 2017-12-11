@@ -1,0 +1,176 @@
+---
+title: "finalArtifact"
+date: "December 8, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, include=FALSE}
+if(!require(mlbench)){install.packages("mlbench"); require(mlbench)} # common datasets to use
+if(!require(tidyverse)){install.packages("tidyverse"); library(tidyverse)} 
+if(!require(modelr)){install.packages("modelr"); library(modelr)} 
+# load Google Maps
+if(!require(ggmap)){install.packages("ggmap"); library(ggmap)}
+
+# some dependencies for caret that aren't automatically installed
+if(!require(ModelMetrics)){install.packages("ModelMetrics"); require(ModelMetrics)}
+if(!require(recipes)){install.packages("recipes"); require(recipes)}
+if(!require(DEoptimR)){install.packages("DEoptimR"); require(DEoptimR)}
+
+if(!require(caret)){install.packages("caret"); require(caret)} # ML package WITHOUT its dependencies. Should not take as long
+if(!require(dplyr)){install.packages("dplyr"); require(dplyr)}
+if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
+set.seed(370)
+```
+
+## Reading and Organization Yelp Restaurants Dataset
+```{r, echo=FALSE, include=FALSE}
+# Getting and filtering data
+json_file <- "SeattleYelpRestaurantsWithCategory.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) 
+
+# convert price into numeric value
+price.num <- c(nchar(yelp.data[,"price"]))
+yelp.data$price = price.num
+
+# convert censusTract to numeric value
+#tract.num <- c(nchar(yelp.data[,"censusTract"]))
+#yelp.data$censusTract = as.factor(yelp.data$censusTract)
+
+
+# define the low/high quantile threshold by MedianHHincome
+low <- quantile(yelp.data$censusMedianHHIncome, 0.33) # cutoff number
+high <- quantile(yelp.data$censusMedianHHIncome, 0.66) # cutoff number
+
+# filter data into 2 distinct set: high SES and low SES
+above.avg <- yelp.data %>% filter(censusMedianHHIncome > high)
+below.avg <- yelp.data %>% filter(censusMedianHHIncome < low)
+mid.avg <- yelp.data %>% filter(censusMedianHHIncome < high & censusMedianHHIncome > low)
+
+# filter data to only have relating variables: reviewCount, price and rating
+# this dataset is used for modeling
+above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "price", "rating"))
+below.avg.wo.census <- subset(below.avg, select=c("reviewCount", "price", "rating"))
+
+# yelp restaurants with all variables/feature
+filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusTract", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
+```
+
+## Plotting all Yelp Restaurants in Maps
+```{r, echo=FALSE}
+mapgilbert <- get_map(location = c(lon = mean(yelp.data$longitude), lat = mean(yelp.data$latitude)), zoom = 11, maptype = "roadmap", scale = "auto")
+
+# plotting the map with some points on it
+ggmap(mapgilbert) +
+  geom_point(data = yelp.data, aes(x = yelp.data$longitude, y = yelp.data$latitude, fill = "red", alpha = 0.8), size = 2, shape = 21) +
+  guides(fill=FALSE, alpha=FALSE, size=FALSE)
+
+```
+The map above is just plotting all the restaurants. In the future we may give different color for each rating. You guys can just talk about the general information about the data set. Some info listed below
+
+```{r}
+# total number of restaurants we're observing; we filter out restaurants that don't have PriceLevel, Category, and Rating
+restaurantCount <- nrow(yelp.data)
+restaurantCount
+
+# all category types
+allCategory <- as.data.frame(table(yelp.data$category))
+allCategory
+
+#total category
+categoryCount <- nrow(allCategory)
+categoryCount
+```
+
+
+
+## Distribution of Yelp-associated Restaurants in Seattle
+```{r, echo=FALSE}
+highSES <- ggplot(data= arrange(above.avg,censusMedianHHIncome), aes(above.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+midSES <- ggplot(data= arrange(mid.avg,censusMedianHHIncome), aes(mid.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+lowSES <- ggplot(data= arrange(below.avg,censusMedianHHIncome), aes(below.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+We broke down data to high, mid, and low SES based on median household income, but not Seattle household income. we split dataset in 3. lower third consider low SES, mid third consider mid SES.
+
+High SES : anything more than 74,559
+Low SES: anything less than 59,275
+Mid SES: anything in between
+
+```{r}
+highSES
+```
+
+This graph is plotting all the restaurants that are consider high SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
+```{r}
+midSES
+```
+
+This graph is plotting all the restaurants that are consider mid SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
+```{r}
+lowSES
+```
+
+This graph is plotting all the restaurants that are consider low SES by census tract code. 
+X axis: The census tract code is sorted from left to right by median household income(low to high)
+Y axis: the sum of restaurants in the specific census tract
+
+
+## Distribution of Yelp-associated Restaurants By Price level in Seattle
+```{r, echo=FALSE}
+rating.data <- yelp.data %>% mutate(SESMedianHH = ifelse(censusMedianHHIncome < 62133, "Low SES", 
+                                                    ifelse(censusMedianHHIncome > 85696, "High SES", "Mid SES")))
+
+priceFreq <- as.data.frame(table(rating.data$price,rating.data$SESMedianHH))
+
+priceFreq$percentage = priceFreq$Freq / sum(priceFreq$Freq)
+  
+restaurantsByPrice <- ggplot(priceFreq, aes(fill=Var2, y=Freq, x=Var1)) + 
+    geom_bar( stat="identity", position="dodge")
+restaurantsByPrice
+```
+
+This graph is plotting the distribution of restaurants grouped by High/low/mid SES. 
+X axis: Price level or $ sign (low= 1 sign to high= 4 signs)
+Y axis: the sum of restaurants in the price level
+
+Compared to the commonly thought theme that higher SES areas would have more expensice it seems that middle SES areas tend to have more expensive restants. Not only do they have more expensive restaurants, they have the most number of pricier restaurants overall. It might be because higher SES areas tend to be suburban and not have many shops while Middle SES have more malls, restaurants and complexs as the resnt would be cheaper in those areas but they are still close to High SES areas so they can still pull customers from there. 
+
+
+## Distribution of Yelp-associated Restaurants by Rating Seattle
+```{r, echo=FALSE}
+ratingFreq <- as.data.frame(table(yelp.data$rating))
+
+ratingFreq$percentage = ratingFreq$Freq / sum(ratingFreq$Freq)
+  
+restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) + 
+    geom_line()
+restaurantsByRating
+```
+
+This graph is plotting the distribution of restaurants grouped by rating. 
+X axis: rating (low to high)
+Y axis: percentage (frquency / sum of all restaurants) in number of restaurants for each rating
+
+
+## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
+```{r, echo=FALSE}
+ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncome)) +
+  geom_violin() +
+  geom_boxplot(width=0.1) +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red")
+
+ratingViolinPlot
+```
+
+Eugenia might have a better idea for this graph.
