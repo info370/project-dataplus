@@ -29,8 +29,9 @@ set.seed(370)
 ## Reading and Organization Yelp Restaurants Dataset
 ```{r, echo=FALSE, include=FALSE}
 # Getting and filtering data
-json_file <- "SeattleYelpRestaurantsWithCategory.json"
-yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) 
+#json_file <- "SeattleYelpRestaurantsWithCategory.json"
+json_file <- "SeattleYelpRestaurantsWithHealth.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) %>% filter(!is.na(healthInspectionScore))
 
 # convert price into numeric value
 price.num <- c(nchar(yelp.data[,"price"]))
@@ -40,6 +41,18 @@ yelp.data$price = price.num
 #tract.num <- c(nchar(yelp.data[,"censusTract"]))
 #yelp.data$censusTract = as.factor(yelp.data$censusTract)
 
+# cast Health Inspection categorical data into factor for dummy variables
+yelp.data$healthInspectionResult <- as.factor(yelp.data$healthInspectionResult)
+yelp.data$healthViolationType <- as.factor(yelp.data$healthViolationType)
+
+# create dummy variables for healthInspectionResult and healthViolationType
+
+dmy <- dummyVars(~ healthInspectionResult + healthViolationType, data=yelp.data) # notice how we specify which columns to "dumbify""
+
+#dmy <- dummyVars(~ ., data=yelp.data) # or run this to dumbify all variables that are factors
+
+# add dummy variables data frame to the rest
+yelp.data <- data.frame(yelp.data,predict(dmy, newdata = yelp.data))
 
 # define the low/high quantile threshold by MedianHHincome
 low <- quantile(yelp.data$censusMedianHHIncome, 0.33) # cutoff number
@@ -52,8 +65,22 @@ mid.avg <- yelp.data %>% filter(censusMedianHHIncome < high & censusMedianHHInco
 
 # filter data to only have relating variables: reviewCount, price and rating
 # this dataset is used for modeling
-above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "price", "rating"))
-below.avg.wo.census <- subset(below.avg, select=c("reviewCount", "price", "rating"))
+
+# only using healthInspectionResult dummy variables: Satisfactory and unsatisfactory
+above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "rating", "healthInspectionScore", "healthViolationPoints", "healthInspectionGrade", "healthViolationType.","healthViolationType.blue","healthViolationType.red"))
+below.avg.wo.census <- subset(below.avg, select=c("reviewCount","rating", "healthInspectionScore", "healthViolationPoints", "healthInspectionGrade", "healthViolationType.","healthViolationType.blue","healthViolationType.red"))
+
+check.unique.dummy.variable <- function(dataset) {
+  result.complete <-  length(unique(dataset$healthInspectionResult.Complete)) > 1
+  result.incomplete <- length(unique(dataset$healthInspectionResult.Incomplete)) > 1
+  result.not.ready <- length(unique(dataset$healthInspectionResult.Not.Ready.For.Inspection)) > 1
+  result.satisfactory <- length(unique(dataset$healthInspectionResult.Satisfactory)) > 1
+  result.unsatisfactory <- length(unique(dataset$healthInspectionResult.Unsatisfactory)) > 1
+  result.violationtype <- length(unique(dataset$healthViolationType.)) > 1
+  result.violationBlue <- length(unique(dataset$healthViolationType.blue)) > 1
+  result.violationRed <- length(unique(dataset$healthViolationType.red)) > 1
+  return(c(result.complete,result.incomplete,result.not.ready,result.satisfactory,result.unsatisfactory,result.violationtype,result.violationBlue,result.violationRed))
+}
 
 # yelp restaurants with all variables/feature
 filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusTract", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
@@ -172,3 +199,70 @@ ratingViolinPlot
 ```
 
 Eugenia might have a better idea for this graph.
+
+## Create proportion for high and low SES resturants
+```{r, echo=FALSE, include=FALSE}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8
+
+# select outcome variable for below avg HH income
+below.avg.outcome <- below.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+below.avg.train_ind <- createDataPartition(below.avg.outcome$rating, p = split_proportion, list = FALSE)
+below.avg.train <- below.avg.wo.census[below.avg.train_ind,] # get training below avg data
+below.avg.test <- below.avg.wo.census[-below.avg.train_ind,] # get test below avg data
+
+# select outcome variable for above avg HH income
+above.avg.outcome <- above.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+above.avg.train_ind <- createDataPartition(above.avg.outcome$rating, p = split_proportion, list = FALSE)
+above.avg.train <- above.avg.wo.census[above.avg.train_ind,] # get training above avg data
+above.avg.test <- above.avg.wo.census[-above.avg.train_ind,] # get test above avg data
+
+#yelp_test_x <- filtered.yelp %>% dplyr::select(-rating) # select predictor data for test set
+#yelp_test_y <- filtered.yelp %>% dplyr::select(rating) # select outcome data for test set
+```
+## Creating training control
+```{r, echo=FALSE, include=FALSE}
+ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+```
+
+## SVM Regression Model for High SES Restaurants
+```{r}
+# high SES SVM modeling
+model_svm_high <- train(rating ~ .,
+                  data = above.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_high <- predict(model_svm_high, below.avg.test)
+#postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta.high.SES <- below.avg.test$rating - predict_yelp_svm_high
+count.high.SES.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
+count.high.SES.line
+```
+
+
+## SVM Regression Model for low SES Restaurants
+```{r}
+# low SES SVM modeling
+model_svm_low <- train(rating ~ .,
+                  data = below.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
+#postResample(predict_yelp_svm_low, below.avg$rating)
+
+#actual minus predicted
+delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
+count.low.SES.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
+count.low.SES.line
+```
