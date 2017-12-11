@@ -28,6 +28,7 @@ function performGoogleRadarSearch(seattleLatlong) {
         axios.all(googlePromises).then(response => {
             let totalNumber = countAllRestaurants(response);
             for (let i = 0; i < response.length; i++) {
+                debugger;
                 loopRestaurants(response[i].json.results,totalNumber);
             }
         })
@@ -57,7 +58,7 @@ function loopRestaurants(resultArray,totalRestaurant) {
     for (let i = 0; i < resultArray.length; i++) {
         var businessObject = {
             id: resultArray[i].id,
-            placeId: resultArray[i].id,
+            placeId: resultArray[i]['place_id'],
             Latitude: resultArray[i].geometry.location.lat,
             Longitude: resultArray[i].geometry.location.lng
         }
