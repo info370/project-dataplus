@@ -139,12 +139,11 @@ restaurantsByPrice <- ggplot(priceFreq, aes(fill=Var2, y=Freq, x=Var1)) +
 restaurantsByPrice
 ```
 
-This graph is plotting the distribution of restaurants grouped by High/low/mid SES. 
-X axis: Price level or $ sign (low= 1 sign to high= 4 signs)
-Y axis: the sum of restaurants in the price level
 
+This graph is plotting the distribution of restaurants based on their reviews while being grouped by High/low/mid SES. The x axis indicates the price level or $ sign with low being the same as 1 dollar sign and high being equivalent to 4 dollar signs. The y axis holds the number of the restaurants in the price level. 
 
 This graph demonstrates that Middle SES areas and Low SES areas have a lot of super cheap restaurants (1), with Low SES having the most and High SES areas having the least. When it comes to restaurants that are slightly more expensive (2), Middle SES areas have the most, and Low SES areas have the second most. This price category also has the most number of restaurants. The even more expensive restaurants (3) tend to be prevalent in the Middle SES areas and less prevalent in High SES areas. Low SES areas have the least. For the most expensive restaurants (4), Middle SES areas have the most, High SES areas have the second most and the Low SES areas have the least. This category also has the fewest number of restaurants. It seems based on the data that majority of the restaurants are in the 1 and 2 categories of price.
+
 
 
 
@@ -159,12 +158,12 @@ restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) +
 restaurantsByRating
 ```
 
-This graph is plotting the distribution of restaurants grouped by rating. 
-X axis: rating (low to high)
-Y axis: percentage (frquency / sum of all restaurants) in number of restaurants for each rating
+This graph is plotting the distribution of restaurants grouped by rating from 1 to 5 on a 0.5 scale. The x axis indicates the restaurant rating with 1 being the lowest and 5 being the highest. The y axis holds percentage in number of restaurants for each rating. The percentage for each rating level was calculated by dividing the frequency of restaurants with that rating by the sum of all restaurants in Seattle.  
+
 
 
 This line graph indicates that out of all the restaurants in the Seattle area, a rating of 4 is the most common and that restaurants tend to have a rating higher than 3.
+
 
 ## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
 ```{r, echo=FALSE}
