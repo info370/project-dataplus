@@ -125,7 +125,7 @@ X axis: The census tract code is sorted from left to right by median household i
 Y axis: the sum of restaurants in the specific census tract
 
 
-## Distribution of Yelp-associated Restaurants By Price level in Seattle
+  ## Distribution of Yelp-associated Restaurants By Price level in Seattle
 ```{r, echo=FALSE}
 rating.data <- yelp.data %>% mutate(SESMedianHH = ifelse(censusMedianHHIncome < 62133, "Low SES", 
                                                     ifelse(censusMedianHHIncome > 85696, "High SES", "Mid SES")))
@@ -143,7 +143,9 @@ This graph is plotting the distribution of restaurants grouped by High/low/mid S
 X axis: Price level or $ sign (low= 1 sign to high= 4 signs)
 Y axis: the sum of restaurants in the price level
 
-Compared to the commonly thought theme that higher SES areas would have more expensice it seems that middle SES areas tend to have more expensive restants. Not only do they have more expensive restaurants, they have the most number of pricier restaurants overall. It might be because higher SES areas tend to be suburban and not have many shops while Middle SES have more malls, restaurants and complexs as the resnt would be cheaper in those areas but they are still close to High SES areas so they can still pull customers from there. 
+
+This graph demonstrates that Middle SES areas and Low SES areas have a lot of super cheap restaurants (1), with Low SES having the most and High SES areas having the least. When it comes to restaurants that are slightly more expensive (2), Middle SES areas have the most, and Low SES areas have the second most. This price category also has the most number of restaurants. The even more expensive restaurants (3) tend to be prevalent in the Middle SES areas and less prevalent in High SES areas. Low SES areas have the least. For the most expensive restaurants (4), Middle SES areas have the most, High SES areas have the second most and the Low SES areas have the least. This category also has the fewest number of restaurants. It seems based on the data that majority of the restaurants are in the 1 and 2 categories of price.
+
 
 
 ## Distribution of Yelp-associated Restaurants by Rating Seattle
@@ -161,6 +163,8 @@ This graph is plotting the distribution of restaurants grouped by rating.
 X axis: rating (low to high)
 Y axis: percentage (frquency / sum of all restaurants) in number of restaurants for each rating
 
+
+This line graph indicates that out of all the restaurants in the Seattle area, a rating of 4 is the most common and that restaurants tend to have a rating higher than 3.
 
 ## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
 ```{r, echo=FALSE}
