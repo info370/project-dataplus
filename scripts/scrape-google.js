@@ -4,8 +4,11 @@ var parse = require('csv-parse');
 const axios = require('axios');
 var googleRestaurantsArray = [];
 
+
+// our key: AIzaSyB5m-8I4J73J-L3hKGOOXjmofqDb-xjU04
+// benji key: AIzaSyBwcY4nVSPZBt-EywM2--iPbi1H5EGM430
 const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyB5m-8I4J73J-L3hKGOOXjmofqDb-xjU04',
+    key: 'AIzaSyBwcY4nVSPZBt-EywM2--iPbi1H5EGM430',
     Promise: Promise
 });
 
@@ -39,7 +42,7 @@ function performGoogleRadarSearch(seattleLatlong) {
 function createGooglePromise(lat, lon) {
     return googleMapsClient.placesRadar({
         location: [lat, lon],
-        radius: 50000,
+        radius: 1000,
         type: 'restaurant'
     })
     .asPromise()

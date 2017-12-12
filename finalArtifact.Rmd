@@ -30,24 +30,21 @@ set.seed(370)
 ```{r, echo=FALSE, include=FALSE}
 # Getting and filtering data
 #json_file <- "SeattleYelpRestaurantsWithCategory.json"
-json_file <- "SeattleYelpRestaurantsWithHealth.json"
-yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) %>% filter(!is.na(healthInspectionScore))
+#json_file <- "SeattleYelpRestaurantsWithHealth.json"
+json_file <- "SeattleYelpRestaurantsWithNewHealthInfo.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) %>% filter(!is.na(recentHealthInspectionScore)) %>% filter(!is.na(restaurantMaxSeats)) %>% filter(!is.na(totalInspectionScore))
 
 # convert price into numeric value
 price.num <- c(nchar(yelp.data[,"price"]))
 yelp.data$price = price.num
 
-# convert censusTract to numeric value
-#tract.num <- c(nchar(yelp.data[,"censusTract"]))
-#yelp.data$censusTract = as.factor(yelp.data$censusTract)
-
 # cast Health Inspection categorical data into factor for dummy variables
-yelp.data$healthInspectionResult <- as.factor(yelp.data$healthInspectionResult)
-yelp.data$healthViolationType <- as.factor(yelp.data$healthViolationType)
+yelp.data$healthInspectionResult <- as.factor(yelp.data$recentHealthInspectionResult)
+yelp.data$healthViolationType <- as.factor(yelp.data$recentHealthViolationType)
+yelp.data$recentHealthInspectionGrade <- as.factor(yelp.data$recentHealthInspectionGrade)
 
-# create dummy variables for healthInspectionResult and healthViolationType
-
-dmy <- dummyVars(~ healthInspectionResult + healthViolationType, data=yelp.data) # notice how we specify which columns to "dumbify""
+# create dummy variables for healthInspectionResult, inspection grade and healthViolationType 
+dmy <- dummyVars(~ recentHealthInspectionResult + recentHealthViolationType + recentHealthInspectionGrade, data=yelp.data) # notice how we specify which columns to "dumbify""
 
 #dmy <- dummyVars(~ ., data=yelp.data) # or run this to dumbify all variables that are factors
 
@@ -66,20 +63,24 @@ mid.avg <- yelp.data %>% filter(censusMedianHHIncome < high & censusMedianHHInco
 # filter data to only have relating variables: reviewCount, price and rating
 # this dataset is used for modeling
 
-# only using healthInspectionResult dummy variables: Satisfactory and unsatisfactory
-above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "rating", "healthInspectionScore", "healthViolationPoints", "healthInspectionGrade", "healthViolationType.","healthViolationType.blue","healthViolationType.red"))
-below.avg.wo.census <- subset(below.avg, select=c("reviewCount","rating", "healthInspectionScore", "healthViolationPoints", "healthInspectionGrade", "healthViolationType.","healthViolationType.blue","healthViolationType.red"))
+# only using healthInspectionResult dummy variables: complete, incomplete, Satisfactory and unsatisfactory
+above.avg.wo.census <- subset(above.avg, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthViolationTypered", "recentHealthInspectionGrade.1", "recentHealthInspectionGrade.2", "recentHealthInspectionGrade.3", "recentHealthInspectionGrade.4"))
+below.avg.wo.census <- subset(below.avg, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthViolationTypered", "recentHealthInspectionGrade.1", "recentHealthInspectionGrade.2", "recentHealthInspectionGrade.3", "recentHealthInspectionGrade.4"))
 
 check.unique.dummy.variable <- function(dataset) {
-  result.complete <-  length(unique(dataset$healthInspectionResult.Complete)) > 1
-  result.incomplete <- length(unique(dataset$healthInspectionResult.Incomplete)) > 1
-  result.not.ready <- length(unique(dataset$healthInspectionResult.Not.Ready.For.Inspection)) > 1
-  result.satisfactory <- length(unique(dataset$healthInspectionResult.Satisfactory)) > 1
-  result.unsatisfactory <- length(unique(dataset$healthInspectionResult.Unsatisfactory)) > 1
-  result.violationtype <- length(unique(dataset$healthViolationType.)) > 1
-  result.violationBlue <- length(unique(dataset$healthViolationType.blue)) > 1
-  result.violationRed <- length(unique(dataset$healthViolationType.red)) > 1
-  return(c(result.complete,result.incomplete,result.not.ready,result.satisfactory,result.unsatisfactory,result.violationtype,result.violationBlue,result.violationRed))
+  result.complete <-  length(unique(dataset$recentHealthInspectionResultComplete)) > 1
+  result.incomplete <- length(unique(dataset$recentHealthInspectionResultIncomplete)) > 1
+  result.not.ready <- length(unique(dataset$recentHealthInspectionResultNot.Ready.For.Inspection)) > 1
+  result.satisfactory <- length(unique(dataset$recentHealthInspectionResultSatisfactory)) > 1
+  result.unsatisfactory <- length(unique(dataset$recentHealthInspectionResultUnsatisfactory)) > 1
+  result.violationtype <- length(unique(dataset$recentHealthViolationType)) > 1
+  result.violationBlue <- length(unique(dataset$recentHealthViolationTypeblue)) > 1
+  result.violationRed <- length(unique(dataset$recentHealthViolationTypered)) > 1
+  result.inspectionGrade1 <- length(unique(dataset$recentHealthInspectionGrade.1)) > 1
+  result.inspectionGrade2 <- length(unique(dataset$recentHealthInspectionGrade.2)) > 1
+  result.inspectionGrade3 <- length(unique(dataset$recentHealthInspectionGrade.3)) > 1
+  result.inspectionGrade4 <- length(unique(dataset$recentHealthInspectionGrade.4)) > 1
+  return(c(result.complete,result.incomplete,result.not.ready,result.satisfactory,result.unsatisfactory,result.violationtype,result.violationBlue,result.violationRed,result.inspectionGrade1,result.inspectionGrade2,result.inspectionGrade3,result.inspectionGrade4))
 }
 
 # yelp restaurants with all variables/feature
@@ -116,9 +117,17 @@ categoryCount
 
 ## Distribution of Yelp-associated Restaurants in Seattle
 ```{r, echo=FALSE}
-highSES <- ggplot(data= arrange(above.avg,censusMedianHHIncome), aes(above.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-midSES <- ggplot(data= arrange(mid.avg,censusMedianHHIncome), aes(mid.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-lowSES <- ggplot(data= arrange(below.avg,censusMedianHHIncome), aes(below.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+sorted.highSES <- transform(above.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+
+highSES <- ggplot(sorted.highSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in High Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
+sorted.midSES <- transform(mid.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+
+midSES <- ggplot(sorted.midSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in Median Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
+sorted.lowSES <- transform(below.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+lowSES <- ggplot(sorted.lowSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in Low Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
 ```
 
 We broke down data to high, mid, and low SES based on median household income, but not Seattle household income. we split dataset in 3. lower third consider low SES, mid third consider mid SES.
@@ -154,15 +163,15 @@ Y axis: the sum of restaurants in the specific census tract
 
 ## Distribution of Yelp-associated Restaurants By Price level in Seattle
 ```{r, echo=FALSE}
-rating.data <- yelp.data %>% mutate(SESMedianHH = ifelse(censusMedianHHIncome < 62133, "Low SES", 
-                                                    ifelse(censusMedianHHIncome > 85696, "High SES", "Mid SES")))
+rating.data <- yelp.data %>% mutate(MedianHHLevel = ifelse(censusMedianHHIncome < low, "Low SES", 
+                                                    ifelse(censusMedianHHIncome > high, "High SES", "Mid SES")))
 
-priceFreq <- as.data.frame(table(rating.data$price,rating.data$SESMedianHH))
+priceFreq <- as.data.frame(table(rating.data$price,rating.data$MedianHHLevel))
 
 priceFreq$percentage = priceFreq$Freq / sum(priceFreq$Freq)
   
 restaurantsByPrice <- ggplot(priceFreq, aes(fill=Var2, y=Freq, x=Var1)) + 
-    geom_bar( stat="identity", position="dodge")
+    geom_bar( stat="identity", position="dodge") + labs(title="Distribution of Seattle Restaurants by Price Level on Yelp", y="Number of Restaurants", x="Price Level on Yelp ($ - $$$$)", fill="Socio-Economic Level \n(based on Median Household Income)", caption="(based on data from Yelp Fusion API and Seattle, Census Reporter, and the U.S. Census Bureau)")
 restaurantsByPrice
 ```
 
@@ -178,7 +187,7 @@ ratingFreq <- as.data.frame(table(yelp.data$rating))
 ratingFreq$percentage = ratingFreq$Freq / sum(ratingFreq$Freq)
   
 restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) + 
-    geom_line()
+    geom_line() + labs(title="Distribution of Seattle Restaurants by Rating on Yelp", y="Total Proportion of Restaurants", x="Average Rating on Yelp", caption="(based on data from Yelp Fusion API)")
 restaurantsByRating
 ```
 
@@ -193,12 +202,35 @@ ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncom
   geom_violin() +
   geom_boxplot(width=0.1) +
   stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red")
+  stat_summary(fun.y=median, geom="point", size=2, color="red") +
+  labs(title="Distribution of Seattle Restaurants Rating \nin various Median Household Income on Yelp", y="Median Household Income ($)", x="Average Rating on Yelp", caption="(based on data from Yelp Fusion API and Seattle, Census Reporter, and the U.S. Census Bureau)")
 
 ratingViolinPlot
 ```
 
 Eugenia might have a better idea for this graph.
+
+## Features Ranked by Importance for high SES
+```{r, echo=FALSE}
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+highSES_model <- train(rating ~., data=above.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
+
+highSES_importance <- varImp(highSES_model)
+
+ggplot(highSES_importance)
+```
+
+## Features Ranked by Importance for high SES
+```{r, echo=FALSE}
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+lowSES_model <- train(rating ~., data=below.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
+
+lowSES_importance <- varImp(lowSES_model)
+
+ggplot(lowSES_importance)
+```
 
 ## Create proportion for high and low SES resturants
 ```{r, echo=FALSE, include=FALSE}
@@ -244,8 +276,23 @@ predict_yelp_svm_high <- predict(model_svm_high, below.avg.test)
 
 #actual minus predicted
 delta.high.SES <- below.avg.test$rating - predict_yelp_svm_high
-count.high.SES.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
-count.high.SES.line
+count.high.SES.below.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
+count.high.SES.below.line
+
+count.high.SES.above.line <- length(which(delta.high.SES > 0)) / length(delta.high.SES)
+count.high.SES.above.line
+
+count.high.SES.on.line <- length(which(delta.high.SES == 0)) / length(delta.high.SES)
+count.high.SES.on.line
+
+highSES_with_residual <- below.avg.test %>% 
+ mutate(
+     residuals = rating - predict_yelp_svm_high
+ )
+
+ggplot(highSES_with_residual, aes(1:nrow(highSES_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3)
 ```
 
 
@@ -263,6 +310,129 @@ predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
 
 #actual minus predicted
 delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
-count.low.SES.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
-count.low.SES.line
+count.low.SES.below.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
+count.low.SES.below.line
+
+count.low.SES.above.line <- length(which(delta.low.SES > 0)) / length(delta.low.SES)
+count.low.SES.above.line
+
+count.low.SES.on.line <- length(which(delta.low.SES == 0)) / length(delta.low.SES)
+count.low.SES.on.line
+
+lowSES_with_residual <- above.avg.test %>% 
+ mutate(
+     residuals = rating - predict_yelp_svm_low
+ )
+
+ggplot(lowSES_with_residual, aes(1:nrow(lowSES_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3)
+```
+
+
+## Organize Data for Subway
+
+```{r}
+# filter only Subways for high and low SES
+above.avg.subway <- filter(above.avg, name %in% "Subway")
+below.avg.subway <- filter(below.avg, name %in% "Subway")
+
+# remove violationTypeRed, InspectionGrade 2 ,3 ,4 for above.avg since those columns aren't unique
+above.avg.subway <- subset(above.avg.subway, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthInspectionGrade.1"))
+
+# remove InspectionGrade 3 ,4 for above.avg since those columns aren't unique
+below.avg.subway <- subset(below.avg.subway, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue",  "recentHealthInspectionGrade.1"))
+
+subway.above.ctrl <- trainControl(method = "repeatedcv", number=nrow(above.avg.subway) - 1, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+subway.below.ctrl <- trainControl(method = "repeatedcv", number=nrow(below.avg.subway) - 1, repeats=3)
+```
+
+## Create proportion for high and low SES Subway
+```{r, echo=FALSE, include=FALSE}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8
+
+# select outcome variable for below avg HH income
+below.avg.subway.outcome <- subway.below.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+below.avg.subway.train_ind <- createDataPartition(below.avg.subway.outcome$rating, p = split_proportion, list = FALSE)
+below.avg.subway.train <- subway.below.avg.wo.census[below.avg.subway.train_ind,] # get training below avg data
+below.avg.subway.test <- subway.below.avg.wo.census[-below.avg.subway.train_ind,] # get test below avg data
+
+# select outcome variable for above avg HH income
+above.avg.subway.outcome <- subway.above.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+above.avg.subway.train_ind <- createDataPartition(above.avg.subway.outcome$rating, p = split_proportion, list = FALSE)
+above.avg.subway.train <- subway.above.avg.wo.census[above.avg.subway.train_ind,] # get training above avg data
+above.avg.subway.test <- subway.above.avg.wo.census[-above.avg.subway.train_ind,] # get test above avg data
+```
+
+## Linear Model for High SES Subway
+```{r}
+# high SES SVM modeling
+subway_lm_high <- train(rating ~ .,
+                  data = above.avg.subway,
+                  method = "lm",
+                  trControl=subway.above.ctrl)
+
+#subway_lm_high_2 <- lm(formula = rating ~ reviewCount * price, data = above.avg.subway.train)
+summary(subway_lm_high)
+
+predict_subway_lm_high <- predict(subway_lm_high, below.avg.subway)
+#postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta.subway.high.SES <- below.avg.subway$rating - predict_subway_lm_high
+count.subway.high.SES.below.line <- length(which(delta.subway.high.SES < 0)) / length(delta.subway.high.SES)
+count.subway.high.SES.below.line
+
+count.subway.high.SES.above.line <- length(which(delta.subway.high.SES > 0)) / length(delta.subway.high.SES)
+count.subway.high.SES.above.line
+
+count.subway.high.SES.on.line <- length(which(delta.subway.high.SES == 0)) / length(delta.subway.high.SES)
+count.subway.high.SES.on.line
+
+subway_high_with_residual <- below.avg.subway %>% 
+ mutate(
+     residuals = rating - predict_subway_lm_high
+ )
+
+ggplot(subway_high_with_residual, aes(rating)) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2)
+```
+
+## Linear Model for low SES Subway
+```{r}
+# high SES SVM modeling
+subway_lm_low <- train(rating ~ .,
+                  data = below.avg.subway,
+                  method = "lm",
+                  trControl=subway.below.ctrl)
+
+predict_subway_lm_low <- predict(subway_lm_low, above.avg.subway)
+#postResample(predict_yelp_svm_high, below.avg$rating)
+
+#actual minus predicted
+delta.subway.low.SES <- above.avg.subway$rating - predict_subway_lm_low
+count.subway.low.SES.below.line <- length(which(delta.subway.low.SES < 0)) / length(delta.subway.low.SES)
+count.subway.low.SES.below.line
+
+count.subway.low.SES.above.line <- length(which(delta.subway.low.SES > 0)) / length(delta.subway.low.SES)
+count.subway.low.SES.above.line
+
+count.subway.low.SES.on.line <- length(which(delta.subway.low.SES == 0)) / length(delta.subway.low.SES)
+count.subway.low.SES.on.line
+
+subway_low_with_residual <- above.avg.subway %>% 
+ mutate(
+     residuals = rating - predict_subway_lm_low
+ )
+
+ggplot(subway_low_with_residual, aes(rating)) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2)
 ```
