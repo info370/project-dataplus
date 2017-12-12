@@ -292,7 +292,8 @@ highSES_with_residual <- below.avg.test %>%
 
 ggplot(highSES_with_residual, aes(1:nrow(highSES_with_residual))) +
   geom_point(aes(y=residuals)) +
-  geom_abline(intercept=0, slope = 0) + ylim(-3,3)
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
+  labs(title="High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Restaurants",y="Residuals", x="Row Number")
 ```
 
 
@@ -326,7 +327,8 @@ lowSES_with_residual <- above.avg.test %>%
 
 ggplot(lowSES_with_residual, aes(1:nrow(lowSES_with_residual))) +
   geom_point(aes(y=residuals)) +
-  geom_abline(intercept=0, slope = 0) + ylim(-3,3)
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
+  labs(title="Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Restaurants",y="Residuals", x="Row Number")
 ```
 
 
@@ -402,7 +404,8 @@ subway_high_with_residual <- below.avg.subway %>%
 
 ggplot(subway_high_with_residual, aes(rating)) +
   geom_point(aes(y=residuals)) +
-  geom_abline(intercept=0, slope = 0) + ylim(-2,2)
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2) +
+  labs(title="Subway High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Subways",y="Residuals", x="Row Number")
 ```
 
 ## Linear Model for low SES Subway
@@ -434,5 +437,6 @@ subway_low_with_residual <- above.avg.subway %>%
 
 ggplot(subway_low_with_residual, aes(rating)) +
   geom_point(aes(y=residuals)) +
-  geom_abline(intercept=0, slope = 0) + ylim(-2,2)
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2) + 
+  labs(title="Subway Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Subways",y="Residuals", x="Row Number")
 ```
