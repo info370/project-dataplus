@@ -1,5 +1,5 @@
 ---
-title: "finalArtifact"
+title: "Final Artifact"
 date: "December 8, 2017"
 output: html_document
 ---
@@ -281,7 +281,7 @@ ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cros
 As a means to analyze Yelp restaurants rating, we trained two regression model: restaurants in high socio-economic and restaurants in low socio-economic neighborhood. For prediction in our model, however, we used the contrasting socio-economic data; meaning, inputting restaurants in low socio-economic restaurants for a high socio-economic model and vice versa. Next, we built a residual graph for each model. By looking at the residuals, we can evaluate how a set of restaurants would perform in various socio-economic regression model. If a majority of the residuals lie above the 0 line in a residual graph, the model suggested an underestimation for the predicted set of restaurants. If a majority of the residuals lies below the 0 line, the model suggested an overestimation for the predicted set of restaurants.
 
 ### High Socio-Economic Restaurants 
-```{r}
+```{r, echo=FALSE}
 # high SES SVM modeling
 model_svm_high <- train(rating ~ .,
                   data = above.avg.train,
@@ -314,7 +314,7 @@ The residual graph for high socio-economic model suggested a neutral split among
 
 
 ### Low Socio-Economic Restaurants
-```{r}
+```{r, echo=FALSE}
 # low SES SVM modeling
 model_svm_low <- train(rating ~ .,
                   data = below.avg.train,
@@ -368,7 +368,7 @@ subway.below.ctrl <- trainControl(method = "repeatedcv", number=nrow(below.avg.s
 
 To further investigate the results, we ran the same regression models for Subway restaurants in high socio-economic and low socio-economic neighborhood and plot the residuals. Below is the results:
 
-```{r}
+```{r, echo=FALSE}
 # high SES SVM modeling
 subway_lm_high <- train(rating ~ .,
                   data = above.avg.subway,
