@@ -83,6 +83,9 @@ check.unique.dummy.variable <- function(dataset) {
 filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusTract", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
 ```
 
+## Decision context maker
+With our decision, what we are trying to inform the Office of Economic Development is to change how they decide to allocate their public fundings. With the information we have, we hope to be able to change allocations of their fundings to improve quality of life in underfunded communities. We chose to base our decision context around OED city officials in order to raise awareness on the issues of economic disparity among less funded community along different census tracts. With this, it will provide an opportunity for business owners to be more successful without the social impact of Yelp bias.
+
 ## Yelp Restaurants in Seattle
 ```{r, echo=FALSE, warning=FALSE}
 mapgilbert <- get_map(location = c(lon = mean(yelp.data$longitude), lat = mean(yelp.data$latitude)), zoom = 11, maptype = "roadmap", scale = "auto")
