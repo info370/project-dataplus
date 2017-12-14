@@ -1,5 +1,5 @@
 ---
-title: "Final Artifact"
+title: "Seattle Yelp Restaurants Rating Analysis"
 date: "December 8, 2017"
 output: html_document
 ---
@@ -26,7 +26,7 @@ if(!require(jsonlite)){install.packages("jsonlite"); require(jsonlite)}
 set.seed(370)
 ```
 
-## Reading and Organization Yelp Restaurants Dataset
+# Are there biases in Yelp ratings for restaurants in different socioeconomic statuses?
 ```{r, echo=FALSE, include=FALSE}
 # Getting and filtering data
 json_file <- "SeattleYelpRestaurantsWithNewHealthInfo.json"
@@ -83,8 +83,8 @@ check.unique.dummy.variable <- function(dataset) {
 filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusTract", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
 ```
 
-## Plotting all Yelp Restaurants in Maps
-```{r, echo=FALSE}
+## Yelp Restaurants in Seattle
+```{r, echo=FALSE, warning=FALSE}
 mapgilbert <- get_map(location = c(lon = mean(yelp.data$longitude), lat = mean(yelp.data$latitude)), zoom = 11, maptype = "roadmap", scale = "auto")
 
 # plotting the map with some points on it
@@ -94,7 +94,9 @@ ggmap(mapgilbert) +
   labs(title="Yelp Restaurants in Seattle for the Analysis")
 
 ```
+
 This map above the locations for all of the restaurants in the Seattle Area that we used for our project. In the future, we will be plotting each restaurant with a certain color that is determined based on their current rating. 1852 restaurants from 157 different category were evaluated and used for this project. 
+
 
 ```{r, include=FALSE}
 # total number of restaurants we're observing; we filter out restaurants that don't have PriceLevel, Category, and Rating
@@ -110,8 +112,9 @@ categoryCount <- nrow(allCategory)
 categoryCount
 ```
 
-## Distribution of Yelp-associated Restaurants by Rating Seattle
 ```{r, echo=FALSE}
+## Distribution of Yelp-associated Restaurants by Rating Seattle
+
 ratingFreq <- as.data.frame(table(yelp.data$rating))
 
 ratingFreq$percentage = ratingFreq$Freq / sum(ratingFreq$Freq)
@@ -125,8 +128,9 @@ This graph is plotting the distribution of restaurants grouped by rating from 1 
 
 The line graph suggested that ratings for Seattle restaurants are on a normal distribution. It indicates that out of all the restaurants in the Seattle area, a rating of 4 is the most common and more than 70% of the restaurants have a rating higher than 3.
 
-## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
+
 ```{r, echo=FALSE}
+## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
 ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncome)) +
   geom_violin() +
   geom_boxplot(width=0.1) +
@@ -140,8 +144,8 @@ ratingViolinPlot
 The violin plot above demonstrates the distribution of median household income at specific ratings. The distribution of median household income is moderately skewed for restaurants with 1.5, 3 and 4 rating. The mean point of median household income for 1.5, 3, and 4 ratings are all below the median; meaning the distribution is skewed to the left. In addition, the median point of the restaurant median household income increases as the rating increases.  
 
 
-## Distribution of Yelp-associated Restaurants in Seattle
 ```{r, echo=FALSE, include=FALSE}
+## Distribution of Yelp-associated Restaurants in Seattle
 sorted.highSES <- transform(above.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
 
 highSES <- ggplot(sorted.highSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in High Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
@@ -155,32 +159,29 @@ lowSES <- ggplot(sorted.lowSES, aes(censusTract, fill=censusMedianHHIncome)) +ge
 
 ```
 
-We broke down data to high, mid, and low SES based on median household income, but not Seattle household income. we split dataset in 3. lower third consider low SES, mid third consider mid SES.
 
-High SES : anything more than 74,559
-Low SES: anything less than 59,275
-Mid SES: anything in between
-
-```{r}
+```{r, echo=FALSE}
 highSES
 ```
 
 The data we had on the restaurants was broken down into three categories of high, mid and low SES based on median household income. It should be noted that it was not separated based on Seattle household income. The cut off for high socio-economic restaurants are the top 33% based on median household income, low socio-economic restaurants are the bottom 33%, and mid socio-economic restaurants are the cut off in between the high and low. This graph is plotting for the High SES which was determined to be a median household income of a minimum of $74,559 or more. This unique census tract holds 54 counts.
 
 
-```{r}
+```{r,echo=FALSE}
 midSES
 ```
 
 The restaurants in this data are within census tracts that have a median household income between $59,275 to $74,559. We have found there are 28 unique census tract. The x-axis are the unique census tracts in the dataset and the y-axis counts the number of restaurants in each census tracts. Out of the three socioeconomics, this bracket contains the least amount of census tract, which may imply there is less area that has restaurants spread out or there are not a lot of census tracts that falls within the middle socioeconomic status.
 
-```{r}
+```{r echo=FALSE}
 lowSES
 ```
+
 The restaurants in this data are within census tracts that have a low household income lower than $59,275. We have found there are 39 unique census tract. The x-axis are the unique census tracts in the dataset and the y-axis counts the number of restaurants in each census tracts. We see that there is a disproportionate spread in number of restaurants in each census tracts within the lower household income bracket. This can indicate a bigger, densely populated census tract or a more commercialized area to open restaurant business.
 
-## Distribution of Yelp-associated Restaurants By Price level in Seattle
+
 ```{r, echo=FALSE}
+## Distribution of Yelp-associated Restaurants By Price level in Seattle
 rating.data <- yelp.data %>% mutate(MedianHHLevel = ifelse(censusMedianHHIncome < low, "Low SES", 
                                                     ifelse(censusMedianHHIncome > high, "High SES", "Mid SES")))
 
@@ -195,20 +196,9 @@ restaurantsByPrice
 
 The graph above is plotting the distribution of restaurants based on their reviews while being grouped by High/low/mid SES. The x axis indicates the price level or $ sign with low being the same as 1 dollar sign and high being equivalent to 4 dollar signs. The y axis holds the number of the restaurants in the price level. 
 
-This graph demonstrates that Middle SES areas and Low SES areas have many cheap restaurants (\$), with Low SES having the most and High SES areas having the least. When it comes to restaurants that are medium-priced (\$), Middle SES areas have the most, and Low SES areas have the second most. This price category also has the most number of restaurants. The moderately expensive restaurants (\$\$\$) tend to be prevalent in the Middle SES areas and less prevalent in High SES areas. Low SES areas have the least. For the most expensive restaurants (\$\$\$\$), Middle SES areas have the most, High SES areas have the second most and the Low SES areas have the least. This category also has the fewest number of restaurants. It seems based on the data that majority of the restaurants are in the \$ and \$\$ categories of price.
+This graph demonstrates that Middle SES areas and Low SES areas have many cheap restaurants (1 \$s), with Low SES having the most and High SES areas having the least. When it comes to restaurants that are medium-priced (2 \$s), Middle SES areas have the most, and Low SES areas have the second most. This price category also has the most number of restaurants. The moderately expensive restaurants (3 \$s) tend to be prevalent in the Middle SES areas and less prevalent in High SES areas. Low SES areas have the least. For the most expensive restaurants (4 \$s), Middle SES areas have the most, High SES areas have the second most and the Low SES areas have the least. This category also has the fewest number of restaurants. It seems based on the data that majority of the restaurants are in the \$ and \$\$ categories of price.
 
-## Features Ranked by Importance for high SES
-```{r, echo=FALSE}
-control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
-
-highSES_model <- train(rating ~., data=above.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
-
-highSES_importance <- varImp(highSES_model)
-
-ggplot(highSES_importance)
-```
-
-## Features Ranked by Importance for Yelp Restaurants Rating
+## Features
 
 With our analysis, the dataset provides a multitude of features and factors relating to restaurants quality. Every Yelp restaurant in our dataset has the features below that we can analyze:
 
@@ -238,7 +228,19 @@ To further investigate Yelp restaurants rating in various socio-economic neighbo
 
 recentHealthViolationType, recentHealthInspectionResult, and recentHealthInspectionGrade are categorical variables, which we converted into dummy variables for modeling. 
 
-```{r, echo=FALSE}
+## Features Ranked by Importance for Yelp Restaurants Rating in high Socio-economic area
+```{r, echo=FALSE, warning=FALSE}
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
+
+highSES_model <- train(rating ~., data=above.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
+
+highSES_importance <- varImp(highSES_model)
+
+ggplot(highSES_importance)
+```
+
+## Features Ranked by Importance for Yelp Restaurants Rating in low Socio-economic area
+```{r, echo=FALSE, warning=FALSE}
 control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
 
 lowSES_model <- train(rating ~., data=below.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
@@ -248,9 +250,11 @@ lowSES_importance <- varImp(lowSES_model)
 ggplot(lowSES_importance)
 ```
 
+
+```{r, echo=FALSE, include=FALSE, warning=FALSE}
+
 ## Create proportion for high and low SES resturants
-```{r, echo=FALSE, include=FALSE}
-# splitting boston data into train+validate and test sets
+
 
 split_proportion = 0.8
 
@@ -271,8 +275,9 @@ above.avg.train <- above.avg.wo.census[above.avg.train_ind,] # get training abov
 above.avg.test <- above.avg.wo.census[-above.avg.train_ind,] # get test above avg data
 
 ```
+
+```{r, echo=FALSE, include=FALSE, warning=FALSE}
 ## Creating training control
-```{r, echo=FALSE, include=FALSE}
 ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
 ```
 
@@ -281,7 +286,8 @@ ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cros
 As a means to analyze Yelp restaurants rating, we trained two regression model: restaurants in high socio-economic and restaurants in low socio-economic neighborhood. For prediction in our model, however, we used the contrasting socio-economic data; meaning, inputting restaurants in low socio-economic restaurants for a high socio-economic model and vice versa. Next, we built a residual graph for each model. By looking at the residuals, we can evaluate how a set of restaurants would perform in various socio-economic regression model. If a majority of the residuals lie above the 0 line in a residual graph, the model suggested an underestimation for the predicted set of restaurants. If a majority of the residuals lies below the 0 line, the model suggested an overestimation for the predicted set of restaurants.
 
 ### High Socio-Economic Restaurants 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
 # high SES SVM modeling
 model_svm_high <- train(rating ~ .,
                   data = above.avg.train,
@@ -294,10 +300,8 @@ predict_yelp_svm_high <- predict(model_svm_high, below.avg.test)
 #actual minus predicted
 delta.high.SES <- below.avg.test$rating - predict_yelp_svm_high
 count.high.SES.below.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
-cat("Overestimated residuals proportion: ",count.high.SES.below.line, "\n")
 
 count.high.SES.above.line <- length(which(delta.high.SES > 0)) / length(delta.high.SES)
-cat("Underestimated residuals proportion: ",count.high.SES.above.line, "\n")
 
 highSES_with_residual <- below.avg.test %>% 
  mutate(
@@ -308,6 +312,9 @@ ggplot(highSES_with_residual, aes(1:nrow(highSES_with_residual))) +
   geom_point(aes(y=residuals)) +
   geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
   labs(title="High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Restaurants",y="Residuals", x="Row Number")
+
+cat("Overestimated residuals proportion: ",count.high.SES.below.line, "\n")
+cat("Underestimated residuals proportion: ",count.high.SES.above.line, "\n")
 ```
 
 The residual graph for high socio-economic model suggested a neutral split among residuals. Approximately 43% of the predicting restaurants had a negative residuals and 57% had a positive residuals. Based on the residual analysis, the regression model for restaurants rating in high socio-economic neighborhood suggested unbiased.
@@ -315,6 +322,7 @@ The residual graph for high socio-economic model suggested a neutral split among
 
 ### Low Socio-Economic Restaurants
 ```{r, echo=FALSE}
+### Low Socio-Economic Restaurants
 # low SES SVM modeling
 model_svm_low <- train(rating ~ .,
                   data = below.avg.train,
@@ -327,10 +335,8 @@ predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
 #actual minus predicted
 delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
 count.low.SES.below.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
-cat("Overestimated residuals proportion: ",count.low.SES.below.line, "\n")
 
 count.low.SES.above.line <- length(which(delta.low.SES > 0)) / length(delta.low.SES)
-cat("Underestimated residuals proportion: ",count.low.SES.above.line, "\n")
 
 lowSES_with_residual <- above.avg.test %>% 
  mutate(
@@ -342,14 +348,16 @@ ggplot(lowSES_with_residual, aes(1:nrow(lowSES_with_residual))) +
   geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
   labs(title="Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Restaurants",y="Residuals", x="Row Number")
 
+cat("Overestimated residuals proportion: ",count.low.SES.below.line, "\n")
+cat("Underestimated residuals proportion: ",count.low.SES.above.line, "\n")
 ```
 
 The residual graph for low socio-economic model suggested an unequal split among residuals. Approximately 37% of the predicting restaurants has a negative residuals and 63% has a positive residuals. Based on the residual analysis, the regression model for restaurants rating in low socio-economic neighborhood suggested biased. The residuals suggested 63% of the rating of restaurants in high socio-economic were underestimated in a low socio-economic restaurants regression model.
 
 
+```{r, echo=FALSE, include=FALSE}
 ## Organize Data for Subway
 
-```{r, include=FALSE}
 # filter only Subways for high and low SES
 above.avg.subway <- filter(above.avg, name %in% "Subway")
 below.avg.subway <- filter(below.avg, name %in% "Subway")
@@ -368,7 +376,8 @@ subway.below.ctrl <- trainControl(method = "repeatedcv", number=nrow(below.avg.s
 
 To further investigate the results, we ran the same regression models for Subway restaurants in high socio-economic and low socio-economic neighborhood and plot the residuals. Below is the results:
 
-```{r, echo=FALSE}
+
+```{r, echo=FALSE, warning=FALSE}
 # high SES SVM modeling
 subway_lm_high <- train(rating ~ .,
                   data = above.avg.subway,
@@ -381,10 +390,8 @@ predict_subway_lm_high <- predict(subway_lm_high, below.avg.subway)
 #actual minus predicted
 delta.subway.high.SES <- below.avg.subway$rating - predict_subway_lm_high
 count.subway.high.SES.below.line <- length(which(delta.subway.high.SES < 0)) / length(delta.subway.high.SES)
-cat("Overestimated residuals proportion: ",count.subway.high.SES.below.line, "\n")
 
 count.subway.high.SES.above.line <- length(which(delta.subway.high.SES > 0)) / length(delta.subway.high.SES)
-cat("Underestimated residuals proportion: ",count.subway.high.SES.above.line, "\n")
 
 subway_high_with_residual <- below.avg.subway %>% 
  mutate(
@@ -395,10 +402,14 @@ ggplot(subway_high_with_residual, aes(1:nrow(subway_high_with_residual))) +
   geom_point(aes(y=residuals)) +
   geom_abline(intercept=0, slope = 0) + ylim(-2,2) +
   labs(title="Subway High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Subways",y="Residuals", x="Row Number")
+
+cat("Overestimated residuals proportion: ",count.subway.high.SES.below.line, "\n")
+cat("Underestimated residuals proportion: ",count.subway.high.SES.above.line, "\n")
 ```
 
+```{r, echo=FALSE, warning=FALSE}
 ## Linear Model for low SES Subway
-```{r, include=FALSE}
+
 # high SES SVM modeling
 subway_lm_low <- train(rating ~ .,
                   data = below.avg.subway,
@@ -410,10 +421,8 @@ predict_subway_lm_low <- predict(subway_lm_low, above.avg.subway)
 #actual minus predicted
 delta.subway.low.SES <- above.avg.subway$rating - predict_subway_lm_low
 count.subway.low.SES.below.line <- length(which(delta.subway.low.SES < 0)) / length(delta.subway.low.SES)
-cat("Overestimated residuals proportion: ",count.subway.low.SES.below.line, "\n")
 
 count.subway.low.SES.above.line <- length(which(delta.subway.low.SES > 0)) / length(delta.subway.low.SES)
-cat("Underestimated residuals proportion: ", count.subway.low.SES.above.line, "\n")
 
 subway_low_with_residual <- above.avg.subway %>% 
  mutate(
@@ -424,4 +433,7 @@ ggplot(subway_low_with_residual, aes(1:nrow(subway_low_with_residual))) +
   geom_point(aes(y=residuals)) +
   geom_abline(intercept=0, slope = 0) + ylim(-2,2) + 
   labs(title="Subway Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Subways",y="Residuals", x="Row Number")
+
+cat("Overestimated residuals proportion: ",count.subway.low.SES.below.line, "\n")
+cat("Underestimated residuals proportion: ", count.subway.low.SES.above.line, "\n")
 ```
