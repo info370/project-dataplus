@@ -29,17 +29,23 @@ set.seed(370)
 ## Reading and Organization Yelp Restaurants Dataset
 ```{r, echo=FALSE, include=FALSE}
 # Getting and filtering data
-json_file <- "SeattleYelpRestaurantsWithCategory.json"
-yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) 
+json_file <- "SeattleYelpRestaurantsWithNewHealthInfo.json"
+yelp.data <- fromJSON(json_file) %>% filter(!is.na(price)) %>% filter(!is.na(reviewCount)) %>% filter(!is.na(censusMedianHHIncome)) %>% filter(!is.na(censusIncomePerCapita)) %>% filter(!is.na(censusGiniIndexOfInequality)) %>% filter(!is.na(rating)) %>% filter(!is.na(category)) %>% filter(!is.na(censusTract)) %>% filter(!is.na(recentHealthInspectionScore)) %>% filter(!is.na(restaurantMaxSeats)) %>% filter(!is.na(totalInspectionScore))
 
 # convert price into numeric value
 price.num <- c(nchar(yelp.data[,"price"]))
 yelp.data$price = price.num
 
-# convert censusTract to numeric value
-#tract.num <- c(nchar(yelp.data[,"censusTract"]))
-#yelp.data$censusTract = as.factor(yelp.data$censusTract)
+# cast Health Inspection categorical data into factor for dummy variables
+yelp.data$healthInspectionResult <- as.factor(yelp.data$recentHealthInspectionResult)
+yelp.data$healthViolationType <- as.factor(yelp.data$recentHealthViolationType)
+yelp.data$recentHealthInspectionGrade <- as.factor(yelp.data$recentHealthInspectionGrade)
 
+# create dummy variables for healthInspectionResult, inspection grade and healthViolationType 
+dmy <- dummyVars(~ recentHealthInspectionResult + recentHealthViolationType + recentHealthInspectionGrade, data=yelp.data) 
+
+# add dummy variables data frame to the rest
+yelp.data <- data.frame(yelp.data,predict(dmy, newdata = yelp.data))
 
 # define the low/high quantile threshold by MedianHHincome
 low <- quantile(yelp.data$censusMedianHHIncome, 0.33) # cutoff number
@@ -52,8 +58,26 @@ mid.avg <- yelp.data %>% filter(censusMedianHHIncome < high & censusMedianHHInco
 
 # filter data to only have relating variables: reviewCount, price and rating
 # this dataset is used for modeling
-above.avg.wo.census <- subset(above.avg, select=c("reviewCount", "price", "rating"))
-below.avg.wo.census <- subset(below.avg, select=c("reviewCount", "price", "rating"))
+
+# only using healthInspectionResult dummy variables: complete, incomplete, Satisfactory and unsatisfactory
+above.avg.wo.census <- subset(above.avg, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthViolationTypered", "recentHealthInspectionGrade.1", "recentHealthInspectionGrade.2", "recentHealthInspectionGrade.3", "recentHealthInspectionGrade.4"))
+below.avg.wo.census <- subset(below.avg, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthViolationTypered", "recentHealthInspectionGrade.1", "recentHealthInspectionGrade.2", "recentHealthInspectionGrade.3", "recentHealthInspectionGrade.4"))
+
+check.unique.dummy.variable <- function(dataset) {
+  result.complete <-  length(unique(dataset$recentHealthInspectionResultComplete)) > 1
+  result.incomplete <- length(unique(dataset$recentHealthInspectionResultIncomplete)) > 1
+  result.not.ready <- length(unique(dataset$recentHealthInspectionResultNot.Ready.For.Inspection)) > 1
+  result.satisfactory <- length(unique(dataset$recentHealthInspectionResultSatisfactory)) > 1
+  result.unsatisfactory <- length(unique(dataset$recentHealthInspectionResultUnsatisfactory)) > 1
+  result.violationtype <- length(unique(dataset$recentHealthViolationType)) > 1
+  result.violationBlue <- length(unique(dataset$recentHealthViolationTypeblue)) > 1
+  result.violationRed <- length(unique(dataset$recentHealthViolationTypered)) > 1
+  result.inspectionGrade1 <- length(unique(dataset$recentHealthInspectionGrade.1)) > 1
+  result.inspectionGrade2 <- length(unique(dataset$recentHealthInspectionGrade.2)) > 1
+  result.inspectionGrade3 <- length(unique(dataset$recentHealthInspectionGrade.3)) > 1
+  result.inspectionGrade4 <- length(unique(dataset$recentHealthInspectionGrade.4)) > 1
+  return(c(result.complete,result.incomplete,result.not.ready,result.satisfactory,result.unsatisfactory,result.violationtype,result.violationBlue,result.violationRed,result.inspectionGrade1,result.inspectionGrade2,result.inspectionGrade3,result.inspectionGrade4))
+}
 
 # yelp restaurants with all variables/feature
 filtered.yelp.w.census <- subset(yelp.data, select=c("reviewCount", "censusTract", "censusMedianHHIncome", "censusIncomePerCapita", "censusGiniIndexOfInequality", "category", "price"))
@@ -66,12 +90,13 @@ mapgilbert <- get_map(location = c(lon = mean(yelp.data$longitude), lat = mean(y
 # plotting the map with some points on it
 ggmap(mapgilbert) +
   geom_point(data = yelp.data, aes(x = yelp.data$longitude, y = yelp.data$latitude, fill = "red", alpha = 0.8), size = 2, shape = 21) +
-  guides(fill=FALSE, alpha=FALSE, size=FALSE)
+  guides(fill=FALSE, alpha=FALSE, size=FALSE) +
+  labs(title="Yelp Restaurants in Seattle for the Analysis")
 
 ```
-The map above is just plotting all the restaurants. In the future we may give different color for each rating. You guys can just talk about the general information about the data set. Some info listed below
+This map above the locations for all of the restaurants in the Seattle Area that we used for our project. In the future, we will be plotting each restaurant with a certain color that is determined based on their current rating. 1852 restaurants from 157 different category were evaluated and used for this project. 
 
-```{r}
+```{r, include=FALSE}
 # total number of restaurants we're observing; we filter out restaurants that don't have PriceLevel, Category, and Rating
 restaurantCount <- nrow(yelp.data)
 restaurantCount
@@ -85,13 +110,49 @@ categoryCount <- nrow(allCategory)
 categoryCount
 ```
 
+## Distribution of Yelp-associated Restaurants by Rating Seattle
+```{r, echo=FALSE}
+ratingFreq <- as.data.frame(table(yelp.data$rating))
+
+ratingFreq$percentage = ratingFreq$Freq / sum(ratingFreq$Freq)
+  
+restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) + 
+    geom_line() + labs(title="Distribution of Seattle Restaurants by Rating on Yelp", y="Total Proportion of Restaurants", x="Average Rating on Yelp", caption="(based on data from Yelp Fusion API)")
+restaurantsByRating
+```
+
+This graph is plotting the distribution of restaurants grouped by rating from 1 to 5 on a 0.5 scale. The x axis indicates the restaurant rating with 1 being the lowest and 5 being the highest. The y axis holds percentage in number of restaurants for each rating. The percentage for each rating level was calculated by dividing the frequency of restaurants with that rating by the sum of all restaurants in Seattle.  
+
+The line graph suggested that ratings for Seattle restaurants are on a normal distribution. It indicates that out of all the restaurants in the Seattle area, a rating of 4 is the most common and more than 70% of the restaurants have a rating higher than 3.
+
+## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
+```{r, echo=FALSE}
+ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncome)) +
+  geom_violin() +
+  geom_boxplot(width=0.1) +
+  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
+  stat_summary(fun.y=median, geom="point", size=2, color="red") +
+  labs(title="Distribution of Seattle Restaurants Rating \nin various Median Household Income on Yelp", y="Median Household Income ($)", x="Average Rating on Yelp", caption="(based on data from Yelp Fusion API and Seattle, Census Reporter, and the U.S. Census Bureau)")
+
+ratingViolinPlot
+```
+
+The violin plot above demonstrates the distribution of median household income at specific ratings. The distribution of median household income is moderately skewed for restaurants with 1.5, 3 and 4 rating. The mean point of median household income for 1.5, 3, and 4 ratings are all below the median; meaning the distribution is skewed to the left. In addition, the median point of the restaurant median household income increases as the rating increases.  
 
 
 ## Distribution of Yelp-associated Restaurants in Seattle
-```{r, echo=FALSE}
-highSES <- ggplot(data= arrange(above.avg,censusMedianHHIncome), aes(above.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-midSES <- ggplot(data= arrange(mid.avg,censusMedianHHIncome), aes(mid.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
-lowSES <- ggplot(data= arrange(below.avg,censusMedianHHIncome), aes(below.avg$censusTract)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```{r, echo=FALSE, include=FALSE}
+sorted.highSES <- transform(above.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+
+highSES <- ggplot(sorted.highSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in High Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
+sorted.midSES <- transform(mid.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+
+midSES <- ggplot(sorted.midSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in Median Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
+sorted.lowSES <- transform(below.avg, censusTract = reorder(censusTract, censusMedianHHIncome))
+lowSES <- ggplot(sorted.lowSES, aes(censusTract, fill=censusMedianHHIncome)) +geom_bar() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) + labs(title="Seattle Restaurants in Low Socio-Economic Neighborhoods on Yelp", y="Number of Restaurants", x="Seattle Census Tract Code", fill="Median Household Income ($)", caption="(based on data from Yelp Fusion API and Seattle, FCC Data, Census Reporter, and the U.S. Census Bureau)")
+
 ```
 
 We broke down data to high, mid, and low SES based on median household income, but not Seattle household income. we split dataset in 3. lower third consider low SES, mid third consider mid SES.
@@ -104,71 +165,263 @@ Mid SES: anything in between
 highSES
 ```
 
-This graph is plotting all the restaurants that are consider high SES by census tract code. 
-X axis: The census tract code is sorted from left to right by median household income(low to high)
-Y axis: the sum of restaurants in the specific census tract
+The data we had on the restaurants was broken down into three categories of high, mid and low SES based on median household income. It should be noted that it was not separated based on Seattle household income. The cut off for high socio-economic restaurants are the top 33% based on median household income, low socio-economic restaurants are the bottom 33%, and mid socio-economic restaurants are the cut off in between the high and low. This graph is plotting for the High SES which was determined to be a median household income of a minimum of $74,559 or more. This unique census tract holds 54 counts.
+
 
 ```{r}
 midSES
 ```
 
-This graph is plotting all the restaurants that are consider mid SES by census tract code. 
-X axis: The census tract code is sorted from left to right by median household income(low to high)
-Y axis: the sum of restaurants in the specific census tract
+The restaurants in this data are within census tracts that have a median household income between $59,275 to $74,559. We have found there are 28 unique census tract. The x-axis are the unique census tracts in the dataset and the y-axis counts the number of restaurants in each census tracts. Out of the three socioeconomics, this bracket contains the least amount of census tract, which may imply there is less area that has restaurants spread out or there are not a lot of census tracts that falls within the middle socioeconomic status.
 
 ```{r}
 lowSES
 ```
-
-This graph is plotting all the restaurants that are consider low SES by census tract code. 
-X axis: The census tract code is sorted from left to right by median household income(low to high)
-Y axis: the sum of restaurants in the specific census tract
-
+The restaurants in this data are within census tracts that have a low household income lower than $59,275. We have found there are 39 unique census tract. The x-axis are the unique census tracts in the dataset and the y-axis counts the number of restaurants in each census tracts. We see that there is a disproportionate spread in number of restaurants in each census tracts within the lower household income bracket. This can indicate a bigger, densely populated census tract or a more commercialized area to open restaurant business.
 
 ## Distribution of Yelp-associated Restaurants By Price level in Seattle
 ```{r, echo=FALSE}
-rating.data <- yelp.data %>% mutate(SESMedianHH = ifelse(censusMedianHHIncome < 62133, "Low SES", 
-                                                    ifelse(censusMedianHHIncome > 85696, "High SES", "Mid SES")))
+rating.data <- yelp.data %>% mutate(MedianHHLevel = ifelse(censusMedianHHIncome < low, "Low SES", 
+                                                    ifelse(censusMedianHHIncome > high, "High SES", "Mid SES")))
 
-priceFreq <- as.data.frame(table(rating.data$price,rating.data$SESMedianHH))
+priceFreq <- as.data.frame(table(rating.data$price,rating.data$MedianHHLevel))
 
 priceFreq$percentage = priceFreq$Freq / sum(priceFreq$Freq)
   
 restaurantsByPrice <- ggplot(priceFreq, aes(fill=Var2, y=Freq, x=Var1)) + 
-    geom_bar( stat="identity", position="dodge")
+    geom_bar( stat="identity", position="dodge") + labs(title="Distribution of Seattle Restaurants by Price Level on Yelp", y="Number of Restaurants", x="Price Level on Yelp ($ - $$$$)", fill="Socio-Economic Level \n(based on Median Household Income)", caption="(based on data from Yelp Fusion API and Seattle, Census Reporter, and the U.S. Census Bureau)")
 restaurantsByPrice
 ```
 
-This graph is plotting the distribution of restaurants grouped by High/low/mid SES. 
-X axis: Price level or $ sign (low= 1 sign to high= 4 signs)
-Y axis: the sum of restaurants in the price level
+The graph above is plotting the distribution of restaurants based on their reviews while being grouped by High/low/mid SES. The x axis indicates the price level or $ sign with low being the same as 1 dollar sign and high being equivalent to 4 dollar signs. The y axis holds the number of the restaurants in the price level. 
 
+This graph demonstrates that Middle SES areas and Low SES areas have many cheap restaurants (\$), with Low SES having the most and High SES areas having the least. When it comes to restaurants that are medium-priced (\$), Middle SES areas have the most, and Low SES areas have the second most. This price category also has the most number of restaurants. The moderately expensive restaurants (\$\$\$) tend to be prevalent in the Middle SES areas and less prevalent in High SES areas. Low SES areas have the least. For the most expensive restaurants (\$\$\$\$), Middle SES areas have the most, High SES areas have the second most and the Low SES areas have the least. This category also has the fewest number of restaurants. It seems based on the data that majority of the restaurants are in the \$ and \$\$ categories of price.
 
-## Distribution of Yelp-associated Restaurants by Rating Seattle
+## Features Ranked by Importance for high SES
 ```{r, echo=FALSE}
-ratingFreq <- as.data.frame(table(yelp.data$rating))
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
 
-ratingFreq$percentage = ratingFreq$Freq / sum(ratingFreq$Freq)
-  
-restaurantsByRating <- ggplot(ratingFreq, aes(y=percentage, x=Var1,group=1)) + 
-    geom_line()
-restaurantsByRating
+highSES_model <- train(rating ~., data=above.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
+
+highSES_importance <- varImp(highSES_model)
+
+ggplot(highSES_importance)
 ```
 
-This graph is plotting the distribution of restaurants grouped by rating. 
-X axis: rating (low to high)
-Y axis: percentage (frquency / sum of all restaurants) in number of restaurants for each rating
+## Features Ranked by Importance for Yelp Restaurants Rating
 
+With our analysis, the dataset provides a multitude of features and factors relating to restaurants quality. Every Yelp restaurant in our dataset has the features below that we can analyze:
 
-## Distribution of Yelp-associated Restaurants Rating vs Household Income Violin Plot
+**Rating (*integer*)**: the restaurant's average rating for given by Yelp community users
+
+**reviewCount (*integer*)**: the restaurant's total number of reviews given by Yelp community users
+
+**recentHealthViolationType (*string*)**: the type of violation (red or blue) the restaurant had during the most recent restaurant inspection. Red refers to high risk factors that considered improper practices or procedures identified as the most prevalent contributing factors of foodborne illness or injury. Blue refers to low risk factors that are considered preventive measures to control the addition of pathogens, chemicals, and physical objects into foods.
+
+**recentHealthInspectionScore (*integer*)**: the restaurants total points of violation given by King County food inspector during the most recent restaurant inspection. Inspection point is a cumulative violation point of red and blue violation type. Each violation within red high risk factors and blue low risk factors has an associated points. Health Inspection Score is the sum of violation points during a single restaurant inspection visit.
+
+**totalInspectionScore (*integer*)**: the total sum of all historical health inspection score for the restaurant given by King County food inspector.
+
+**totalInspectionCount (*integer*)**: the total count of inspection visit at the restaurant
+
+**avgInspectionSore (*integer*)**: the overall average inspection score of the restaurant. Formula: totalInspectionScore / totalInspectionCount
+
+**restaurantTotalMonths (*integer*)**: the estimated total months the restaurant has been opened. The number is calculated by the date difference between the most recent and earliest inspection date.
+
+**restaurantMaxSeats (*integer*)**: the maximum number of seatings described by the King County food inspector.  
+
+**recentHealthInspectionResult (*string*)**: the inspection condition (Complete, Incomplete, Not Ready for Inspection, Unsatisfactory, or Satisfactory) given at the end of the most recent food inspection visit by a King County food inspector 
+
+**recentHealthInspectionGrade (*integer*)**: the restaurant food safety rating given by a King Country food inspector. (1 - Excellent, 2 - Good, 3 - Okay, 4 - Needs to Improve) 
+
+To further investigate Yelp restaurants rating in various socio-economic neighborhood, we trained a regression model using the features above. In our regression model, we looked to see what predictor variables (features) are important to the outcome variable (rating). Prior to training a regression model, we evaluated the above features to see which one has a strong correlation with restaurants rating. 
+
+recentHealthViolationType, recentHealthInspectionResult, and recentHealthInspectionGrade are categorical variables, which we converted into dummy variables for modeling. 
+
 ```{r, echo=FALSE}
-ratingViolinPlot <- ggplot(yelp.data, aes(as.factor(rating), censusMedianHHIncome)) +
-  geom_violin() +
-  geom_boxplot(width=0.1) +
-  stat_summary(fun.y=mean, geom="point", shape=23, size=2, color="blue") +
-  stat_summary(fun.y=median, geom="point", size=2, color="red")
+control <- trainControl(method="repeatedcv", number = 10, repeats = 3)
 
-ratingViolinPlot
+lowSES_model <- train(rating ~., data=below.avg.wo.census, method = "knn", preProcess = "scale", trControl = control)
+
+lowSES_importance <- varImp(lowSES_model)
+
+ggplot(lowSES_importance)
 ```
 
-Eugenia might have a better idea for this graph.
+## Create proportion for high and low SES resturants
+```{r, echo=FALSE, include=FALSE}
+# splitting boston data into train+validate and test sets
+
+split_proportion = 0.8
+
+# select outcome variable for below avg HH income
+below.avg.outcome <- below.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+below.avg.train_ind <- createDataPartition(below.avg.outcome$rating, p = split_proportion, list = FALSE)
+below.avg.train <- below.avg.wo.census[below.avg.train_ind,] # get training below avg data
+below.avg.test <- below.avg.wo.census[-below.avg.train_ind,] # get test below avg data
+
+# select outcome variable for above avg HH income
+above.avg.outcome <- above.avg.wo.census %>% dplyr::select(rating) # rating column only
+
+# randomly select indices for train/validate set
+above.avg.train_ind <- createDataPartition(above.avg.outcome$rating, p = split_proportion, list = FALSE)
+above.avg.train <- above.avg.wo.census[above.avg.train_ind,] # get training above avg data
+above.avg.test <- above.avg.wo.census[-above.avg.train_ind,] # get test above avg data
+
+```
+## Creating training control
+```{r, echo=FALSE, include=FALSE}
+ctrl <- trainControl(method = "repeatedcv", number=10, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+```
+
+## SVM Regression Model for Yelp Restaurants
+
+As a means to analyze Yelp restaurants rating, we trained two regression model: restaurants in high socio-economic and restaurants in low socio-economic neighborhood. For prediction in our model, however, we used the contrasting socio-economic data; meaning, inputting restaurants in low socio-economic restaurants for a high socio-economic model and vice versa. Next, we built a residual graph for each model. By looking at the residuals, we can evaluate how a set of restaurants would perform in various socio-economic regression model. If a majority of the residuals lie above the 0 line in a residual graph, the model suggested an underestimation for the predicted set of restaurants. If a majority of the residuals lies below the 0 line, the model suggested an overestimation for the predicted set of restaurants.
+
+### High Socio-Economic Restaurants 
+```{r}
+# high SES SVM modeling
+model_svm_high <- train(rating ~ .,
+                  data = above.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_high <- predict(model_svm_high, below.avg.test)
+
+#actual minus predicted
+delta.high.SES <- below.avg.test$rating - predict_yelp_svm_high
+count.high.SES.below.line <- length(which(delta.high.SES < 0)) / length(delta.high.SES)
+cat("Overestimated residuals proportion: ",count.high.SES.below.line, "\n")
+
+count.high.SES.above.line <- length(which(delta.high.SES > 0)) / length(delta.high.SES)
+cat("Underestimated residuals proportion: ",count.high.SES.above.line, "\n")
+
+highSES_with_residual <- below.avg.test %>% 
+ mutate(
+     residuals = rating - predict_yelp_svm_high
+ )
+
+ggplot(highSES_with_residual, aes(1:nrow(highSES_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
+  labs(title="High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Restaurants",y="Residuals", x="Row Number")
+```
+
+The residual graph for high socio-economic model suggested a neutral split among residuals. Approximately 43% of the predicting restaurants had a negative residuals and 57% had a positive residuals. Based on the residual analysis, the regression model for restaurants rating in high socio-economic neighborhood suggested unbiased.
+
+
+### Low Socio-Economic Restaurants
+```{r}
+# low SES SVM modeling
+model_svm_low <- train(rating ~ .,
+                  data = below.avg.train,
+                  method = "svmRadial",
+                  trControl=ctrl,   # Radial kernel
+                  tuneLength = 10)
+
+predict_yelp_svm_low <- predict(model_svm_low, above.avg.test)
+
+#actual minus predicted
+delta.low.SES <- above.avg.test$rating - predict_yelp_svm_low
+count.low.SES.below.line <- length(which(delta.low.SES < 0)) / length(delta.low.SES)
+cat("Overestimated residuals proportion: ",count.low.SES.below.line, "\n")
+
+count.low.SES.above.line <- length(which(delta.low.SES > 0)) / length(delta.low.SES)
+cat("Underestimated residuals proportion: ",count.low.SES.above.line, "\n")
+
+lowSES_with_residual <- above.avg.test %>% 
+ mutate(
+     residuals = rating - predict_yelp_svm_low
+ )
+
+ggplot(lowSES_with_residual, aes(1:nrow(lowSES_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-3,3) +
+  labs(title="Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Restaurants",y="Residuals", x="Row Number")
+
+```
+
+The residual graph for low socio-economic model suggested an unequal split among residuals. Approximately 37% of the predicting restaurants has a negative residuals and 63% has a positive residuals. Based on the residual analysis, the regression model for restaurants rating in low socio-economic neighborhood suggested biased. The residuals suggested 63% of the rating of restaurants in high socio-economic were underestimated in a low socio-economic restaurants regression model.
+
+
+## Organize Data for Subway
+
+```{r, include=FALSE}
+# filter only Subways for high and low SES
+above.avg.subway <- filter(above.avg, name %in% "Subway")
+below.avg.subway <- filter(below.avg, name %in% "Subway")
+
+# remove violationTypeRed, InspectionGrade 2 ,3 ,4 for above.avg since those columns aren't unique
+above.avg.subway <- subset(above.avg.subway, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue", "recentHealthInspectionGrade.1"))
+
+# remove InspectionGrade 3 ,4 for above.avg since those columns aren't unique
+below.avg.subway <- subset(below.avg.subway, select=c("rating", "reviewCount", "recentHealthInspectionScore","totalInspectionScore", "totalInspectionCount", "avgInspectionScore", "restaurantTotalMonths", "restaurantMaxSeats", "recentHealthInspectionResultSatisfactory", "recentHealthInspectionResultUnsatisfactory", "recentHealthViolationType.1", "recentHealthViolationTypeblue",  "recentHealthInspectionGrade.1"))
+
+subway.above.ctrl <- trainControl(method = "repeatedcv", number=nrow(above.avg.subway) - 1, repeats=3) # 10 fold cross-validation, repeated 3 times. better way to do it but takes longer.
+subway.below.ctrl <- trainControl(method = "repeatedcv", number=nrow(below.avg.subway) - 1, repeats=3)
+```
+
+## Linear Regression Model for Subway Restaurants
+
+To further investigate the results, we ran the same regression models for Subway restaurants in high socio-economic and low socio-economic neighborhood and plot the residuals. Below is the results:
+
+```{r}
+# high SES SVM modeling
+subway_lm_high <- train(rating ~ .,
+                  data = above.avg.subway,
+                  method = "lm",
+                  trControl=subway.above.ctrl)
+
+predict_subway_lm_high <- predict(subway_lm_high, below.avg.subway)
+
+
+#actual minus predicted
+delta.subway.high.SES <- below.avg.subway$rating - predict_subway_lm_high
+count.subway.high.SES.below.line <- length(which(delta.subway.high.SES < 0)) / length(delta.subway.high.SES)
+cat("Overestimated residuals proportion: ",count.subway.high.SES.below.line, "\n")
+
+count.subway.high.SES.above.line <- length(which(delta.subway.high.SES > 0)) / length(delta.subway.high.SES)
+cat("Underestimated residuals proportion: ",count.subway.high.SES.above.line, "\n")
+
+subway_high_with_residual <- below.avg.subway %>% 
+ mutate(
+     residuals = rating - predict_subway_lm_high
+ )
+
+ggplot(subway_high_with_residual, aes(1:nrow(subway_high_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2) +
+  labs(title="Subway High Socio-Economic Predicted Model Residuals \nwhen predicting with Low Socio-Economic Subways",y="Residuals", x="Row Number")
+```
+
+## Linear Model for low SES Subway
+```{r, include=FALSE}
+# high SES SVM modeling
+subway_lm_low <- train(rating ~ .,
+                  data = below.avg.subway,
+                  method = "lm",
+                  trControl=subway.below.ctrl)
+
+predict_subway_lm_low <- predict(subway_lm_low, above.avg.subway)
+
+#actual minus predicted
+delta.subway.low.SES <- above.avg.subway$rating - predict_subway_lm_low
+count.subway.low.SES.below.line <- length(which(delta.subway.low.SES < 0)) / length(delta.subway.low.SES)
+cat("Overestimated residuals proportion: ",count.subway.low.SES.below.line, "\n")
+
+count.subway.low.SES.above.line <- length(which(delta.subway.low.SES > 0)) / length(delta.subway.low.SES)
+cat("Underestimated residuals proportion: ", count.subway.low.SES.above.line, "\n")
+
+subway_low_with_residual <- above.avg.subway %>% 
+ mutate(
+     residuals = rating - predict_subway_lm_low
+ )
+
+ggplot(subway_low_with_residual, aes(1:nrow(subway_low_with_residual))) +
+  geom_point(aes(y=residuals)) +
+  geom_abline(intercept=0, slope = 0) + ylim(-2,2) + 
+  labs(title="Subway Low Socio-Economic Predicted Model Residuals \nwhen predicting with High Socio-Economic Subways",y="Residuals", x="Row Number")
+```
